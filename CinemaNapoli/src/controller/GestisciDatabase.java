@@ -61,7 +61,7 @@ public class GestisciDatabase extends HttpServlet {
 		em.persist(p);
 		em.getTransaction().commit();
 	}
-	
+	 
 	//----- METODI LEGGI
 	public List<User> leggiUser() {
 		return em.createNamedQuery("User.findAll").getResultList();
