@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Film;
 
-/**
- * Servlet implementation class InserisciFilm
- */
 @WebServlet("/InserisciFilm")
 public class InserisciFilm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,21 +26,21 @@ public class InserisciFilm extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
-		
+			
 		Film f=new Film();
-		f.setTitolo(request.getParameter("titolo"));
-		f.setGenere(request.getParameter("genere"));
-		f.setLocandina(request.getParameter("locandina"));
-		f.setTrama(request.getParameter("trama"));
-		f.setDurata(Integer.parseInt(request.getParameter("durata")));
-		f.setAnnouscita(LocalDate.parse(request.getParameter("annouscita")));
 		
+		if(request.getParameter("titolo") != null) {
+			f.setTitolo(request.getParameter("titolo"));
+			f.setGenere(request.getParameter("genere"));
+			f.setLocandina(request.getParameter("locandina"));
+			f.setTrama(request.getParameter("trama"));
+			f.setDurata(Integer.parseInt(request.getParameter("durata")));
+			f.setAnnouscita(LocalDate.parse(request.getParameter("annouscita")));
+			
+			db.aggiungiFilm(f);
+		}
 		doGet(request, response);
 	}
 

@@ -14,9 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import model.*;
 
-/**
- * Servlet implementation class Login
- */
 @WebServlet(name="login",urlPatterns={"/Login"})
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,8 +23,6 @@ public class Login extends HttpServlet {
 	public Login() {
 		super();
 		db=new GestisciDatabase();
-
-
 	}
 
 
@@ -38,13 +33,8 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		List<User> lista=db.leggiUser();
-		session.setAttribute("lista", lista);
-		String username=request.getParameter("username");
-		String password=request.getParameter("password");
-
-		for(User u:lista) {
-			if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
+		for(User u: db.leggiUser()) {
+			if(u.getUsername().equals(request.getParameter("username")) && u.getPassword().equals(request.getParameter("password"))) {
 				session.setAttribute("userloggato", u);
 				if(request.getParameter("ricordami")!= null) {
 					response.addCookie(new Cookie("userUsername", u.getUsername()));
