@@ -14,13 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name="registrazione", urlPatterns={"/Registrazione"})
 public class Registrazione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private EntityManagerFactory emf;
+	private GestisciUser gu;
 	private EntityManager em;
 	
     public Registrazione() {
         super();
-        emf = Persistence.createEntityManagerFactory("CinemaNapoli");
-        em  = emf.createEntityManager();
+        gu = new GestisciUser();
         
     }
 
@@ -41,7 +40,7 @@ public class Registrazione extends HttpServlet {
 			u.setUserName(request.getParameter("userName"));
 			u.setPassword(request.getParameter("password"));
 			
-			aggiungiUtente(u);
+			gu.aggiungiUtente(u);
 		}
 			
 	}
@@ -50,11 +49,12 @@ public class Registrazione extends HttpServlet {
 		doGet(request, response);
 	}
 	
+	/*
 	public void aggiungiUtente(User user) {
 		em.getTransaction().begin();
 		em.persist(user);
 		em.getTransaction().commit();
 		System.out.println("Utente inserito con successo");
-	}
+	} */
 
 }
