@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,15 +12,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.User;
+
 @WebServlet(name="registrazione", urlPatterns={"/Registrazione"})
 public class Registrazione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private GestisciUser gu;
+	private GestisciDatabase gd;
 	private EntityManager em;
 	
     public Registrazione() {
         super();
-        gu = new GestisciUser();
+        gd = new GestisciDatabase ();
         
     }
 
@@ -29,7 +32,7 @@ public class Registrazione extends HttpServlet {
 			User u = new User();
 			u.setNome(request.getParameter("nome"));
 			u.setCognome(request.getParameter("cognome"));
-			u.setDataDiNascita(request.getParameter("datadinascita"));
+			u.setDatadinascita(LocalDate.parse(request.getParameter("datadinascita")));
 			u.setCitta(request.getParameter("citta"));
 			u.setProvincia(request.getParameter("provincia"));
 			u.setIndirizzo(request.getParameter("indirizzo"));
@@ -37,10 +40,10 @@ public class Registrazione extends HttpServlet {
 			u.setCf(request.getParameter("cf"));
 			u.setPiva(request.getParameter("piva"));
 			u.setEmail(request.getParameter("email"));
-			u.setUserName(request.getParameter("userName"));
+			u.setUsername(request.getParameter("userName"));
 			u.setPassword(request.getParameter("password"));
 			
-			gu.aggiungiUtente(u);
+			gd.aggiungiUser(u);
 		}
 			
 	}
@@ -49,12 +52,4 @@ public class Registrazione extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	/*
-	public void aggiungiUtente(User user) {
-		em.getTransaction().begin();
-		em.persist(user);
-		em.getTransaction().commit();
-		System.out.println("Utente inserito con successo");
-	} */
-
 }
