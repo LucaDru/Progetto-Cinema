@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Film;
 
-@WebServlet(name="modificafilm", urlPatterns = {"/modificaFilm"})
-public class modificaFilm extends HttpServlet {
+@WebServlet(name="modificafilm", urlPatterns = {"/ModificaFilm"})
+public class ModificaFilm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private GestisciDatabase gb;   
-    public modificaFilm() {
+    public ModificaFilm() {
         super();
         gb = new GestisciDatabase();
     }

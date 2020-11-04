@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Sala;
 
-@WebServlet(name="modificasala", urlPatterns = {"/modificaSala"})
-public class modificaSala extends HttpServlet {
+@WebServlet(name="modificasala", urlPatterns = {"/ModificaSala"})
+public class ModificaSala extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private GestisciDatabase gd;   
 
-    public modificaSala() {
+    public ModificaSala() {
         super();
         gd = new GestisciDatabase();
     }

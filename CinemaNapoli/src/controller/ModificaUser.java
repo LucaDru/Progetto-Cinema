@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.User;
 
-@WebServlet(name="modificauser", urlPatterns = {"/modificaUser"})
-public class modificaUser extends HttpServlet {
+@WebServlet(name="modificauser", urlPatterns = {"/ModificaUser"})
+public class ModificaUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private GestisciDatabase gd;
 	
-    public modificaUser() {
+    public ModificaUser() {
         super();
         gd = new GestisciDatabase();
     }

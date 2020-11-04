@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Proiezione;
 
-@WebServlet(name="modificaproiezione", urlPatterns = {"/modificaProiezione"})
-public class modificaProiezione extends HttpServlet {
+@WebServlet(name="modificaproiezione", urlPatterns = {"/ModificaProiezione"})
+public class ModificaProiezione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private GestisciDatabase gd;
 	
-    public modificaProiezione() {
+    public ModificaProiezione() {
         super();
         gd = new GestisciDatabase();
     }
