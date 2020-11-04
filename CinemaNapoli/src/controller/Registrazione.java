@@ -36,7 +36,7 @@ public class Registrazione extends HttpServlet {
 			u.setCf(request.getParameter("cf"));
 			u.setPiva(request.getParameter("piva"));
 			u.setEmail(request.getParameter("email"));
-			u.setUsername(request.getParameter("userName"));
+			u.setUsername(request.getParameter("username"));
 			u.setPassword(request.getParameter("password"));
 			
 			gd.aggiungiUser(u);
