@@ -35,7 +35,7 @@ public class Login extends HttpServlet {
 		HttpSession session = request.getSession();
 		for(User u: db.leggiUser()) {
 			if(u.getUsername().equals(request.getParameter("username")) && u.getPassword().equals(request.getParameter("password"))) {
-				session.setAttribute("userloggato", u);
+				session.setAttribute("userLoggato", u);
 				if(request.getParameter("ricordami")!= null) {
 					response.addCookie(new Cookie("userUsername", u.getUsername()));
 					response.addCookie(new Cookie("userPassword", u.getPassword()));

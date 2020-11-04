@@ -1,22 +1,14 @@
 package controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import model.Film;
-import model.Prenotazione;
-import model.Proiezione;
-import model.Sala;
-import model.User;
+import model.*;
 
 
 @WebServlet("/GestisciDatabase")
@@ -120,5 +112,45 @@ public class GestisciDatabase extends HttpServlet {
 		em.getTransaction().begin();
 		em.remove(p);
 		em.getTransaction().commit();
+	}
+	
+	//-----METODI RICERCA SPECIFICA
+	public User cercaUser(long id) {
+		em.getTransaction().begin();
+		User u=em.find(User.class, id);
+		em.getTransaction().commit();
+		return u;
+	}
+	
+	public User cercaUserByUsername(String username) {
+		return em.createQuery("SELECT u FROM User u WHERE u.username='"+username+"'",User.class).getSingleResult();
+	}
+	
+	public Film cercaFilm(long id) {
+		em.getTransaction().begin();
+		Film f=em.find(Film.class, id);
+		em.getTransaction().commit();
+		return f;
+	}
+	
+	public Sala cercaSala(long id) {
+		em.getTransaction().begin();
+		Sala s=em.find(Sala.class, id);
+		em.getTransaction().commit();
+		return s;
+	}
+	
+	public Proiezione cercaProiezione(long id) {
+		em.getTransaction().begin();
+		Proiezione p=em.find(Proiezione.class, id);
+		em.getTransaction().commit();
+		return p;
+	}
+	
+	public Prenotazione cercaPrenotazione(long id) {
+		em.getTransaction().begin();
+		Prenotazione p=em.find(Prenotazione.class, id);
+		em.getTransaction().commit();
+		return p;
 	}
 }
