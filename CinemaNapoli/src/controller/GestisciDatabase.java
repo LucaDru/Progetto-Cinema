@@ -114,4 +114,11 @@ public class GestisciDatabase extends HttpServlet {
 		em.merge(p);
 		em.getTransaction().commit();
 	}
+	
+	//-----METODO ELIMINA
+	public void annullaPrenotazione(Prenotazione p) {
+		em.getTransaction().begin();
+		em.remove(p);
+		em.getTransaction().commit();
+	}
 }
