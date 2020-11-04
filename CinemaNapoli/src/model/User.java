@@ -14,7 +14,7 @@ public class User implements Serializable {
 	private long id;
 	private String nome,cognome,citta,indirizzo,provincia,cap,cf,piva,email,username,password,avatar;
 	private LocalDate datadinascita;
-	private boolean admin,staff,attivo;
+	private boolean admin,staff,attivo,accettato;
 	private List<Prenotazione> prenotazioni;
 	//---
 	public User() {
@@ -88,6 +88,10 @@ public class User implements Serializable {
 	public boolean isAttivo() {
 		return attivo;
 	}
+	@Column(columnDefinition="BOOLEAN NOT NULL DEFAULT false")
+	public boolean isAccettato() {
+		return accettato;
+	}
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
 	public List<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
@@ -144,6 +148,9 @@ public class User implements Serializable {
 	}
 	public void setAttivo(boolean attivo) {
 		this.attivo = attivo;
+	}
+	public void setAccettato(boolean accettato) {
+		this.accettato = accettato;
 	}
 	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
