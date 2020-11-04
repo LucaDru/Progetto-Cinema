@@ -51,9 +51,11 @@ public class User implements Serializable {
 	public String getCap() {
 		return cap;
 	}
+	@Column(unique=true)
 	public String getCf() {
 		return cf;
 	}
+	@Column(unique=true)
 	public String getPiva() {
 		return piva;
 	}
@@ -61,7 +63,7 @@ public class User implements Serializable {
 	public String getEmail() {
 		return email;
 	}
-	@Column(nullable=false)
+	@Column(nullable=false,unique=true)
 	public String getUsername() {
 		return username;
 	}
