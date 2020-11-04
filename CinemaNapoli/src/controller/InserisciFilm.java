@@ -13,9 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import model.Film;
 
-/**
- * Servlet implementation class InserisciFilm
- */
 @WebServlet("/InserisciFilm")
 public class InserisciFilm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
