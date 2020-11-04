@@ -40,6 +40,7 @@ public class Registrazione extends HttpServlet {
 			u.setPassword(request.getParameter("password"));
 			
 			gd.aggiungiUser(u);
+			
 		}
 			
 	}
