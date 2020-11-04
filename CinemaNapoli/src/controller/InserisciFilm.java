@@ -34,22 +34,24 @@ public class InserisciFilm extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		
-			Film f=new Film();
-			f.setTitolo(request.getParameter("titolo"));
-			f.setGenere(request.getParameter("genere"));
-			f.setLocandina(request.getParameter("locandina"));
-			f.setTrama(request.getParameter("trama"));
-			f.setDurata(Integer.parseInt(request.getParameter("durata")));
-			f.setAnnouscita(LocalDate.parse(request.getParameter("annouscita")));
-			List<Film>listaFilm=db.leggiFilm();
-			for(Film film:listaFilm) {
-				if(!film.getTitolo().equalsIgnoreCase(f.getTitolo()) && !film.getAnnouscita().equals(f.getAnnouscita())) {
-					db.aggiungiFilm(f);
+			if(request.getParameter("titolo")!= null) {
+				Film f=new Film();
+				f.setTitolo(request.getParameter("titolo"));
+				f.setGenere(request.getParameter("genere"));
+				f.setLocandina(request.getParameter("locandina"));
+				f.setTrama(request.getParameter("trama"));
+				f.setDurata(Integer.parseInt(request.getParameter("durata")));
+				f.setAnnouscita(LocalDate.parse(request.getParameter("annouscita")));
+				List<Film>listaFilm=db.leggiFilm();
+				for(Film film:listaFilm) {
+					if(!film.getTitolo().equalsIgnoreCase(f.getTitolo()) && !film.getAnnouscita().equals(f.getAnnouscita())) {
+						db.aggiungiFilm(f);
+						
 					
-				
+					}
 				}
 			}
+			
 		
 		
 		
