@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @NamedQuery(name="User.findAll",query="SELECT u FROM User u")
 public class User implements Serializable {
-	
+	//commento di prova
 	private static final long serialVersionUID = 1L;
 	private long id;
 	private String nome,cognome,citta,indirizzo,provincia,cap,cf,piva,email,username,password,avatar;
