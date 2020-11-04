@@ -20,7 +20,7 @@ public class modificaSala extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("leggiSala", gd.leggiSala());		
+		//request.setAttribute("leggiSala", gd.leggiSala());		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
