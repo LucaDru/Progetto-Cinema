@@ -20,14 +20,10 @@ public class Logout extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.removeAttribute("userLoggato");
-		Cookie ck = new Cookie ("userUsername", "");
+		request.getSession().invalidate();
+		Cookie ck = new Cookie ("userPassword", "");
 		ck.setMaxAge(0);
 		response.addCookie(ck);
-		Cookie ck1 = new Cookie ("userPassword", "");
-		ck.setMaxAge(0);
-		response.addCookie(ck1);
 	}
 
 }
