@@ -10,16 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Prenotazione;
-import util.GestisciDatabase;
+import static util.GestisciDatabase.*;
 
 @WebServlet(name="visualizzaprenotazioni", urlPatterns = {"/VisualizzaPrenotazioni"})
 public class VisualizzaPrenotazioni extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private GestisciDatabase gd; 
 
     public VisualizzaPrenotazioni() {
         super();
-        gd = new GestisciDatabase();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +25,7 @@ public class VisualizzaPrenotazioni extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Prenotazione> lista = gd.leggiPrenotazione();
+		List<Prenotazione> lista = leggiPrenotazione();
 		request.setAttribute("listaPrenotazione", lista);
 		doGet(request, response);
 	}

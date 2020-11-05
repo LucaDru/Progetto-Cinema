@@ -12,18 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Film;
-import util.GestisciDatabase;
+import static util.GestisciDatabase.*;
 
 @WebServlet("/InserisciFilm")
 public class InserisciFilm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private GestisciDatabase db;
 	List<Film>listaFilm;
        
     
     public InserisciFilm() {
         super();
-        db=new GestisciDatabase();
     }
 
 	
@@ -43,10 +41,10 @@ public class InserisciFilm extends HttpServlet {
 				f.setTrama(request.getParameter("trama"));
 				f.setDurata(Integer.parseInt(request.getParameter("durata")));
 				f.setAnnouscita(LocalDate.parse(request.getParameter("annouscita")));
-				List<Film>listaFilm=db.leggiFilm();
+				List<Film>listaFilm=leggiFilm();
 				for(Film film:listaFilm) {
 					if(!film.getTitolo().equalsIgnoreCase(f.getTitolo()) && !film.getAnnouscita().equals(f.getAnnouscita())) {
-						db.aggiungiFilm(f);
+						aggiungiFilm(f);
 						
 					
 					}

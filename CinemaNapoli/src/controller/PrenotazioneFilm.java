@@ -8,17 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Prenotazione;
-import util.GestisciDatabase;
+import static util.GestisciDatabase.*;
 
 
 @WebServlet(name="prenotazionefilm", urlPatterns = {"/PrenotazioneFilm"})
 public class PrenotazioneFilm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private GestisciDatabase gd;  
 
     public PrenotazioneFilm() {
         super();
-        gd = new GestisciDatabase();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,13 +28,13 @@ public class PrenotazioneFilm extends HttpServlet {
 		
 		if(request.getParameter("id") != null) {
 			p.setId(Long.parseLong(request.getParameter("id")));
-			p.setProiezione(gd.cercaProiezione(Long.parseLong(request.getParameter("proiezione"))));
-			p.setUser(gd.cercaUser(Long.parseLong(request.getParameter("user"))));
+			p.setProiezione(cercaProiezione(Long.parseLong(request.getParameter("proiezione"))));
+			p.setUser(cercaUser(Long.parseLong(request.getParameter("user"))));
 			p.setNumPosti(Integer.parseInt(request.getParameter("numposti")));
 			p.setPosti(request.getParameter("posti"));
 			p.setBiglietto(request.getParameter("biglietto"));
 			
-			gd.aggiungiPrenotazione(p);
+			aggiungiPrenotazione(p);
 		}
 		doGet(request, response);
 	}

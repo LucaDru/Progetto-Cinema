@@ -10,21 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Proiezione;
-import util.GestisciDatabase;
+import static util.GestisciDatabase.*;
 
 
 @WebServlet(name="visualizzaProiezioni", urlPatterns= {"/VisualizzaProiezioni"})
 public class VisualizzaProiezioni extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private GestisciDatabase gd;
 	
     public VisualizzaProiezioni() {
         super();
-        gd = new GestisciDatabase ();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Proiezione> lista = gd.leggiProiezione();
+		List<Proiezione> lista = leggiProiezione();
 		request.setAttribute("listaProiezioni", lista);
 		
 	}

@@ -8,16 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Sala;
-import util.GestisciDatabase;
+import static util.GestisciDatabase.*;
 
 @WebServlet(name="modificasala", urlPatterns = {"/ModificaSala"})
 public class ModificaSala extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private GestisciDatabase gd;   
 
     public ModificaSala() {
         super();
-        gd = new GestisciDatabase();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,7 +30,7 @@ public class ModificaSala extends HttpServlet {
 			s.setNome(request.getParameter("nome"));
 			s.setPostiMax(Integer.parseInt(request.getParameter("postimax")));
 			
-			gd.modificaSala(s);
+			modificaSala(s);
 		}
 		doGet(request, response);
 	}

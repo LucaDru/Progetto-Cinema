@@ -11,20 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Film;
 import model.Sala;
-import util.GestisciDatabase;
+import static util.GestisciDatabase.*;
 
 
 @WebServlet(name="inseriscisala",urlPatterns={"/InserisciSala"})
 public class InserisciSala extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private GestisciDatabase db;
 	List<Sala>sale;   
 
 	public InserisciSala() {
 		super();
-		db=new GestisciDatabase();
-
-
 	}
 
 
@@ -37,16 +33,15 @@ public class InserisciSala extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		if(request.getParameter("nome")!= null){
-			sale=db.leggiSala();
+			sale=leggiSala();
 			Sala s=new Sala();
 			s.setNome(request.getParameter("nome"));
 			s.setPostiMax(Integer.parseInt(request.getParameter("posti")));
 			for(Sala sala:sale) {
 				if((!sala.getNome().equalsIgnoreCase(s.getNome())) && (sala.getPostiMax()!=s.getPostiMax())) {
-					db.aggiungiSala(s);
+					aggiungiSala(s);
 				}break;
 			}
-
 			
 		}
 		doGet(request, response);

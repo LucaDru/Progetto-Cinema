@@ -10,16 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
-import util.GestisciDatabase;
+import static util.GestisciDatabase.*;
 
 @WebServlet(name ="visualizzauser", urlPatterns = {"/VisualizzaUser"})
 public class VisualizzaUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private GestisciDatabase gd;   
 
     public VisualizzaUser() {
         super();
-        gd = new GestisciDatabase();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +25,7 @@ public class VisualizzaUser extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<User> lista = gd.leggiUser();
+		List<User> lista = leggiUser();
 		request.setAttribute("leggiUser", lista);
 		doGet(request, response);
 	}

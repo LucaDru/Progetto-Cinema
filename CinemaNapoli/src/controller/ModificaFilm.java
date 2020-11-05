@@ -10,15 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Film;
-import util.GestisciDatabase;
+import static util.GestisciDatabase.*;
 
 @WebServlet(name="modificafilm", urlPatterns = {"/ModificaFilm"})
 public class ModificaFilm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private GestisciDatabase gb;   
+	
     public ModificaFilm() {
         super();
-        gb = new GestisciDatabase();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +35,7 @@ public class ModificaFilm extends HttpServlet {
 				f.setAnnouscita(LocalDate.parse(request.getParameter("annouscita")));
 				f.setTrama(request.getParameter("trama"));
 				f.setLocandina(request.getParameter("locandina"));
-				gb.modificaFilm(f);
+				modificaFilm(f);
 			}
 		
 		doGet(request, response);

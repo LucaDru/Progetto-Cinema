@@ -12,18 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Proiezione;
-import util.GestisciDatabase;
+import static util.GestisciDatabase.*;
 
 
 @WebServlet(name="InserimentoProiezione",urlPatterns={"/InserimentoProiezione"})
 public class InserimentoProiezione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private GestisciDatabase db;
 	private List <Proiezione> proiezioni;
 
     public InserimentoProiezione() {
         super();
-        db=new GestisciDatabase();
        
     }
 
@@ -42,20 +40,18 @@ public class InserimentoProiezione extends HttpServlet {
 				p.setData(LocalDate.parse(request.getParameter("data")));
 				p.setOra(LocalTime.parse(request.getParameter("ora")));
 				p.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
-				p.setFilm(db.cercaFilm(Long.parseLong(request.getParameter("idFilm"))));
-				p.setSala(db.cercaSala(Long.parseLong(request.getParameter("idSala"))));
-				proiezioni=db.leggiProiezione();
+				p.setFilm(cercaFilm(Long.parseLong(request.getParameter("idFilm"))));
+				p.setSala(cercaSala(Long.parseLong(request.getParameter("idSala"))));
+				proiezioni=leggiProiezione();
 				
 				for(Proiezione proiezione:proiezioni) {
 					if(proiezione.getData()!=p.getData() || proiezione.getOra()!=p.getOra() || proiezione.getFilm()	!= p.getFilm()) {
-						db.aggiungiProiezione(p);
+						aggiungiProiezione(p);
 					}
 						
 				}
 			}
-
-			
-			
+						
 		doGet(request, response);
 	}
 

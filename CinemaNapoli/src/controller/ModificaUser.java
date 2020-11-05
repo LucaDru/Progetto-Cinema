@@ -10,16 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
-import util.GestisciDatabase;
+import static util.GestisciDatabase.*;
 
 @WebServlet(name="modificauser", urlPatterns = {"/ModificaUser"})
 public class ModificaUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private GestisciDatabase gd;
 	
     public ModificaUser() {
         super();
-        gd = new GestisciDatabase();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +40,7 @@ public class ModificaUser extends HttpServlet {
 				u.setUsername(request.getParameter("username"));
 				u.setPassword(request.getParameter("password"));
 				
-				gd.modificaUser(u);
+				modificaUser(u);
 			}
 		doGet(request, response);
 	}
