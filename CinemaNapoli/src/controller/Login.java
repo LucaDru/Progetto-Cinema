@@ -10,6 +10,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.*;
 
@@ -23,25 +24,10 @@ public class Login extends HttpServlet {
 	//---
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//request.getSession().invalidate();
 		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 	//---
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		if(request.getParameter("username")!=null) {
-			HttpSession session = request.getSession();
-			for(User u: db.leggiUser()) {
-				if(u.getUsername().equals(request.getParameter("username")) && u.getPassword().equals(request.getParameter("password"))) {
-					session.setAttribute("userLoggato", u);
-					if(request.getParameter("ricordami")!= null) {
-						response.addCookie(new Cookie("userUsername", u.getUsername()));
-						response.addCookie(new Cookie("userPassword", u.getPassword()));	
-					}
-					break;
-				}
-			}
-		}	*/
 		
 		for(User u: leggiUser()) {
 			if(u.getUsername().equals(request.getParameter("username")) && u.getPassword().equals(request.getParameter("password"))) {
@@ -54,8 +40,6 @@ public class Login extends HttpServlet {
 				break;
 			}
 		}
-		//response.sendRedirect("Login");
-		//request.getRequestDispatcher("home.jsp").forward(request, response);
 		doGet(request, response);
 	}
 }

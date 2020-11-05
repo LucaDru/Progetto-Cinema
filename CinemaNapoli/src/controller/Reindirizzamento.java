@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,21 +18,55 @@ public class Reindirizzamento extends HttpServlet {
         super();
     }
     //---
+    /*
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) res;
+
+        HttpSession session = request.getSession(false);         
+        if (session == null || session.getAttribute("username") == null) {
+        	response.sendRedirect("Login"); // No logged-in user found, so redirect to login page.
+        } else {
+        	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+        	response.setDateHeader("Expires", 0);
+            chain.doFilter(req, res);
+        }
+    }
+    */
+    //---
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(request.getSession().getAttribute("userLoggato")==null)
-			request.getRequestDispatcher("Login").forward(request, response);
-		//--
-		User u=(User)request.getSession().getAttribute("userLoggato");
-		if(u.isAdmin())
-			request.getRequestDispatcher("VisualizzaUser").forward(request, response);
-		else if(u.isStaff())
-			request.getRequestDispatcher("dashStaff.jsp").forward(request, response);
-		else
-			request.getRequestDispatcher("dashUser.jsp").forward(request, response);
+		doPost(request, response);
 	}
 	//---
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		
+		if(request.getSession().getAttribute("userLoggato")!=null && request.getSession()!=null) {
+			User u=(User)request.getSession().getAttribute("userLoggato");
+			System.out.println(u.getNome());
+			if(u.isAdmin())
+				request.getRequestDispatcher("VisualizzaUser").forward(request, response);
+			else if(u.isStaff())
+				request.getRequestDispatcher("dashStaff.jsp").forward(request, response);
+			else
+				request.getRequestDispatcher("dashUser.jsp").forward(request, response);
+		}
+		else {
+			//request.getRequestDispatcher("Login").forward(request, response);
+			//response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	        //response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	        //response.setDateHeader("Expires", 0);
+	        //---
+			response.sendRedirect("Login");
+			//doFilter(request, response, chain);
+		}
 	}
+	/*
+	@Override
+	public void init(FilterConfig arg0) throws ServletException {
+		// TODO Auto-generated method stub
+		
+	}
+	*/
 }
