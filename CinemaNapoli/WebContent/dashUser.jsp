@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Dash-Admin</title>
+<title>Dash-User</title>
 </head>
 <body>
-	<div class="container bk-dark text-warning">
-		<h1>DASHBOARD ADMIN!</h1>
+	<div class="container bk-dark text-primary">
+		<h1>DASHBOARD USER!</h1>
 		<a class="btn btn-danger" href="Logout" role="button">Log-out</a>
 	</div>
 </body>

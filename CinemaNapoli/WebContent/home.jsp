@@ -26,8 +26,8 @@
 		<h2>
 			Benvenuto <%=u.getNome()%>
 		</h2>
-		<a class="btn btn-outline-secondary" href="#" role="button">Dashboard</a>
-		<a class="btn btn-danger" href="#" role="button">Log-out</a>
+		<a class="btn btn-outline-secondary" href="Reindirizzamento" role="button">Dashboard</a>
+		<a class="btn btn-danger" href="Logout" role="button">Log-out</a>
 	</div>
 	<%
 		} else {
