@@ -19,15 +19,16 @@ public class Reindirizzamento extends HttpServlet {
     //---
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//if(request.getSession().getAttribute("userLoggato")!=null) {
-			User u=(User)request.getSession().getAttribute("userLoggato");
-			if(u.isAdmin())
-				request.getRequestDispatcher("dashAdmin.jsp").forward(request, response);
-			else if(u.isStaff())
-				request.getRequestDispatcher("dashStaff.jsp").forward(request, response);
-			else
-				request.getRequestDispatcher("dashUser.jsp").forward(request, response);
-		//}
+		if(request.getSession().getAttribute("userLoggato")==null)
+			request.getRequestDispatcher("Login").forward(request, response);
+		//--
+		User u=(User)request.getSession().getAttribute("userLoggato");
+		if(u.isAdmin())
+			request.getRequestDispatcher("VisualizzaUser").forward(request, response);
+		else if(u.isStaff())
+			request.getRequestDispatcher("dashStaff.jsp").forward(request, response);
+		else
+			request.getRequestDispatcher("dashUser.jsp").forward(request, response);
 	}
 	//---
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
