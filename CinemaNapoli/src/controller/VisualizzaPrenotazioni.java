@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Prenotazione;
+import util.GestisciDatabase;
 
 @WebServlet(name="visualizzaprenotazioni", urlPatterns = {"/VisualizzaPrenotazioni"})
 public class VisualizzaPrenotazioni extends HttpServlet {

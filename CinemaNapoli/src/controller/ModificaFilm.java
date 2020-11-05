@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Film;
+import util.GestisciDatabase;
 
 @WebServlet(name="modificafilm", urlPatterns = {"/ModificaFilm"})
 public class ModificaFilm extends HttpServlet {

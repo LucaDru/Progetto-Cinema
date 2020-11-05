@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Prenotazione;
+import util.GestisciDatabase;
 
 @WebServlet(name="annullaPrenotazione", urlPatterns={"/AnnullaPrenotazione"})
 public class AnnullaPrenotazione extends HttpServlet {

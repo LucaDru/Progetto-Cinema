@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Proiezione;
+import util.GestisciDatabase;
 
 @WebServlet(name="modificaproiezione", urlPatterns = {"/ModificaProiezione"})
 public class ModificaProiezione extends HttpServlet {

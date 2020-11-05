@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Proiezione;
+import util.GestisciDatabase;
 
 
 @WebServlet(name="visualizzaProiezioni", urlPatterns= {"/VisualizzaProiezioni"})

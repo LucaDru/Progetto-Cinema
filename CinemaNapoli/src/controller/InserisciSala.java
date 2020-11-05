@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Film;
 import model.Sala;
+import util.GestisciDatabase;
 
 
 @WebServlet(name="inseriscisala",urlPatterns={"/InserisciSala"})

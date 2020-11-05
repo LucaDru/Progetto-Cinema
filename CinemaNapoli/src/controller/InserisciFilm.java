@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Film;
+import util.GestisciDatabase;
 
 @WebServlet("/InserisciFilm")
 public class InserisciFilm extends HttpServlet {

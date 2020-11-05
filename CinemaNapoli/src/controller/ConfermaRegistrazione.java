@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.*;
+import util.GestisciDatabase;
 
 @WebServlet(name="confermareg",urlPatterns={"/ConfermaRegistrazione"})
 public class ConfermaRegistrazione extends HttpServlet {

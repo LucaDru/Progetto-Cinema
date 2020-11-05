@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Sala;
+import util.GestisciDatabase;
 
 @WebServlet(name="modificasala", urlPatterns = {"/ModificaSala"})
 public class ModificaSala extends HttpServlet {
