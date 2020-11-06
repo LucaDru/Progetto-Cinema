@@ -17,7 +17,8 @@ public class Logout extends HttpServlet {
     }
     //---
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().invalidate();
+		//request.getSession().invalidate();
+		request.getSession().removeAttribute("userLoggato");
 		Cookie ck = new Cookie ("userPassword", "");
 		ck.setMaxAge(0);
 		response.addCookie(ck);
