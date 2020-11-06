@@ -104,6 +104,10 @@
 									role="button">X</a>
 									<a class="btn btn-outline-danger btn-sm" href="ResetPassword?reset=<%=u.getId() %>"
 									role="button">Reset Password</a>
+									<a class="btn btn-outline-danger btn-sm" href="AttivazioneAccount?attiva=<%=u.getId() %>"
+									role="button">Attiva</a>
+									<a class="btn btn-outline-danger btn-sm" href="AttivazioneAccount?disattiva=<%=u.getId() %>"
+									role="button">Disattiva</a>
 								</td>
 							</tr>
 							<%
