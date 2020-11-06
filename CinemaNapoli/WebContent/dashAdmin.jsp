@@ -102,6 +102,8 @@
 								<td>
 									<a class="btn btn-outline-danger btn-sm" href="#"
 									role="button">X</a>
+									<a class="btn btn-outline-danger btn-sm" href="ResetPassword?reset=<%=u.getId() %>"
+									role="button">Reset Password</a>
 								</td>
 							</tr>
 							<%
