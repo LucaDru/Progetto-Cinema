@@ -35,7 +35,7 @@ public class RicercaProiezione extends HttpServlet {
 
 		//proiezioni=leggiProiezione();
 		proiezioni=request.getParameter("titolo")!=null?cercaProiezioneByTitolo(request.getParameter("titolo")):leggiProiezione();
-		proiezioni=proiezioni.stream().filter(p->p.getData().isAfter(LocalDate.now())).collect(Collectors.toList());
+		proiezioni=proiezioni.stream().filter(p->p.getData().toLocalDate().isAfter(LocalDate.now())).collect(Collectors.toList());
 
 		for(int i=0; i<proiezioni.size(); i++) {
 			int postiocc=0;
@@ -52,12 +52,12 @@ public class RicercaProiezione extends HttpServlet {
 		/*if(request.getParameter("titolo")!= null) {
 			proiezioniFiltrate=cercaProiezioneByTitolo(request.getParameter("titolo"));
 			//proiezioniFiltrate=proiezioniFiltrate.stream().filter(p->p.getFilm().getTitolo().equalsIgnoreCase(request.getParameter("titolo"))).collect(Collectors.toList());
-		}else*/ if(request.getParameter("genere")!= null) {
+		}else if(request.getParameter("genere")!= null) {
 			proiezioniFiltrate=proiezioni.stream().filter(p->p.getFilm().getGenere().equalsIgnoreCase(request.getParameter("genere"))).collect(Collectors.toList());
-		}else if(request.getParameter("data")!= null) {
-			proiezioniFiltrate=proiezioni.stream().filter(p->p.getData().isEqual(LocalDate.parse(request.getParameter("data")))).collect(Collectors.toList());
+		}else*/ if(request.getParameter("data")!= null) {
+			proiezioniFiltrate=proiezioni.stream().filter(p->p.getData().toLocalDate().isEqual(LocalDate.parse(request.getParameter("data")))).collect(Collectors.toList());
 		}else if(request.getParameter("orario")!= null) {
-			proiezioniFiltrate=proiezioni.stream().filter(p->p.getOra().isAfter(LocalTime.parse(request.getParameter("orario")))).collect(Collectors.toList());
+			proiezioniFiltrate=proiezioni.stream().filter(p->p.getOra().toLocalTime().isAfter(LocalTime.parse(request.getParameter("orario")))).collect(Collectors.toList());
 		}else if(request.getParameter("annouscita")!= null) {
 			proiezioniFiltrate=proiezioni.stream().filter(p->p.getFilm().getAnnouscita()==(Integer.parseInt(request.getParameter("annouscita")))).collect(Collectors.toList());
 		}
