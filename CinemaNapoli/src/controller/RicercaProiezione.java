@@ -59,7 +59,7 @@ public class RicercaProiezione extends HttpServlet {
 		}else if(request.getParameter("orario")!= null) {
 			proiezioniFiltrate=proiezioni.stream().filter(p->p.getOra().isAfter(LocalTime.parse(request.getParameter("orario")))).collect(Collectors.toList());
 		}else if(request.getParameter("annouscita")!= null) {
-			proiezioniFiltrate=proiezioni.stream().filter(p->p.getFilm().getAnnouscita().isEqual((LocalDate.parse(request.getParameter("annouscita"))))).collect(Collectors.toList());
+			proiezioniFiltrate=proiezioni.stream().filter(p->p.getFilm().getAnnouscita()==(Integer.parseInt(request.getParameter("annouscita")))).collect(Collectors.toList());
 		}
 			request.setAttribute("proiezioniFiltrate", proiezioniFiltrate);
 	}
