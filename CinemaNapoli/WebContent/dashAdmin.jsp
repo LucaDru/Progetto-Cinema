@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
 <title>Dash-Admin</title>
 <!-- CSS -->
 <link rel="stylesheet"
@@ -14,7 +15,7 @@
 	crossorigin="anonymous">
 </head>
 
-<body>
+<body class="bg-dark">
 	<div class="container bg-dark text-warning text-center">
 		<h1>DASHBOARD ADMIN!</h1>
 		<a class="btn btn-danger" href="Logout" role="button">Log-out</a>
@@ -22,10 +23,14 @@
 	
 	<nav class="navbar navbar-dark bg-dark justify-content-center">
 		<ul class="nav nav-tabs bg-dark" id="myTab" role="tablist">
+			<!-- PROFILO -->
+			<li class="nav-item" role="presentation"><a
+				class="nav-link active text-warning" id="profilo-tab" data-toggle="tab"
+				href="#profilo" role="tab" aria-controls="profilo" aria-selected="true">Profilo</a></li>
 			<!-- FILM -->
 			<li class="nav-item" role="presentation"><a
 				class="nav-link active text-warning" id="film-tab" data-toggle="tab"
-				href="#film" role="tab" aria-controls="film" aria-selected="true">Film</a></li>
+				href="#film" role="tab" aria-controls="film" aria-selected="false">Film</a></li>
 			<!-- PROIEZIONI -->
 			<li class="nav-item" role="presentation"><a
 				class="nav-link text-warning" id="proiezioni-tab" data-toggle="tab"
@@ -38,10 +43,19 @@
 		</ul>
 	</nav>
 	<div class="tab-content" id="myTabContent">
+	
+		<!-- Profilo tab -->
+		<div
+			class="tab-pane fade show active bg-dark text-center text-warning"
+			id="profilo" role="tabpanel" aria-labelledby="profilo-tab">
+			
+			<jsp:include page="modificaProfilo.jsp"></jsp:include>
+			
+		</div>
 
 		<!-- Film tab -->
 		<div
-			class="tab-pane fade show active bg-dark text-center text-warning"
+			class="tab-pane fade bg-dark text-center text-warning"
 			id="film" role="tabpanel" aria-labelledby="film-tab">
 
 			

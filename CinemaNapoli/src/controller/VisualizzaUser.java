@@ -21,7 +21,8 @@ public class VisualizzaUser extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<User> lista = leggiUser();
+		
+		List<User> lista = leggiUser();		
 		request.setAttribute("leggiUser", lista);
 		request.getRequestDispatcher("dashAdmin.jsp").forward(request, response);
 	}

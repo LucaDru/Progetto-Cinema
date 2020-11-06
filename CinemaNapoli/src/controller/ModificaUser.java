@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,14 +21,15 @@ public class ModificaUser extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//request.setAttribute("leggiUser", gd.leggiUser());
+		request.getRequestDispatcher("Reindirizzamento").forward(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User u = new User();
 		
-			if(request.getParameter("id") != null) {
-				u.setId(Long.parseLong(request.getParameter("id")));
+		User u=cercaUser(Long.parseLong(request.getParameter("id")));
+			//if(request.getParameter("id") != null) {
+				//u.setId(Long.parseLong(request.getParameter("id")));
 				u.setCitta(request.getParameter("citta"));
 				u.setProvincia(request.getParameter("provincia"));
 				u.setIndirizzo(request.getParameter("indirizzo"));
@@ -41,7 +41,8 @@ public class ModificaUser extends HttpServlet {
 				u.setPassword(request.getParameter("password"));
 				
 				modificaUser(u);
-			}
+			//}
+		request.getSession().setAttribute("userLoggato", u);
 		doGet(request, response);
 	}
 
