@@ -29,7 +29,7 @@ public class ModificaProiezione extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Proiezione p = new Proiezione();
-		
+		 
 		if(request.getParameter("id") != null) {
 			p.setId(Long.parseLong(request.getParameter("id")));
 			p.setFilm(cercaFilm(Long.parseLong(request.getParameter("film"))));

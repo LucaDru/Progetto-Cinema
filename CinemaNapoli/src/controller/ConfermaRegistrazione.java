@@ -27,7 +27,7 @@ public class ConfermaRegistrazione extends HttpServlet {
 			modificaUser(u);
 			//--invio Mail di avvenuta conferma da parte dell'admin
 		}
-	}
+	} 
 	//---
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		doGet(request, response);

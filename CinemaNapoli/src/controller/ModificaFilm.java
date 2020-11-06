@@ -36,7 +36,7 @@ public class ModificaFilm extends HttpServlet {
 				f.setTrama(request.getParameter("trama"));
 				f.setLocandina(request.getParameter("locandina"));
 				modificaFilm(f);
-			}
+			} 
 		
 		doGet(request, response);
 	}
