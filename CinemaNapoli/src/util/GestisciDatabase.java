@@ -213,4 +213,13 @@ public class GestisciDatabase {
 		et.commit();
 		return r;
 	}
+	
+	public static Genere cercaGenere(long id) {
+		EntityManager em=getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		Genere g=em.find(Genere.class, id);
+		et.commit();
+		return g;
+	}
 }

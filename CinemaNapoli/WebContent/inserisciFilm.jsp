@@ -2,7 +2,7 @@
 
 
 <div class="container">
-		<form action="InserisciFilm" method="post">
+		<form action="InserisciFilm" enctype="multipart/form-data" method="post">
 			<div class="form-group">
 				<label for="exampleInputTitolo">Titolo</label> <input
 					name="titolo" type="text" class="form-control"> 
@@ -13,7 +13,7 @@
 			</div>
 			<div class="form-group">
 				<label for="exampleInputLocandina">Locandina</label> <input
-					name="locandina" type="text" class="form-control">
+					name="file" type="file" class="form-control">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputTrama">Trama</label> <input

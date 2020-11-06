@@ -57,7 +57,8 @@
 		<div
 			class="tab-pane fade bg-dark text-center text-warning"
 			id="film" role="tabpanel" aria-labelledby="film-tab">
-
+			
+			<jsp:include page="inserisciFilm.jsp"></jsp:include>
 			
 		</div>
 

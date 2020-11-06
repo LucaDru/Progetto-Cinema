@@ -45,9 +45,9 @@ public class Reindirizzamento extends HttpServlet {
 		if(request.getSession().getAttribute("userLoggato")!=null && request.getSession()!=null) {
 			User u=(User)request.getSession().getAttribute("userLoggato");
 			System.out.println(u.getNome());
-			if(u.isAdmin())
+			if(u.getRuolo().getNome().equals("admin"))
 				request.getRequestDispatcher("VisualizzaUser").forward(request, response);
-			else if(u.isStaff())
+			else if(u.getRuolo().getNome().equals("staff"))
 				request.getRequestDispatcher("dashStaff.jsp").forward(request, response);
 			else
 				request.getRequestDispatcher("dashUser.jsp").forward(request, response);
