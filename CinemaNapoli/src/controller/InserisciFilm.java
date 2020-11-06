@@ -40,10 +40,10 @@ public class InserisciFilm extends HttpServlet {
 				f.setLocandina(request.getParameter("locandina"));
 				f.setTrama(request.getParameter("trama"));
 				f.setDurata(Integer.parseInt(request.getParameter("durata")));
-				f.setAnnouscita(LocalDate.parse(request.getParameter("annouscita")));
+				f.setAnnouscita(Integer.parseInt(request.getParameter("annouscita")));
 				List<Film>listaFilm=leggiFilm();
 				for(Film film:listaFilm) {
-					if(!film.getTitolo().equalsIgnoreCase(f.getTitolo()) && !film.getAnnouscita().equals(f.getAnnouscita())) {
+					if(!film.getTitolo().equalsIgnoreCase(f.getTitolo()) && film.getAnnouscita()!=(f.getAnnouscita())) {
 						aggiungiFilm(f);
 						
 					

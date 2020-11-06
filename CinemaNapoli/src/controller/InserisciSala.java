@@ -37,13 +37,17 @@ public class InserisciSala extends HttpServlet {
 			Sala s=new Sala();
 			s.setNome(request.getParameter("nome"));
 			s.setPostiMax(Integer.parseInt(request.getParameter("posti")));
+			boolean possoinserire=true;
 			for(Sala sala:sale) {
-				if((!sala.getNome().equalsIgnoreCase(s.getNome())) && (sala.getPostiMax()!=s.getPostiMax())) {
-					aggiungiSala(s);
-				}break;
+				if((!sala.getNome().equalsIgnoreCase(s.getNome()))) {
+					possoinserire=false;
+					break;
+				}
 			}
-			
+			if(possoinserire) {
+				aggiungiSala(s);
+			}
 		}
-		doGet(request, response);
+		
 	}
 }

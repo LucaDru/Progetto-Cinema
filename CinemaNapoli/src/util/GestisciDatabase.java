@@ -37,6 +37,7 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
+		System.out.println("aggiungo");
 		em.persist(s);
 		et.commit();
 	}
