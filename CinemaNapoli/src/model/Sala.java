@@ -18,10 +18,11 @@ public class Sala implements Serializable {
 	//---
 	@Id
 	@Column(name="id_sala",nullable=false)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}
-	@Column(nullable=false)
+	@Column(nullable=false,unique=true)
 	public String getNome() {
 		return nome;
 	}

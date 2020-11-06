@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.persistence.*;
 
@@ -12,8 +11,7 @@ public class Film implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long id;
 	private String titolo,genere,locandina,trama;
-	private int durata;
-	private LocalDate annouscita;
+	private int durata, annouscita;
 	//---
 	public Film() {
 		super();
@@ -46,7 +44,7 @@ public class Film implements Serializable {
 		return durata;
 	}
 	@Column(nullable=false)
-	public LocalDate getAnnouscita() {
+	public int getAnnouscita() {
 		return annouscita;
 	}
 	//---
@@ -69,7 +67,7 @@ public class Film implements Serializable {
 	public void setDurata(int durata) {
 		this.durata = durata;
 	}
-	public void setAnnouscita(LocalDate annouscita) {
+	public void setAnnouscita(int annouscita) {
 		this.annouscita = annouscita;
 	}
 }
