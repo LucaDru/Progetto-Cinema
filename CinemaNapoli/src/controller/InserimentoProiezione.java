@@ -43,12 +43,15 @@ public class InserimentoProiezione extends HttpServlet {
 				p.setFilm(cercaFilm(Long.parseLong(request.getParameter("idFilm"))));
 				p.setSala(cercaSala(Long.parseLong(request.getParameter("idSala"))));
 				proiezioni=leggiProiezione();
-				
+				boolean inserimento = true;
 				for(Proiezione proiezione:proiezioni) {
 					if(proiezione.getData()!=p.getData() || proiezione.getOra()!=p.getOra() || proiezione.getFilm()	!= p.getFilm()) {
-						aggiungiProiezione(p);
-					}
-						
+						inserimento = false;
+						break;
+					}							
+				}
+				if(inserimento = true) {
+					aggiungiProiezione(p);
 				}
 			}
 						
