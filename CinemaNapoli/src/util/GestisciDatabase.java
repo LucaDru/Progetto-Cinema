@@ -87,10 +87,12 @@ public class GestisciDatabase {
 		return em.createNamedQuery("Proiezione.findAll").getResultList();
 	}
 	
+	
 	public static List <Prenotazione> leggiPrenotazione() {
 		EntityManager em=getManager();
 		return em.createNamedQuery("Prenotazione.findAll").getResultList();
 	}
+	
 	
 	//------METODI MODIFICA
 	public static void modificaUser(User u) {
@@ -182,6 +184,14 @@ public class GestisciDatabase {
 		Proiezione p=em.find(Proiezione.class, id);
 		et.commit();
 		return p;
+	}
+	public static List<Proiezione> cercaProiezioneByTitolo(String titolo){
+		EntityManager em=getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		List<Proiezione> lista=em.createQuery("SELECT p FROM Proiezione p WHERE titolo LIKE '%"+titolo+"%'").getResultList();
+		et.commit();
+		return lista;
 	}
 	
 	public static Prenotazione cercaPrenotazione(long id) {
