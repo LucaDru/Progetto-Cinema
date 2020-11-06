@@ -50,7 +50,7 @@ public class InserimentoProiezione extends HttpServlet {
 						break;
 					}							
 				}
-				if(inserimento = true) {
+				if(inserimento) {
 					aggiungiProiezione(p);
 				}
 			}
