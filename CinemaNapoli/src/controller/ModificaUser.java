@@ -27,9 +27,15 @@ public class ModificaUser extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		User u=cercaUser(Long.parseLong(request.getParameter("id")));
-			//if(request.getParameter("id") != null) {
+		User u= null;
+				
+			if(request.getParameter("fatturazione") != null) {
+				u = (User) request.getSession().getAttribute("userLoggato");
 				//u.setId(Long.parseLong(request.getParameter("id")));
+				u.setCf(request.getParameter("cf").equals("")? null : request.getParameter("cf"));
+				u.setPiva(request.getParameter("piva").equals("")? null : request.getParameter("piva"));				
+			} else {
+				u= cercaUser(Long.parseLong(request.getParameter("id")));
 				u.setCitta(request.getParameter("citta"));
 				u.setProvincia(request.getParameter("provincia"));
 				u.setIndirizzo(request.getParameter("indirizzo"));
@@ -40,8 +46,8 @@ public class ModificaUser extends HttpServlet {
 				u.setUsername(request.getParameter("username"));
 				u.setPassword(request.getParameter("password"));
 				
-				modificaUser(u);
-			//}
+			} 
+			modificaUser(u);
 		request.getSession().setAttribute("userLoggato", u);
 		doGet(request, response);
 	}
