@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -31,8 +33,8 @@ public class ModificaProiezione extends HttpServlet {
 		if(request.getParameter("id") != null) {
 			p.setId(Long.parseLong(request.getParameter("id")));
 			p.setFilm(cercaFilm(Long.parseLong(request.getParameter("film"))));
-			p.setData(LocalDate.parse(request.getParameter("data")));
-			p.setOra(LocalTime.parse(request.getParameter("ora")));
+			p.setData(Date.valueOf(request.getParameter("data")));
+			p.setOra(Time.valueOf(request.getParameter("ora")));
 			p.setPrezzo(Integer.parseInt(request.getParameter("prezzo")));
 			p.setSala(cercaSala(Long.parseLong(request.getParameter("sala"))));
 			

@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -37,8 +39,8 @@ public class InserimentoProiezione extends HttpServlet {
 		
 			if(request.getParameter("idFilm")!=null) {
 				Proiezione p=new Proiezione();
-				p.setData(LocalDate.parse(request.getParameter("data")));
-				p.setOra(LocalTime.parse(request.getParameter("ora")));
+				p.setData(Date.valueOf(request.getParameter("data")));
+				p.setOra(Time.valueOf(request.getParameter("ora")));
 				p.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
 				p.setFilm(cercaFilm(Long.parseLong(request.getParameter("idFilm"))));
 				p.setSala(cercaSala(Long.parseLong(request.getParameter("idSala"))));

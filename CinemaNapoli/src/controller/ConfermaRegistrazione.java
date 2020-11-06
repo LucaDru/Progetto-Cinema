@@ -23,7 +23,7 @@ public class ConfermaRegistrazione extends HttpServlet {
 		
 		if(request.getParameter("confermaUser")!=null) {
 			User u=cercaUser(Long.parseLong(request.getParameter("confermaUser")));
-			u.setAccettato(true);
+			u.setAttivo(true);
 			modificaUser(u);
 			//--invio Mail di avvenuta conferma da parte dell'admin
 		}
