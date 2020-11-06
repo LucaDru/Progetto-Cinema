@@ -6,6 +6,8 @@
 		<class>model.Sala</class>
 		<class>model.Proiezione</class>
 		<class>model.Prenotazione</class>
+		<class>model.Ruolo</class>
+		<class>model.Genere</class>
 	
 	<properties>
 		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/cinemanapoli?serverTimezone=UTC"/>

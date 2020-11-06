@@ -1,8 +1,8 @@
 package model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 import javax.persistence.*;
@@ -15,8 +15,8 @@ public class Proiezione implements Serializable {
 	private long id;
 	private Film film;
 	private Sala sala;
-	private LocalDate data;
-	private LocalTime ora;
+	private Date data;
+	private Time ora;
 	private double prezzo;
 	private List<Prenotazione> prenotazioni;
 	//---
@@ -41,11 +41,11 @@ public class Proiezione implements Serializable {
 		return sala;
 	}
 	@Column(nullable=false)
-	public LocalDate getData() {
+	public Date getData() {
 		return data;
 	}
 	@Column(nullable=false)
-	public LocalTime getOra() {
+	public Time getOra() {
 		return ora;
 	}
 	@Column(nullable=false)
@@ -66,10 +66,10 @@ public class Proiezione implements Serializable {
 	public void setSala(Sala sala) {
 		this.sala = sala;
 	}
-	public void setData(LocalDate data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
-	public void setOra(LocalTime ora) {
+	public void setOra(Time ora) {
 		this.ora = ora;
 	}
 	public void setPrezzo(double prezzo) {

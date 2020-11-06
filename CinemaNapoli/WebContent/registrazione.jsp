@@ -74,8 +74,20 @@
 						out </label>
 				</div>
 			</div>
+			<% if(request.getAttribute("giaPresente")!=null && request.getAttribute("giaPresente").equals("si")){%>
+				<div class="alert alert-danger" role="alert">
+					Email/Username già registrati nel sito!
+				</div>
+			<% } else if(request.getAttribute("giaPresente")!=null && request.getAttribute("giaPresente").equals("no")){%>
+				<div class="alert alert-success" role="alert">
+					Registrazione avvenuta con successo!
+				</div>
+			<% } %>
 			<button type="submit" class="btn btn-primary">Sign in</button>
 		</form>
+		<div class="my-4 text-center">
+			<a href="home.jsp">Torna alla Home</a>
+		</div>
 	</div>
 
 

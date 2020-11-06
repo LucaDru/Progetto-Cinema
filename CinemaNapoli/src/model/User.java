@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -9,12 +9,13 @@ import javax.persistence.*;
 @Entity
 @NamedQuery(name="User.findAll",query="SELECT u FROM User u")
 public class User implements Serializable {
-	//commento di prova
+	
 	private static final long serialVersionUID = 1L;
 	private long id;
 	private String nome,cognome,citta,indirizzo,provincia,cap,cf,piva,email,username,password,avatar;
-	private LocalDate datadinascita;
-	private boolean admin,staff,attivo,accettato;
+	private Date datadinascita;
+	private boolean attivo;
+	private Ruolo ruolo;
 	private List<Prenotazione> prenotazioni;
 	//---
 	public User() {
@@ -75,24 +76,17 @@ public class User implements Serializable {
 		return avatar;
 	}
 	@Column(nullable=false)
-	public LocalDate getDatadinascita() {
+	public Date getDatadinascita() {
 		return datadinascita;
-	}
-	@Column(columnDefinition="BOOLEAN NOT NULL DEFAULT false")
-	public boolean isAdmin() {
-		return admin;
-	}
-	@Column(columnDefinition="BOOLEAN NOT NULL DEFAULT false")
-	public boolean isStaff() {
-		return staff;
 	}
 	@Column(columnDefinition="BOOLEAN NOT NULL DEFAULT true")
 	public boolean isAttivo() {
 		return attivo;
 	}
-	@Column(columnDefinition="BOOLEAN NOT NULL DEFAULT false")
-	public boolean isAccettato() {
-		return accettato;
+	@ManyToOne
+	@JoinColumn(name="id_ruolo",nullable=false)
+	public Ruolo getRuolo() {
+		return ruolo;
 	}
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
 	public List<Prenotazione> getPrenotazioni() {
@@ -139,20 +133,14 @@ public class User implements Serializable {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	public void setDatadinascita(LocalDate datadinascita) {
+	public void setDatadinascita(Date datadinascita) {
 		this.datadinascita = datadinascita;
-	}
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
-	public void setStaff(boolean staff) {
-		this.staff = staff;
 	}
 	public void setAttivo(boolean attivo) {
 		this.attivo = attivo;
 	}
-	public void setAccettato(boolean accettato) {
-		this.accettato = accettato;
+	public void setRuolo(Ruolo ruolo) {
+		this.ruolo = ruolo;
 	}
 	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;

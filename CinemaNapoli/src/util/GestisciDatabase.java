@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.RollbackException;
 
 import model.*;
 
@@ -25,7 +26,7 @@ public class GestisciDatabase {
 
     
     //------METODI AGGIUNGI
-	public static void aggiungiUser(User u) {
+	public static void aggiungiUser(User u) throws RollbackException {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
@@ -202,5 +203,14 @@ public class GestisciDatabase {
 		Prenotazione p=em.find(Prenotazione.class, id);
 		et.commit();
 		return p;
+	}
+	
+	public static Ruolo cercaRuolo(long id) {
+		EntityManager em=getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		Ruolo r=em.find(Ruolo.class, id);
+		et.commit();
+		return r;
 	}
 }

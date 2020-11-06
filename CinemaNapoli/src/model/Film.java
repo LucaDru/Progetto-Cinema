@@ -10,7 +10,8 @@ public class Film implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private long id;
-	private String titolo,genere,locandina,trama;
+	private String titolo,locandina,trama;
+	private Genere genere;
 	private int durata, annouscita;
 	//---
 	public Film() {
@@ -27,8 +28,9 @@ public class Film implements Serializable {
 	public String getTitolo() {
 		return titolo;
 	}
-	@Column(nullable=false)
-	public String getGenere() {
+	@ManyToOne
+	@JoinColumn(name="id_genere",nullable=false)
+	public Genere getGenere() {
 		return genere;
 	}
 	@Column(nullable=false)
@@ -55,7 +57,7 @@ public class Film implements Serializable {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-	public void setGenere(String genere) {
+	public void setGenere(Genere genere) {
 		this.genere = genere;
 	}
 	public void setLocandina(String locandina) {
