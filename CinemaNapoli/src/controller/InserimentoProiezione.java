@@ -33,7 +33,7 @@ public class InserimentoProiezione extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		 
 		
 			if(request.getParameter("idFilm")!=null) {
 				Proiezione p=new Proiezione();
