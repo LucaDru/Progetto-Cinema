@@ -9,21 +9,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.User;
+import model.*;
 import static util.GestisciDatabase.*;
 
-@WebServlet(name ="visualizzauser", urlPatterns = {"/VisualizzaUser"})
-public class VisualizzaUser extends HttpServlet {
+@WebServlet(name ="visualizzaliste", urlPatterns = {"/VisualizzaListe"})
+public class VisualizzaListe extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public VisualizzaUser() {
+    public VisualizzaListe() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<User> lista = leggiUser();		
+		List<User> lista = leggiUser();
 		request.setAttribute("leggiUser", lista);
+		//--
+		List<Sala> listaSale = leggiSala();
+		request.setAttribute("listaSale", listaSale);
+		//--
+		List<Prenotazione> listaPren = leggiPrenotazione();
+		request.setAttribute("listaPrenotazione", listaPren);
+		//--
+		List<Proiezione> listaPro = leggiProiezione();
+		request.setAttribute("listaProiezioni", listaPro);
+		//--
+		List<Film> listaFilm = leggiFilm();
+		request.setAttribute("listaFilm", listaFilm);
+		//--
 		request.getRequestDispatcher("dashAdmin.jsp").forward(request, response);
 	}
 

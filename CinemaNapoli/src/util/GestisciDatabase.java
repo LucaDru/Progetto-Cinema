@@ -34,11 +34,10 @@ public class GestisciDatabase {
 		et.commit();
 	}
 	
-	public static void aggiungiSala(Sala s) {
+	public static void aggiungiSala(Sala s) throws RollbackException {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		System.out.println("aggiungo");
 		em.persist(s);
 		et.commit();
 	}

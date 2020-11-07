@@ -31,6 +31,10 @@
 			<li class="nav-item" role="presentation"><a
 				class="nav-link text-warning" id="film-tab" data-toggle="tab"
 				href="#film" role="tab" aria-controls="film" aria-selected="false">Film</a></li>
+			<!-- SALA -->
+			<li class="nav-item" role="presentation"><a
+				class="nav-link text-warning" id="sala-tab" data-toggle="tab"
+				href="#sala" role="tab" aria-controls="sala" aria-selected="false">Sale</a></li>
 			<!-- PROIEZIONI -->
 			<li class="nav-item" role="presentation"><a
 				class="nav-link text-warning" id="proiezioni-tab" data-toggle="tab"
@@ -59,6 +63,19 @@
 			id="film" role="tabpanel" aria-labelledby="film-tab">
 			
 			<jsp:include page="inserisciFilm.jsp"></jsp:include>
+			
+		</div>
+		
+		<!-- Sala tab -->
+		<div
+			class="tab-pane fade bg-dark text-center text-warning"
+			id="sala" role="tabpanel" aria-labelledby="sala-tab">
+			
+			<h3>Inserisci nuova sala:</h3>
+			<jsp:include page="inserisciSala.jsp"></jsp:include>
+			<hr class="bg-warning">
+			<h3>Lista Sale:</h3>
+			<jsp:include page="tabellaSale.jsp"></jsp:include>
 			
 		</div>
 
