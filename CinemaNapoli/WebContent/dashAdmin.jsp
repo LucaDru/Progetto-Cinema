@@ -29,7 +29,7 @@
 				href="#profilo" role="tab" aria-controls="profilo" aria-selected="true">Profilo</a></li>
 			<!-- FILM -->
 			<li class="nav-item" role="presentation"><a
-				class="nav-link active text-warning" id="film-tab" data-toggle="tab"
+				class="nav-link text-warning" id="film-tab" data-toggle="tab"
 				href="#film" role="tab" aria-controls="film" aria-selected="false">Film</a></li>
 			<!-- PROIEZIONI -->
 			<li class="nav-item" role="presentation"><a

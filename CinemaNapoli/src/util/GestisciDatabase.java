@@ -214,6 +214,15 @@ public class GestisciDatabase {
 		return r;
 	}
 	
+	public static Ruolo cercaRuoloByNome(String nome) {
+		EntityManager em=getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		Ruolo r=em.createQuery("SELECT r FROM Ruolo r WHERE r.nome='"+nome+"'",Ruolo.class).getSingleResult();
+		et.commit();
+		return r;
+	}
+	
 	public static Genere cercaGenere(long id) {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();

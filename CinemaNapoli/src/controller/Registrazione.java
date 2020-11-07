@@ -25,7 +25,7 @@ public class Registrazione extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		User u = new User();
-		Ruolo r = cercaRuolo(1);
+		Ruolo r = cercaRuoloByNome("daAccettare");
 		u.setRuolo(r);
 		u.setAttivo(true);
 		u.setNome(request.getParameter("nome"));
