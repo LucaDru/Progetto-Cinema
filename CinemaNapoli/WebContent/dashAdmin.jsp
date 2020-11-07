@@ -101,20 +101,16 @@
 								<td><%=u.getNome()%></td>
 								<td><%=u.getCognome()%></td>
 								<td>
-									<a class="btn btn-outline-danger btn-sm" href="#"
-									role="button">X</a>
-									<a class="btn btn-outline-danger btn-sm" href="ResetPassword?reset=<%=u.getId() %>"
+									<a class="btn btn-outline-info btn-sm" href="ResetPassword?reset=<%=u.getId() %>"
 									role="button">Reset Password</a>
-									<a class="btn btn-outline-danger btn-sm" href="AttivazioneAccount?attiva=<%=u.getId() %>"
-									role="button">Attiva</a>
-									<a class="btn btn-outline-danger btn-sm" href="AttivazioneAccount?disattiva=<%=u.getId() %>"
-									role="button">Disattiva</a>
-									<a class="btn btn-outline-danger btn-sm" href="AssegnaRuoli?staff=<%=u.getId() %>"
+									<a class="btn btn-outline-warning btn-sm" href="AssegnaRuoli?staff=<%=u.getId() %>"
 									role="button">Staff</a>
-									<a class="btn btn-outline-danger btn-sm" href="AssegnaRuoli?user=<%=u.getId() %>"
-									role="button">User</a>
+									<a class="btn btn-outline-primary btn-sm" href="AssegnaRuoli?user=<%=u.getId() %>"
+									role="button">Accetta</a>
 									<a class="btn btn-outline-danger btn-sm" href="AssegnaRuoli?bannato=<%=u.getId() %>"
 									role="button">Bann</a>
+									<a class="btn btn-outline-danger btn-sm" href="AttivazioneAccount?disattiva=<%=u.getId() %>"
+									role="button">X</a>
 								</td>
 							</tr>
 							<%

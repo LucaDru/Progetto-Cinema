@@ -15,19 +15,27 @@
 	<div class="container text-center">
 		
 			<%
-				if(request.getAttribute("bannato")==null){
+				if(request.getAttribute("bannato")!=null){
 			%>
-				<div class="alert alert-warning text-center my-5" role="alert">
+				<div class="alert alert-danger text-center my-5" role="alert">
 					<h1>
-						Questo account ancora non è attivo, a breve verrà confermato da un Admin.
+						Questo account è stato BANNATO.
+					</h1>
+				</div>
+			<%
+				} else if(request.getAttribute("attivo")!=null) { 
+			%>
+				<div class="alert alert-info text-center my-5" role="alert">
+					<h1>
+						Questo account è stato cancellato. Contatta un Admin se lo vuoi riattivare.
 					</h1>
 				</div>
 			<% 
 				}else{
 			%>
-				<div class="alert alert-danger text-center my-5" role="alert">
+				<div class="alert alert-warning text-center my-5" role="alert">
 					<h1>
-						Questo account è stato BANNATO.
+						Questo account ancora non è attivo, a breve verrà confermato da un Admin.
 					</h1>
 				</div>
 			<% 
