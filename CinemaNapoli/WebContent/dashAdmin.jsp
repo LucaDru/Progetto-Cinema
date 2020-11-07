@@ -109,6 +109,12 @@
 									role="button">Attiva</a>
 									<a class="btn btn-outline-danger btn-sm" href="AttivazioneAccount?disattiva=<%=u.getId() %>"
 									role="button">Disattiva</a>
+									<a class="btn btn-outline-danger btn-sm" href="AssegnaRuoli?staff=<%=u.getId() %>"
+									role="button">Staff</a>
+									<a class="btn btn-outline-danger btn-sm" href="AssegnaRuoli?user=<%=u.getId() %>"
+									role="button">User</a>
+									<a class="btn btn-outline-danger btn-sm" href="AssegnaRuoli?bannato=<%=u.getId() %>"
+									role="button">Bann</a>
 								</td>
 							</tr>
 							<%
