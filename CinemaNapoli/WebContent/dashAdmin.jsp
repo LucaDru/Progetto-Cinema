@@ -62,7 +62,11 @@
 			class="tab-pane fade bg-dark text-center text-warning"
 			id="film" role="tabpanel" aria-labelledby="film-tab">
 			
+			<h3>Inserisci nuovo Film:</h3>
 			<jsp:include page="inserisciFilm.jsp"></jsp:include>
+			<hr class="bg-warning">
+			<h3>Lista Film:</h3>
+			<jsp:include page="tabellaFilm.jsp"></jsp:include>
 			
 		</div>
 		
@@ -76,7 +80,6 @@
 			<hr class="bg-warning">
 			<h3>Lista Sale:</h3>
 			<jsp:include page="tabellaSale.jsp"></jsp:include>
-			
 		</div>
 
 		<!-- Proiezioni tab -->
@@ -84,6 +87,11 @@
 			class="tab-pane fade bg-dark text-warning justify-content-center text-center"
 			id="proiezioni" role="tabpanel" aria-labelledby="proiezioni-tab">
 
+			<h3>Inserisci nuova proiezione:</h3>
+			<jsp:include page="inserisciProiezione.jsp"></jsp:include>
+			<hr class="bg-warning">
+			<h3>Lista Proiezioni:</h3>
+			<jsp:include page="tabellaProiezioni.jsp"></jsp:include>
 			
 		</div>
 

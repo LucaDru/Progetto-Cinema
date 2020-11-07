@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Ruolo;
 import model.User;
+import util.InvioEmail;
+
 import static util.GestisciDatabase.*;
 
 @WebServlet("/AssegnaRuoli")
@@ -33,6 +35,7 @@ public class AssegnaRuoli extends HttpServlet {
 			r = cercaRuoloByNome("user");
 			u.setRuolo(r);
 			modificaUser(u);
+			InvioEmail.mandaMail(u, "conferma");
 		} else if(request.getParameter("bannato") != null) {
 			u = cercaUser(Long.parseLong(request.getParameter("bannato")));
 			r = cercaRuoloByNome("bannato");
