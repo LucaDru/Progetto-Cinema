@@ -24,23 +24,35 @@ public class Login extends HttpServlet {
 	//---
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("home.jsp").forward(request, response);
+		//request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 	//---
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		for(User u: leggiUser()) {
 			if(u.getUsername().equals(request.getParameter("username")) && u.getPassword().equals(request.getParameter("password"))) {
-				request.getSession().setAttribute("userLoggato", u);
-				System.out.println("Loggato bitches!");
-				if(request.getParameter("ricordami")!= null) {
-					response.addCookie(new Cookie("userUsername", u.getUsername()));
-					response.addCookie(new Cookie("userPassword", u.getPassword()));
+				
+				if(u.getRuolo().getNome().equals("daAccettare")) {
+					//System.out.println("sono da accettare ancora");
+					request.getRequestDispatcher("alertDaAccettare.jsp").forward(request, response);
 				}
-				break;
+				else if(u.getRuolo().getNome().equals("bannato")) {
+					request.setAttribute("bannato", "si");
+					request.getRequestDispatcher("alertDaAccettare.jsp").forward(request, response);
+				}
+				else {
+					request.getSession().setAttribute("userLoggato", u);
+					System.out.println("Loggato bitches!");
+					if(request.getParameter("ricordami")!= null) {
+						response.addCookie(new Cookie("userUsername", u.getUsername()));
+						response.addCookie(new Cookie("userPassword", u.getPassword()));
+					}
+					request.getRequestDispatcher("home.jsp").forward(request, response);
+				}
+			break;
 			}
 		}
-		doGet(request, response);
+		//doGet(request, response);
 	}
 }
 
