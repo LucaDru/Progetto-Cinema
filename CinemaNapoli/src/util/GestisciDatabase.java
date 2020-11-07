@@ -152,6 +152,7 @@ public class GestisciDatabase {
 		em.remove(s);
 		et.commit();
 	}
+	
 	//-----METODI RICERCA SPECIFICA
 	public static User cercaUser(long id) {
 		EntityManager em=getManager();
