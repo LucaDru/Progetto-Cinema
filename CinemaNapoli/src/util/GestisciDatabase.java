@@ -145,6 +145,13 @@ public class GestisciDatabase {
 		et.commit();
 	}
 	
+	public static void eliminaSala(Sala s) {
+		EntityManager em=getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		em.remove(s);
+		et.commit();
+	}
 	//-----METODI RICERCA SPECIFICA
 	public static User cercaUser(long id) {
 		EntityManager em=getManager();
