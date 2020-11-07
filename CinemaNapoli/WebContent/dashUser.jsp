@@ -15,7 +15,10 @@
 		<a class="btn btn-danger" href="Logout" role="button">Log-out</a>
 		
 		<a class="btn btn-danger" href="ControlloFatturazione" role="button">Procedi all'acquisto</a>
-		
+		<form action="AttivazioneAccount" method = "post">
+		<input type ="hidden" name ="elimina">
+		<button class="btn btn-danger"  role="submit">Elimina account</button>
+		</form>
 	</div>
 </body>
 </html>

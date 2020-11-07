@@ -18,22 +18,31 @@ public class AttivazioneAccount extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User u = null;
+		
 		if(request.getParameter("attiva") != null) {
-			User u = cercaUser(Long.parseLong(request.getParameter("attiva")));
+			u = cercaUser(Long.parseLong(request.getParameter("attiva")));
 			u.setAttivo(true);
 			modificaUser(u);
 			request.getRequestDispatcher("Reindirizzamento").forward(request, response);
-		}
-		if (request.getParameter("disattiva") != null){
-			User u = cercaUser(Long.parseLong(request.getParameter("disattiva")));
+		
+		}else if (request.getParameter("disattiva") != null){
+			u = cercaUser(Long.parseLong(request.getParameter("disattiva")));
 			u.setAttivo(false);
 			modificaUser(u);
 			request.getRequestDispatcher("Reindirizzamento").forward(request, response);
+		
+		}else if(request.getParameter("elimina") != null) {
+			System.out.println("ciao");
+			u = (User) request.getSession().getAttribute("userLoggato");
+			u.setAttivo(false);
+			modificaUser(u);
+			request.getRequestDispatcher("Logout").forward(request, response);
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		doGet(request,response);
 	}
 
 }
