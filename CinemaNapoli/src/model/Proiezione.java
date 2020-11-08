@@ -78,4 +78,32 @@ public class Proiezione implements Serializable {
 	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
 	}
+	//---
+	public int compareTo(Proiezione p) {
+		
+		if(ora.toLocalTime().getHour()<p.getOra().toLocalTime().getHour())
+			return -1;
+		else if(ora.toLocalTime().getHour()==p.getOra().toLocalTime().getHour()) {
+			
+			if(ora.toLocalTime().getMinute()<p.getOra().toLocalTime().getMinute())
+				return -1;
+			else if(ora.toLocalTime().getMinute()==p.getOra().toLocalTime().getMinute())
+				return 0;
+			else
+				return 1;
+		}
+		else
+			return 1;
+	}
+	//---
+	public String orarioSenzaSecondi() {
+		String o="";
+		char[] orario=(""+ora).toCharArray();
+		for(int i=0;i<orario.length;i++) {
+			if(i<5) {
+				o+=orario[i];
+			}
+		}
+		return o;
+	}
 }

@@ -63,8 +63,14 @@
 						type="text" class="form-control" id="inputZip">
 				</div>
 				<div class="form-group col-md-2">
-					<label for="inputZip">Password</label> <input name="password"
-						type="text" class="form-control" id="inputZip">
+					<label for="inputZip">Password</label>
+					<div class="input-group">
+						<input name="password" type="password" class="form-control" id="laPwd">
+						<div class="input-group-append">
+	    					<!-- <span class="input-group-text" onclick="mostraPwd()">@</span> -->
+	    					<button class="btn btn-outline-secondary" type="button" onclick="mostraPwd()">@</button>
+	  					</div>
+					</div>
 				</div>
 			</div>
 			<div class="form-group">
@@ -89,8 +95,18 @@
 			<a href="home.jsp">Torna alla Home</a>
 		</div>
 	</div>
-
-
+	
+	<script>	
+		function mostraPwd() {
+			var x=document.getElementById("laPwd");
+			if (x.type==="password") {
+				x.type="text";
+			} else {
+				x.type="password";
+			}
+		}
+	</script>
+	
 	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

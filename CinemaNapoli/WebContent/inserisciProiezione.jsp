@@ -60,5 +60,20 @@
 				Proiezione</button>
 		</div>
 	</form>
+
+	<%
+		if (request.getAttribute("dataSbagliata") != null) {
+	%>
+	<div class="alert alert-danger text-center" role="alert">Non puoi
+		inserire una proiezione antecedente alla data di oggi!</div>
+	<%
+		} else if (request.getAttribute("orarioSbagliato") != null) {
+	%>
+	<div class="alert alert-danger text-center" role="alert">
+		<%=request.getAttribute("orarioSbagliato")%>
+	</div>
+	<%
+		}
+	%>
 </div>
 
