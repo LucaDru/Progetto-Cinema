@@ -1,4 +1,4 @@
-<%@page import="model.Proiezione"%>
+<%@page import="model.*"%>
 <%@page import="java.util.List"%>
 <%
 	List<Proiezione> listaPro = (List<Proiezione>) request.getAttribute("listaProiezioni");
@@ -30,8 +30,16 @@
 				<td><%="sala "+p.getSala().getNome()%></td>
 				<td><%=p.getPrezzo()+" "%>&euro;</td>
 				<td>
+				<%
+					User u=(User)request.getSession().getAttribute("userLoggato");
+					if(u!=null && u.getRuolo().getNome().equals("admin")){ 
+				%>
 					<a class="btn btn-outline-danger btn-sm" href="#"
 					role="button">X</a>
+				<% } else { %>
+					<a class="btn btn-outline-success btn-sm" href="#"
+					role="button">Prenota</a>
+				<% } %>
 				</td>
 			</tr>
 			<%

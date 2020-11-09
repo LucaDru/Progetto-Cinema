@@ -25,7 +25,7 @@
 	%>
 	<div class="container text-center">
 		<h2>
-			Benvenuto <%=u.getNome()%>
+			Ciao <%=u.getNome()%>
 		</h2>
 		<a class="btn btn-outline-secondary" href="Reindirizzamento" role="button">Dashboard</a>
 		<a class="btn btn-danger" href="Logout" role="button">Log-out</a>
@@ -70,7 +70,20 @@
 	<%
 		}
 	%>
-
+	
+	<hr>
+	<div class="container align-items-center text-center">
+		<a class="btn btn-outline-info" href="RicercaProiezione" role="button">Ricerca Proiezioni</a>
+	</div>
+	
+	
+	<!-- SCRIPT NO RITORNO -->
+	<script type="text/javascript">
+		window.history.forward();
+		function noBack() {
+			window.history.forward();
+		}
+	</script>
 
 	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
