@@ -1,33 +1,24 @@
-<%@page import="model.User"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Dash-User</title>
-<!-- CSS -->
+<title>Ricerca</title>
+<!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
 	crossorigin="anonymous">
 </head>
 <body>
-	
-	<div class="container bk-dark text-primary">
-		<h1>DASHBOARD USER!</h1>
-		<a class="btn btn-danger" href="Logout" role="button">Log-out</a>
-		
-		<a class="btn btn-danger" href="ControlloFatturazione" role="button">Procedi all'acquisto</a>
-		<form action="AttivazioneAccount" method = "post">
-		<input type ="hidden" name ="elimina">
-		<button class="btn btn-danger"  role="submit">Elimina account</button>
-		</form>
+	<div class="container text-center text-danger my-5">
+		<h1>Questa è la Pagina di RICERCA</h1>
 	</div>
+	<hr>
+	<jsp:include page="tabellaProiezioni.jsp"></jsp:include>
 	
-	
-<!-- jQuery and JS bundle w/ Popper.js -->
+<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>

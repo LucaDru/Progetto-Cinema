@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,23 +20,25 @@ import static util.GestisciDatabase.*;
 @WebServlet(name="ricercaProiezione", urlPatterns= {"/RicercaProiezione"})
 public class RicercaProiezione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private  List <Proiezione> proiezioni;
+	private List<Proiezione> proiezioni;
 	private List<Proiezione> proiezioniFiltrate;
 
 
 
 	public RicercaProiezione() {
-		super();
-		
-
+		super();		
 	}
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//proiezioni=leggiProiezione();
+		proiezioniFiltrate=new ArrayList<Proiezione>();
 		proiezioni=request.getParameter("titolo")!=null?cercaProiezioneByTitolo(request.getParameter("titolo")):leggiProiezione();
-		proiezioni=proiezioni.stream().filter(p->p.getData().toLocalDate().isAfter(LocalDate.now())).collect(Collectors.toList());
+		//
+		proiezioni=proiezioni.stream()
+				.filter(p->p.getData().toLocalDate().isAfter(LocalDate.now()) || 
+						(p.getData().toLocalDate().isEqual(LocalDate.now()) && p.getOra().toLocalTime().compareTo(LocalTime.now())==1))
+				.collect(Collectors.toList());
 
 		for(int i=0; i<proiezioni.size(); i++) {
 			int postiocc=0;
@@ -61,7 +64,9 @@ public class RicercaProiezione extends HttpServlet {
 		}else if(request.getParameter("annouscita")!= null) {
 			proiezioniFiltrate=proiezioni.stream().filter(p->p.getFilm().getAnnouscita()==(Integer.parseInt(request.getParameter("annouscita")))).collect(Collectors.toList());
 		}
-			request.setAttribute("proiezioniFiltrate", proiezioniFiltrate);
+		//request.setAttribute("proiezioniFiltrate", proiezioniFiltrate);
+		request.setAttribute("listaProiezioni", proiezioniFiltrate);
+		request.getRequestDispatcher("paginaRicerca.jsp").forward(request, response);
 	}
 
 
