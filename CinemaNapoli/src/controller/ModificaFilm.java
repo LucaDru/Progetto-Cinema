@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import javax.persistence.RollbackException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,8 +36,15 @@ public class ModificaFilm extends HttpServlet {
 				f.setAnnouscita(Integer.parseInt(request.getParameter("annouscita")));
 				f.setTrama(request.getParameter("trama"));
 				f.setLocandina(request.getParameter("locandina"));
-				modificaFilm(f);
+			
 			} 
+			
+			try {
+				modificaFilm(f);
+				request.getRequestDispatcher("VisualizzaListe").forward(request, response);
+			} catch(RollbackException e) {
+				e.printStackTrace();
+			}
 		
 		doGet(request, response);
 	}

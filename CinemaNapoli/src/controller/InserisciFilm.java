@@ -39,7 +39,7 @@ public class InserisciFilm extends HttpServlet {
 
 		if (request.getParameter("titolo") != null) {
 			Film f = new Film();
-			Genere g = cercaGenere(1);
+			Genere g = cercaGenere(Long.parseLong(request.getParameter("genere")));
 			f.setTitolo(request.getParameter("titolo"));
 			f.setGenere(g);
 

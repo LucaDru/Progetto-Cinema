@@ -37,6 +37,9 @@ public class VisualizzaListe extends HttpServlet {
 		List<Film> listaFilm = leggiFilm();
 		request.setAttribute("listaFilm", listaFilm);
 		//--
+		List<Genere> listaGenere = leggiGenere();
+		request.setAttribute("listaGenere", listaGenere);
+		//--
 		request.getRequestDispatcher("dashAdmin.jsp").forward(request, response);
 	}
 

@@ -65,6 +65,13 @@ public class GestisciDatabase {
 		em.persist(p);
 		et.commit();
 	}
+	public static void aggiungiGenere(Genere g) {
+		EntityManager em=getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		em.persist(g);
+		et.commit();
+	}
 	  
 	//----- METODI LEGGI
 	public static List<User> leggiUser() {
@@ -81,6 +88,10 @@ public class GestisciDatabase {
 	public static List <Film> leggiFilm() {
 		EntityManager em=getManager();
 		return em.createNamedQuery("Film.findAll").getResultList();
+	}
+	public static List <Genere> leggiGenere() {
+		EntityManager em=getManager();
+		return em.createNamedQuery("Genere.findAll").getResultList();
 	}
 	
 	public static List <Proiezione> leggiProiezione() {
