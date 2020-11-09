@@ -31,11 +31,16 @@
 			<li class="nav-item" role="presentation"><a
 				class="nav-link text-warning" id="film-tab" data-toggle="tab"
 				href="#film" role="tab" aria-controls="film" aria-selected="false">Film</a></li>
+			<!-- GENERE -->	
+				<li class="nav-item" role="presentation"><a
+				class="nav-link text-warning" id="fgenere-tab" data-toggle="tab"
+				href="#fgenere" role="tab" aria-controls="fgenere" aria-selected="false">Genere</a></li>
 			<!-- SALA -->
 			<li class="nav-item" role="presentation"><a
 				class="nav-link text-warning" id="sala-tab" data-toggle="tab"
 				href="#sala" role="tab" aria-controls="sala" aria-selected="false">Sale</a></li>
 			<!-- PROIEZIONI -->
+			
 			<li class="nav-item" role="presentation"><a
 				class="nav-link text-warning" id="proiezioni-tab" data-toggle="tab"
 				href="#proiezioni" role="tab" aria-controls="proiezioni" aria-selected="false">Proiezioni</a></li>
@@ -69,6 +74,21 @@
 			<jsp:include page="tabellaFilm.jsp"></jsp:include>
 			
 		</div>
+		
+		<!-- Genere tab -->
+		<div
+			class="tab-pane fade bg-dark text-center text-warning"
+			id="fgenere" role="tabpanel" aria-labelledby="fgenere-tab">
+			
+			<h3>Inserisci nuovo Genere:</h3>
+			<jsp:include page="inserisciGenere.jsp"></jsp:include>
+			<hr class="bg-warning">
+			<h3>Lista Genere:</h3>
+			<jsp:include page="tabellaGenere.jsp"></jsp:include>
+			
+		</div>
+		
+
 		
 		<!-- Sala tab -->
 		<div
