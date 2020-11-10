@@ -25,7 +25,7 @@
 			<input type="hidden" name ="fatturazione" value ="si">			
 				<label for="exampleInputEmail1">Codice Fiscale</label> <input
 					name="cf" type="text" class="form-control"
-					id="exampleInputEmail1" aria-describedby="emailHelp"> 
+					id="exampleInputEmail1" aria-describedby="emailHelp" pattern="^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$"> 
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Partita Iva</label> <input
