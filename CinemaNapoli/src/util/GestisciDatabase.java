@@ -65,7 +65,7 @@ public class GestisciDatabase {
 		em.persist(p);
 		et.commit();
 	}
-	public static void aggiungiGenere(Genere g) {
+	public static void aggiungiGenere(Genere g) throws RollbackException {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
@@ -194,6 +194,15 @@ public class GestisciDatabase {
 		Film f=em.find(Film.class, id);
 		et.commit();
 		return f;
+	}
+	
+	public static List<Film> cercaFilmByNome (String titolo) {
+		EntityManager em=getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		List<Film> lista=em.createQuery("SELECT f FROM Film f WHERE titolo LIKE '%"+titolo+"%'").getResultList();
+		et.commit();
+		return lista;
 	}
 	
 	public static Sala cercaSala(long id) {
