@@ -1,3 +1,4 @@
+<%@page import="model.Proiezione"%>
 <%@page import="model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -14,7 +15,11 @@
 	crossorigin="anonymous">
 </head>
 <body>
-
+	
+	<%
+		Proiezione p=(Proiezione)request.getAttribute("proiezione");
+	%>
+	
 	<div class="container text-center text-danger my-5">
 		<h1>Inserisci il tuo codice fiscale o partita iva</h1>
 	</div>
@@ -29,10 +34,11 @@
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Partita Iva</label> <input
-					name="piva" type="email" class="form-control"
+					name="piva" type="text" class="form-control"
 					id="exampleInputPassword1">
 			</div>
-
+			
+			<input type="hidden" name="proiezione" value="<%=p.getId()%>">
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>

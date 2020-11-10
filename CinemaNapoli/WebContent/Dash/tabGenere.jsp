@@ -17,8 +17,8 @@
 		<tbody>
 			<%
 				for (Genere g : lista) {
-					if(request.getParameter("modifica") != null &&
-						Integer.parseInt(request.getParameter("modifica")) 
+					if(request.getParameter("modificaGenere") != null &&
+						Integer.parseInt(request.getParameter("modificaGenere")) 
 						== g.getId()) {
 			%>
 		<!-- Modifica genere -->	
@@ -31,13 +31,13 @@
 					<td>
 						<div class="form-group">
 							<input type="text" name="nome"
-							 value=<%= g.getNome() %>>	
+							 value="<%= g.getNome() %>">	
 						</div>	
 					</td>
 					<td>
 						<div class="form-group">
 							<input type="text" name="img"
-							 value=<%= g.getImg() %>>
+							 value="<%= g.getImg() %>">
 						</div>
 					</td>
 					<td>
@@ -56,7 +56,7 @@
 				<td><%=g.getNome()%></td>
 				<td><%=g.getImg()%></td>
 				<td> 
-					<a class="btn btn-info btn-sm" href="VisualizzaListe?modifica=<%=g.getId() %>"
+					<a class="btn btn-info btn-sm" href="VisualizzaListe?dash=film&modificaGenere=<%=g.getId() %>"
 					 	role="button">Modifica</a>
 					<a class="btn btn-outline-danger btn-sm" href="#"
 						role="button">X</a>

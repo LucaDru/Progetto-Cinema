@@ -41,7 +41,7 @@ public class ModificaFilm extends HttpServlet {
 			
 			try {
 				modificaFilm(f);
-				request.getRequestDispatcher("VisualizzaListe").forward(request, response);
+				request.getRequestDispatcher("VisualizzaListe?dash=film").forward(request, response);
 			} catch(RollbackException e) {
 				e.printStackTrace();
 			}

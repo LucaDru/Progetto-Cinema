@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.User;
 import static util.GestisciDatabase.*;
-/**
- * Servlet implementation class ControlloFatturazione
- */
+
 @WebServlet("/ControlloFatturazione")
 public class ControlloFatturazione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,13 +24,12 @@ public class ControlloFatturazione extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User u = (User) request.getSession().getAttribute("userLoggato");	
-		System.out.println(u);
+		request.setAttribute("proiezione", cercaProiezione(Long.parseLong(request.getParameter("id"))));
+		
 		if(u.getCf() == null && u.getPiva() == null) {
 			request.getRequestDispatcher("formDatiFatturazione.jsp").forward(request, response);
 		}else {
 			request.getRequestDispatcher("complimentoni.jsp").forward(request, response);
 		}
-
 	}
-
 }

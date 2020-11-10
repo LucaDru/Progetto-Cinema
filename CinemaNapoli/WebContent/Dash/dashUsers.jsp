@@ -50,7 +50,14 @@
 			<jsp:include page="tabBannati.jsp"></jsp:include>
 		</main>
 	</div>
-
+	
+	<!-- SCRIPT NO RITORNO -->
+	<script type="text/javascript">
+		window.history.forward();
+		function noBack() {
+			window.history.forward();
+		}
+	</script>
 	<!-- BootStrap -->
   	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

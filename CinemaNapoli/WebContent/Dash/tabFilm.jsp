@@ -22,8 +22,8 @@
 		<tbody>
 			<%
 				for (Film f : listaFilm) {
-					if(request.getParameter("modifica") != null &&
-							Integer.parseInt(request.getParameter("modifica")) 
+					if(request.getParameter("modificaFilm") != null &&
+							Integer.parseInt(request.getParameter("modificaFilm")) 
 							== f.getId()) {
 			%>
 				<form action="ModificaFilm" method="post">
@@ -35,12 +35,12 @@
 					<td>
 						<div class="form-group">
 							<input type="text" name="titolo"
-							 value=<%= f.getTitolo() %>>	
+							 value="<%= f.getTitolo() %>">	
 						</div>	
 					</td>
 					<td>
 						<select class="custom-select" id="genere" name="genere">
-					<option selected>Scegli Genere</option>
+					<option selected value="<%=f.getGenere().getId()%>"><%=f.getGenere().getNome()%></option>
 					<%
 					
 						for (Genere g : listaGenere) {
@@ -54,27 +54,28 @@
 					<td>
 						<div class="form-group">
 							<input type="number" name="durata"
-							 value=<%= f.getDurata() %>>
+							 value="<%= f.getDurata() %>">
 						</div>
 					</td>
 					<td>
 						<div class="form-group">
 							<input type="number" name="annouscita"
-							 value=<%= f.getAnnouscita() %>>
+							 value="<%= f.getAnnouscita() %>">
 						</div>
 					</td>
 					<td>
 						<div class="form-group">
 							<input type="text" name="trama"
-							 value=<%= f.getTrama() %>>
+							 value="<%= f.getTrama() %>">
 						</div>
 					</td>
 					<td>
 						<div class="form-group">
 							<input type="text" name="locandina"
-							 value=<%= f.getLocandina() %>>
+							 value="<%= f.getLocandina() %>">
 						</div>
 					</td>
+					<td>
 						<button type="submit" class="btn btn-primary"> Modifica </button>
 					</td>
 				</tr>
@@ -94,7 +95,7 @@
 				<td><%=f.getTrama()%></td>
 				<td><%=f.getLocandina()%></td>
 				<td> 
-					<a class="btn btn-info btn-sm" href="/CinemaNapoli/VisualizzaListe?modifica=<%=f.getId() %>"
+					<a class="btn btn-info btn-sm" href="VisualizzaListe?dash=film&modificaFilm=<%=f.getId()%>"
 					 	role="button">Modifica</a>
 					<a class="btn btn-outline-danger btn-sm" href="#"
 						role="button">X</a>

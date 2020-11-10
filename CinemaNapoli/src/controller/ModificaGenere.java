@@ -49,7 +49,7 @@ public class ModificaGenere extends HttpServlet {
 		} catch(RollbackException e) {
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("VisualizzaListe").forward(request, response);
+		request.getRequestDispatcher("VisualizzaListe?dash=film").forward(request, response);
 	}
 
 	

@@ -43,10 +43,13 @@ public class VisualizzaListe extends HttpServlet {
 		//--
 		if(request.getParameter("dash")==null)
 			request.getRequestDispatcher("Dash/dashHome.jsp").forward(request, response);
+		
 		else if(request.getParameter("dash").equals("film"))
 			request.getRequestDispatcher("Dash/dashFilm.jsp").forward(request, response);
+		
 		else if(request.getParameter("dash").equals("proiezioni"))
 			request.getRequestDispatcher("Dash/dashProiezione.jsp").forward(request, response);
+		
 		else
 			request.getRequestDispatcher("Dash/dashHome.jsp").forward(request, response);
 	}

@@ -24,69 +24,8 @@
 		<tbody>
 			<%
 				for (Proiezione p:listaPro) {
-					if(request.getParameter("modifica") != null &&
-							Long.parseLong(request.getParameter("modifica")) 
-							== p.getId()) {
-			%>
-		<!-- Modifica proiezione -->	
-		<form action="ModificaProiezione" method="post">	
-			<tr>
-					<th scope="row"><%= listaPro.indexOf(p)+1%> <input type="hidden"
-						name="id" value="<%=p.getId()%>"></th>
-					<td>
-						<div class="form-group">
-							<select class="custom-select" id="filmetti" name="film">
-								<option selected>Scegli Film</option>
-								<%
-									for (Film f : listaFilm) {
-								%>
-								<option value="<%=f.getId()%>"><%=f.getTitolo() + " " + f.getAnnouscita()%></option>
-								<%
-									}
-								%>
-							</select>
-						</div>
-					</td>
-					<td>
-						<div class="form-group">
-							<input type="date" name="data" value=<%= p.getData() %>>
-						</div>
-					</td>
-					<td>
-						<div class="form-group">
-							<input type="time" name="ora" value=<%= p.getOra() %>>
-						</div>
-					</td>
-					<td>
-						<div class="form-group">
-							<select class="custom-select" id="salette" name="sala">
-								<option selected>Scegli Sala</option>
-								<%
-									for (Sala s : listaSale) {
-								%>
-								<option value="<%=s.getId()%>"><%=s.getNome()%></option>
-								<%
-									}
-								%>
-							</select>
-						</div>
-					</td>
-					<td>
-						<div class="form-group">
-							<input type="number" name="prezzo"  min="1" step="any" value=<%= p.getPrezzo() %>>
-						</div>
-					</td>
-					<td>
-						<button type="submit" class="btn btn-primary">Modifica</button>
-					</td>
-				</tr>
-			</form>
-			
-			<%
-					} else {
-			%>
-		
-		<!-- Lista proiezioni -->
+			%>	
+				<!-- Lista proiezioni -->
 			<tr>
 				<th scope="row"><%=listaPro.indexOf(p) + 1%></th>
 				<td><%=p.getFilm().getTitolo()%></td>
@@ -96,14 +35,13 @@
 				<td><%="sala "+p.getSala().getNome()%></td>
 				<td><%=p.getPrezzo()+" "%>&euro;</td>
 				<td>
-					<a class="btn btn-info" href="VisualizzaListe?modifica=<%=p.getId() %>"
-					 	role="button">Modifica</a>
-					<a class="btn btn-outline-danger btn-sm" href="#"
-					role="button">X</a>
+					<a class="btn btn-success btn-sm" 
+						href="<%=request.getSession().getAttribute("userLoggato")!=null?"ControlloFatturazione?id="+p.getId():"home.jsp"%>"
+					 	role="button">Prenota</a>
 				</td>
 			</tr>
 			<%
-				}}
+				}
 			%>
 		</tbody>
 	</table>

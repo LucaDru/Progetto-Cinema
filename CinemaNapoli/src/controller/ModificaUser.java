@@ -21,8 +21,12 @@ public class ModificaUser extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//request.setAttribute("leggiUser", gd.leggiUser());
-		request.getRequestDispatcher("Reindirizzamento").forward(request, response);
+		if(request.getParameter("proiezione")!=null) {			
+			request.setAttribute("proiezione", cercaProiezione(Long.parseLong(request.getParameter("proiezione"))));
+			request.getRequestDispatcher("complimentoni.jsp").forward(request, response);
+		}
+		else
+			request.getRequestDispatcher("Reindirizzamento").forward(request, response);
 	}
 
 
