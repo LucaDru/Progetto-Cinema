@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,6 +37,9 @@ public class ModificaUser extends HttpServlet {
 				u.setPiva(request.getParameter("piva").equals("")? null : request.getParameter("piva"));				
 			} else {
 				u= cercaUser(Long.parseLong(request.getParameter("id")));
+				u.setNome(request.getParameter("nome"));
+				u.setCognome("cognome");
+				u.setDatadinascita(Date.valueOf(request.getParameter("datadinascita")));
 				u.setCitta(request.getParameter("citta"));
 				u.setProvincia(request.getParameter("provincia"));
 				u.setIndirizzo(request.getParameter("indirizzo"));
