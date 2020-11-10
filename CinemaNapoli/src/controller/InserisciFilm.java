@@ -44,7 +44,7 @@ public class InserisciFilm extends HttpServlet {
 			f.setGenere(g);
 
 			// -----------------------------------------------------------------------
-			final String path = "D:\\GIT-Repo\\CinemaNapoli\\WebContent\\images";
+			final String path = "C:\\imgMultisalaMedea";
 			final Part filePart = request.getPart("file");
 			System.out.println(filePart);
 			final String fileName = getFileName(filePart);
@@ -79,8 +79,8 @@ public class InserisciFilm extends HttpServlet {
 				aggiungiFilm(f);
 			}
 		}
-
-		doGet(request, response);
+		request.getRequestDispatcher("VisualizzaListe?dash=film").forward(request, response);
+		//doGet(request, response);
 	}
 	//---
 	private String getFileName(final Part part) {

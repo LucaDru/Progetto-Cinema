@@ -30,21 +30,18 @@ public class InserisciGenere extends HttpServlet {
 		
 	}
 
-		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-				Genere g=new Genere();
-				g.setNome(request.getParameter("nomeGenere"));
-				g.setImg(request.getParameter("file").equals("")?null:request.getParameter("file"));
-				
-				
-			
-			try {
-				aggiungiGenere(g);
-			} catch(RollbackException e) {
-				e.printStackTrace();
-			}
-			request.getRequestDispatcher("VisualizzaListe").forward(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		Genere g = new Genere();
+		g.setNome(request.getParameter("nomeGenere"));
+		g.setImg(request.getParameter("file").equals("") ? null : request.getParameter("file"));
+
+		try {
+			aggiungiGenere(g);
+		} catch (RollbackException e) {
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher("VisualizzaListe?dash=film").forward(request, response);
 	}
 
 }

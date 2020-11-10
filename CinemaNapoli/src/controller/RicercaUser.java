@@ -26,18 +26,26 @@ public class RicercaUser extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		u = leggiUser();
-		
+		/*
 		if(request.getParameter("user") != null) {
-			userFiltrati = u.stream().filter( s-> s.getRuolo().getNome().equals(request.getParameter("user"))).collect(Collectors.toList());
 		}else if (request.getParameter("staff") != null) {
-			userFiltrati = u.stream().filter(s -> s.getRuolo().getNome().equals(request.getParameter("staff"))).collect(Collectors.toList());
 		}else if(request.getParameter("daAccettare") != null) {
-			userFiltrati = u.stream().filter(s-> s.getRuolo().getNome().equals(request.getParameter("daAccettare"))).collect(Collectors.toList());
 		}else if(request.getParameter("bannato") != null) {
-			userFiltrati = u.stream().filter(s -> s.getRuolo().getNome().equals("bannato")).collect(Collectors.toList());
 		}
-		
-		request.setAttribute("userFiltrati", userFiltrati);
+		*/
+		userFiltrati = u.stream().filter(s->s.getRuolo().getNome().equals("user") && s.isAttivo()).collect(Collectors.toList());
+		request.setAttribute("listaUser", userFiltrati);
+		//
+		List<User> listaStaff = u.stream().filter(s -> s.getRuolo().getNome().equals("staff") && s.isAttivo()).collect(Collectors.toList());
+		request.setAttribute("listaStaff", listaStaff);
+		//
+		List<User> listaAccettare = u.stream().filter(s-> s.getRuolo().getNome().equals("daAccettare")).collect(Collectors.toList());
+		request.setAttribute("listaAccettare", listaAccettare);
+		//
+		List<User> listaBannati = u.stream().filter(s -> s.getRuolo().getNome().equals("bannato")).collect(Collectors.toList());
+		request.setAttribute("listaBannati", listaBannati);
+		//
+		request.getRequestDispatcher("Dash/dashUsers.jsp").forward(request, response);
 	}
 
 

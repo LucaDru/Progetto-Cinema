@@ -21,9 +21,10 @@ public class VisualizzaListe extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		/*
 		List<User> lista = leggiUser();
 		request.setAttribute("leggiUser", lista);
+		*/
 		//--
 		List<Sala> listaSale = leggiSala();
 		request.setAttribute("listaSale", listaSale);
@@ -40,7 +41,14 @@ public class VisualizzaListe extends HttpServlet {
 		List<Genere> listaGenere = leggiGenere();
 		request.setAttribute("listaGenere", listaGenere);
 		//--
-		request.getRequestDispatcher("dashAdmin.jsp").forward(request, response);
+		if(request.getParameter("dash")==null)
+			request.getRequestDispatcher("Dash/dashHome.jsp").forward(request, response);
+		else if(request.getParameter("dash").equals("film"))
+			request.getRequestDispatcher("Dash/dashFilm.jsp").forward(request, response);
+		else if(request.getParameter("dash").equals("proiezioni"))
+			request.getRequestDispatcher("Dash/dashProiezione.jsp").forward(request, response);
+		else
+			request.getRequestDispatcher("Dash/dashHome.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

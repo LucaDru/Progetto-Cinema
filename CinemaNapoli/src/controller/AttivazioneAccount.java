@@ -30,7 +30,7 @@ public class AttivazioneAccount extends HttpServlet {
 			u = cercaUser(Long.parseLong(request.getParameter("disattiva")));
 			u.setAttivo(false);
 			modificaUser(u);
-			request.getRequestDispatcher("Reindirizzamento").forward(request, response);
+			request.getRequestDispatcher("RicercaUser").forward(request, response);
 		
 		}else if(request.getParameter("elimina") != null) {
 			System.out.println("ciao");
