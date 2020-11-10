@@ -19,7 +19,7 @@
 			<%
 				for (Sala s : lista) {
 					if(request.getParameter("modifica") != null &&
-						Integer.parseInt(request.getParameter("modifica")) 
+						Long.parseLong(request.getParameter("modifica")) 
 						== s.getId()) {
 			%>
 		<!-- Modifica sala -->	
