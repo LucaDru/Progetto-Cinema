@@ -23,15 +23,31 @@
 		</div>
 		
 		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+			
+			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          		<h1 class="h2">Account Da Attivare</h1>
+          	</div>
+			<jsp:include page="tabAttivare.jsp"></jsp:include>
+			
 			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           		<h1 class="h2">Staff</h1>
           	</div>
 			<jsp:include page="tabStaff.jsp"></jsp:include>
 		
 			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          		<h1 class="h2">Account attivi</h1>
+          		<h1 class="h2">Account Attivi</h1>
           	</div>
 			<jsp:include page="tabUsers.jsp"></jsp:include>
+			
+			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          		<h1 class="h2">Account Cancellati</h1>
+          	</div>
+			<jsp:include page="tabCancellati.jsp"></jsp:include>
+			
+			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          		<h1 class="h2">Account Bannati</h1>
+          	</div>
+			<jsp:include page="tabBannati.jsp"></jsp:include>
 		</main>
 	</div>
 
