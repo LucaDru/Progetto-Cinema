@@ -31,7 +31,7 @@ public class ModificaFilm extends HttpServlet {
 			if(request.getParameter("id") != null) {
 				f.setId(Long.parseLong(request.getParameter("id")));
 				f.setTitolo(request.getParameter("titolo"));
-				f.setGenere(cercaGenere(Integer.parseInt(request.getParameter("genere"))));
+				f.setGenere(cercaGenere(Long.parseLong(request.getParameter("genere"))));
 				f.setDurata(Integer.parseInt(request.getParameter("durata")));
 				f.setAnnouscita(Integer.parseInt(request.getParameter("annouscita")));
 				f.setTrama(request.getParameter("trama"));

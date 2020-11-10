@@ -131,6 +131,14 @@ public class GestisciDatabase {
 		et.commit();
 	}
 	
+	public static void modificaGenere(Genere g) {
+		EntityManager em=getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		em.merge(g);
+		et.commit();
+	}
+	
 	public static void modificaProiezione(Proiezione p) {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();

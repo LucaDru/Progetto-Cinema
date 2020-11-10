@@ -17,7 +17,7 @@ import model.Genere;
 @WebServlet(name="inserisciGenere", urlPatterns ={"/InserisciGenere"})
 public class InserisciGenere extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private List <Genere> listaGenere;
+
 
     public InserisciGenere() {
         super();
