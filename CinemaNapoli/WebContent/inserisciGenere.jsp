@@ -1,9 +1,7 @@
 <%@page import="model.Genere"%>
 <%@page import="java.util.List"%>
 
-<%
-	List<Genere> lista=(List<Genere>)request.getAttribute("listaGenere");
-%>
+
 
 <div class="container">
 	<form action="InserisciGenere" method="post">

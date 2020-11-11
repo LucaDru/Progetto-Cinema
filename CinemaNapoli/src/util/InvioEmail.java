@@ -15,6 +15,12 @@ public class InvioEmail {
 	private static String msgConferma="Il tuo account è stato confermato, adesso puoi effettuare il login.";
 	private static String msgDefault="Questo è un messaggio autogenerato.";
 	private static String msgReset="La tua password è stata resettata.";
+	private static String msgPrenotazione="La tua prenotazione è andata a buon fine.";
+	private static String msgAnnullaPre="La tua prenotazione è stata annullata.";
+	private static String msgDisattivazione="Il tuo account è stato disattivato."
+			+ "Se desideri riattivarlo contatta l'admin: multisalamedea@gmail.com";
+	
+	
 	//---
 	private static String scegliMessaggio(String scelta) {
 		
@@ -23,6 +29,13 @@ public class InvioEmail {
 				return msgConferma;
 			case "reset":
 				return msgReset;
+			case "prenotazione":
+				return msgPrenotazione;
+			case "annulla":
+				return msgAnnullaPre;
+			case "disattivazione":
+				return msgDisattivazione;
+				
 		}
 		return msgDefault;
 	}

@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Prenotazione;
+import model.User;
+
 import static util.GestisciDatabase.*;
+import static util.InvioEmail.*;
 
 
 @WebServlet(name="prenotazionefilm", urlPatterns = {"/PrenotazioneFilm"})
@@ -32,9 +35,10 @@ public class PrenotazioneFilm extends HttpServlet {
 			p.setUser(cercaUser(Long.parseLong(request.getParameter("user"))));
 			p.setNumPosti(Integer.parseInt(request.getParameter("numposti")));
 			p.setPosti(request.getParameter("posti"));
-			p.setBiglietto(request.getParameter("biglietto"));
+			p.setBiglietto(request.getParameter("biglietto"));			
 			
 			aggiungiPrenotazione(p);
+			//mandaMail (p.getUser(), "prenotazione");
 		}
 		doGet(request, response);
 	}

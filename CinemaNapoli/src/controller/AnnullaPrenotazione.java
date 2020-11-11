@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import model.Prenotazione;
 import static util.GestisciDatabase.*;
+import static util.InvioEmail.*;
 
 @WebServlet(name="annullaPrenotazione", urlPatterns={"/AnnullaPrenotazione"})
 public class AnnullaPrenotazione extends HttpServlet {
@@ -24,6 +25,7 @@ public class AnnullaPrenotazione extends HttpServlet {
 		HttpSession session = request.getSession();
 		Prenotazione p = (Prenotazione) session.getAttribute("prenotazione");
 		annullaPrenotazione(p);
+		//mandaMail(p.getUser(), "annulla");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

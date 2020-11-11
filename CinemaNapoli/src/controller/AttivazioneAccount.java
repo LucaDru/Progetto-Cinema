@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.User;
 import static util.GestisciDatabase.*;
+import static util.InvioEmail.*;
 @WebServlet("/AttivazioneAccount")
 public class AttivazioneAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,12 +31,14 @@ public class AttivazioneAccount extends HttpServlet {
 			u = cercaUser(Long.parseLong(request.getParameter("disattiva")));
 			u.setAttivo(false);
 			modificaUser(u);
+			//mandaMail(u, "disattivazione");
 			request.getRequestDispatcher("RicercaUser").forward(request, response);
 		
 		}else if(request.getParameter("elimina") != null) {
 			u = (User) request.getSession().getAttribute("userLoggato");
 			u.setAttivo(false);
 			modificaUser(u);
+			
 			request.getRequestDispatcher("Logout").forward(request, response);
 		}
 	}

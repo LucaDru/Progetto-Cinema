@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.*;
 import static util.GestisciDatabase.*;
+import static util.InvioEmail.*;
 
 @WebServlet(name="confermareg",urlPatterns={"/ConfermaRegistrazione"})
 public class ConfermaRegistrazione extends HttpServlet {
@@ -25,7 +26,7 @@ public class ConfermaRegistrazione extends HttpServlet {
 			User u=cercaUser(Long.parseLong(request.getParameter("confermaUser")));
 			u.setAttivo(true);
 			modificaUser(u);
-			//--invio Mail di avvenuta conferma da parte dell'admin
+			//--mandaMail(u, "conferma");
 		}
 	} 
 	//---
