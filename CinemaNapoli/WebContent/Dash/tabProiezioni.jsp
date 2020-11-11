@@ -24,8 +24,8 @@
 		<tbody>
 			<%
 				for (Proiezione p:listaPro) {
-					if(request.getParameter("modifica") != null &&
-							Long.parseLong(request.getParameter("modifica")) 
+					if(request.getParameter("modificaProiezione") != null &&
+							Long.parseLong(request.getParameter("modificaProiezione")) 
 							== p.getId()) {
 			%>
 		<!-- Modifica proiezione -->	
@@ -36,7 +36,7 @@
 					<td>
 						<div class="form-group">
 							<select class="custom-select" id="filmetti" name="film">
-								<option selected>Scegli Film</option>
+								<option selected value="<%=p.getFilm().getId()%>"><%=p.getFilm().getTitolo()%></option>
 								<%
 									for (Film f : listaFilm) {
 								%>
@@ -49,18 +49,18 @@
 					</td>
 					<td>
 						<div class="form-group">
-							<input type="date" name="data" value=<%= p.getData() %>>
+							<input type="date" name="data" value="<%= p.getData() %>">
 						</div>
 					</td>
 					<td>
 						<div class="form-group">
-							<input type="time" name="ora" value=<%= p.getOra() %>>
+							<input type="time" name="ora" value="<%= p.getOra() %>">
 						</div>
 					</td>
 					<td>
 						<div class="form-group">
 							<select class="custom-select" id="salette" name="sala">
-								<option selected>Scegli Sala</option>
+								<option selected value="<%=p.getSala().getId()%>"><%=p.getSala().getNome()%></option>
 								<%
 									for (Sala s : listaSale) {
 								%>
@@ -73,7 +73,7 @@
 					</td>
 					<td>
 						<div class="form-group">
-							<input type="number" name="prezzo"  min="1" step="any" value=<%= p.getPrezzo() %>>
+							<input type="number" name="prezzo"  min="1" step="any" value="<%= p.getPrezzo() %>">
 						</div>
 					</td>
 					<td>
@@ -96,7 +96,7 @@
 				<td><%="sala "+p.getSala().getNome()%></td>
 				<td><%=p.getPrezzo()+" "%>&euro;</td>
 				<td>
-					<a class="btn btn-info btn-sm" href="VisualizzaListe?modifica=<%=p.getId() %>"
+					<a class="btn btn-info btn-sm" href="VisualizzaListe?dash=proiezioni&modificaProiezione=<%=p.getId() %>"
 					 	role="button">Modifica</a>
 					<a class="btn btn-outline-danger btn-sm" href="#"
 					role="button">X</a>

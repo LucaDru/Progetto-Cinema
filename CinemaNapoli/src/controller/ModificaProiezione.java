@@ -96,7 +96,7 @@ public class ModificaProiezione extends HttpServlet {
 			if (inserimento) {
 				modificaProiezione(p);
 			}
-			request.getRequestDispatcher("VisualizzaListe?proiezioni").forward(request, response);
+			request.getRequestDispatcher("VisualizzaListe?dash=proiezioni").forward(request, response);
 		}
 	}
 
