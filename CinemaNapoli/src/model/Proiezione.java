@@ -110,11 +110,35 @@ public class Proiezione implements Serializable {
 	//---
 	public void setPosti() {
 		posti=new boolean[sala.getPostiMax()];
+		if(prenotazioni!=null && prenotazioni.size()>0)
+			impostaOccupati();
 	}
 	public boolean[] getPosti() {
 		return posti;
 	}
-	public void impostaOccupati() {
+	//---
+	private void impostaOccupati() {
 		
+		String cose="";
+		for(Prenotazione pr:prenotazioni) {
+			cose+=pr.getPosti();
+		}		
+		String[] numeri=cose.split("-");
+		//
+		for(String s:numeri) {
+			int numero=Integer.parseInt(s);
+			posti[numero]=true;
+		}
+		/*
+		for(char c:cose.toCharArray()) {
+			String numeri="";			
+			if(c=='-') {
+				int numero=Integer.parseInt(numeri);
+			}
+			else {
+				numeri+=c;
+			}
+		}
+		*/
 	}
 }

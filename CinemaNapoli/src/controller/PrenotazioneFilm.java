@@ -39,8 +39,8 @@ public class PrenotazioneFilm extends HttpServlet {
 		aggiungiPrenotazione(p);
 		// mandaMail (p.getUser(), "prenotazione");
 
-		//request.getRequestDispatcher("/CinemaNapoli/paginaRicerca.jsp").forward(request, response);
-		response.sendRedirect("RicercaProiezione");
+		request.getRequestDispatcher("RicercaProiezione").forward(request, response);
+		//response.sendRedirect("RicercaProiezione");
 	}
 
 }

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Proiezione;
+import model.*;
 import static util.GestisciDatabase.*;
 
 
@@ -31,7 +31,9 @@ public class RicercaProiezione extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		//List<Prenotazione> aCaso=leggiPrenotazione();
+		//
 		proiezioniFiltrate=new ArrayList<Proiezione>();
 		proiezioni=request.getParameter("titolo")!=null?cercaProiezioneByTitolo(request.getParameter("titolo")):leggiProiezione();
 		//

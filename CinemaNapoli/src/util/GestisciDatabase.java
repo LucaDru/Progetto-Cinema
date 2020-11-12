@@ -98,6 +98,7 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		//return em.createNamedQuery("Proiezione.findAll").getResultList();
 		List<Proiezione> lista=em.createNamedQuery("Proiezione.findAll").getResultList();
+		//lista.forEach(pr->em.refresh(pr));
 		lista.forEach(p->p.setPosti());
 		return lista;
 	}
@@ -223,6 +224,7 @@ public class GestisciDatabase {
 		et.begin();
 		Proiezione p=em.find(Proiezione.class, id);
 		et.commit();
+		//em.refresh(p);
 		p.setPosti();
 		return p;
 	}

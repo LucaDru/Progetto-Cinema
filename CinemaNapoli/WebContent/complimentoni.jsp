@@ -56,10 +56,8 @@
     				for(int j=0;j<10;j++){
     					if(p.getPosti()[cont]){    						
     		%>
-    				<!-- <div class="seat occupied" onclick="prenotaPosto()"></div>  -->
     				<div class="seat occupied" id="<%=cont%>"></div>
     				<% } else { %>
-    				<!-- <div class="seat" onclick="prenotaPosto()"></div> -->
     				<div class="seat" id="<%=cont%>"></div>
     		<% 
     					}

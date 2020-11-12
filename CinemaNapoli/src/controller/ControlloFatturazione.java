@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.User;
+import model.*;
 import static util.GestisciDatabase.*;
 
 @WebServlet("/ControlloFatturazione")
@@ -23,7 +23,8 @@ public class ControlloFatturazione extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User u = (User) request.getSession().getAttribute("userLoggato");	
+		
+		User u = (User) request.getSession().getAttribute("userLoggato");
 		request.setAttribute("proiezione", cercaProiezione(Long.parseLong(request.getParameter("id"))));
 		
 		if(u.getCf() == null && u.getPiva() == null) {
