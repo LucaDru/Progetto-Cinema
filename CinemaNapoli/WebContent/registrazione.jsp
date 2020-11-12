@@ -68,7 +68,6 @@
 					<div class="input-group">
 						<input name="password" type="password" class="form-control" id="laPwd">
 						<div class="input-group-append">
-	    					<!-- <span class="input-group-text" onclick="mostraPwd()">@</span> -->
 	    					<button class="btn btn-outline-secondary" type="button" onclick="mostraPwd()">@</button>
 	  					</div>
 					</div>

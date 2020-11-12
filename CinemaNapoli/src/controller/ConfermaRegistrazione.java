@@ -26,7 +26,8 @@ public class ConfermaRegistrazione extends HttpServlet {
 			User u=cercaUser(Long.parseLong(request.getParameter("confermaUser")));
 			u.setAttivo(true);
 			modificaUser(u);
-			//--mandaMail(u, "conferma");
+			//--
+			mandaMail(u, "conferma");
 		}
 	} 
 	//---

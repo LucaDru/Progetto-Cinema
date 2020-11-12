@@ -19,6 +19,7 @@ public class Proiezione implements Serializable {
 	private Time ora;
 	private double prezzo;
 	private List<Prenotazione> prenotazioni;
+	private boolean[] posti;
 	//---
 	public Proiezione() {
 		super();
@@ -105,5 +106,15 @@ public class Proiezione implements Serializable {
 			}
 		}
 		return o;
+	}
+	//---
+	public void setPosti() {
+		posti=new boolean[sala.getPostiMax()];
+	}
+	public boolean[] getPosti() {
+		return posti;
+	}
+	public void impostaOccupati() {
+		
 	}
 }

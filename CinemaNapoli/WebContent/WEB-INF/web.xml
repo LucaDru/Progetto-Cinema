@@ -8,7 +8,8 @@
 
 	<!-- welcomeFileList sta per le pagine che deve avviare a path vuoto -->
 	<welcome-file-list>
-		<welcome-file>home.jsp</welcome-file>
+		<!-- <welcome-file>home.jsp</welcome-file> -->
+		<welcome-file>Home/html/home.html</welcome-file>
 	</welcome-file-list>
 	
 </web-app>

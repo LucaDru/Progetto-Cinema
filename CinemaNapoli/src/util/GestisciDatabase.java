@@ -96,7 +96,10 @@ public class GestisciDatabase {
 	
 	public static List <Proiezione> leggiProiezione() {
 		EntityManager em=getManager();
-		return em.createNamedQuery("Proiezione.findAll").getResultList();
+		//return em.createNamedQuery("Proiezione.findAll").getResultList();
+		List<Proiezione> lista=em.createNamedQuery("Proiezione.findAll").getResultList();
+		lista.forEach(p->p.setPosti());
+		return lista;
 	}
 	
 	
@@ -220,6 +223,7 @@ public class GestisciDatabase {
 		et.begin();
 		Proiezione p=em.find(Proiezione.class, id);
 		et.commit();
+		p.setPosti();
 		return p;
 	}
 	public static List<Proiezione> cercaProiezioneByTitolo(String titolo){

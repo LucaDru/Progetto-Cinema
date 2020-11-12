@@ -23,24 +23,24 @@ public class PrenotazioneFilm extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//doPost(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Prenotazione p = new Prenotazione();
-		
-		if(request.getParameter("id") != null) {
-			p.setId(Long.parseLong(request.getParameter("id")));
-			p.setProiezione(cercaProiezione(Long.parseLong(request.getParameter("proiezione"))));
-			p.setUser(cercaUser(Long.parseLong(request.getParameter("user"))));
-			p.setNumPosti(Integer.parseInt(request.getParameter("numposti")));
-			p.setPosti(request.getParameter("posti"));
-			p.setBiglietto(request.getParameter("biglietto"));			
-			
-			aggiungiPrenotazione(p);
-			//mandaMail (p.getUser(), "prenotazione");
-		}
-		doGet(request, response);
+
+		//p.setId(Long.parseLong(request.getParameter("id")));
+		p.setProiezione(cercaProiezione(Long.parseLong(request.getParameter("proiezione"))));
+		p.setUser((User)request.getSession().getAttribute("userLoggato"));
+		p.setNumPosti(Integer.parseInt(request.getParameter("numPosti")));
+		p.setPosti(request.getParameter("posti"));
+		p.setBiglietto("Ciaone");
+
+		aggiungiPrenotazione(p);
+		// mandaMail (p.getUser(), "prenotazione");
+
+		//request.getRequestDispatcher("/CinemaNapoli/paginaRicerca.jsp").forward(request, response);
+		response.sendRedirect("RicercaProiezione");
 	}
 
 }

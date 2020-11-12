@@ -17,6 +17,9 @@
 	</div>
 	<hr>
 	<jsp:include page="tabellaProiezioni.jsp"></jsp:include>
+	<div class="my-4 text-center">
+		<a href="home.jsp">Torna alla Home</a>
+	</div>
 	
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
