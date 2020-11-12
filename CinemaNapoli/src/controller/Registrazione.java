@@ -36,7 +36,8 @@ public class Registrazione extends HttpServlet {
 		u.setIndirizzo(request.getParameter("indirizzo"));
 		u.setCap(request.getParameter("cap"));
 		u.setCf(request.getParameter("cf").equals("") ? null : request.getParameter("cf"));
-		u.setPiva(request.getParameter("piva").equals("") ? null : request.getParameter("piva"));
+		//u.setPiva(request.getParameter("piva").equals("") ? null : request.getParameter("piva"));
+		u.setPiva(null);
 		u.setEmail(request.getParameter("email"));
 		u.setUsername(request.getParameter("username"));
 		u.setPassword(request.getParameter("password"));
@@ -51,7 +52,7 @@ public class Registrazione extends HttpServlet {
 		}
 
 		request.setAttribute("giaPresente", presente);
-		request.getRequestDispatcher("registrazione.jsp").forward(request, response);
+		request.getRequestDispatcher("Home/html/Registrazione.jsp").forward(request, response);
 	}
 	//---
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

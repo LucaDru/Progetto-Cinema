@@ -40,7 +40,7 @@ public class Login extends HttpServlet {
 							response.addCookie(new Cookie("userUsername", u.getUsername()));
 							response.addCookie(new Cookie("userPassword", u.getPassword()));
 						}
-						request.getRequestDispatcher("home.jsp").forward(request, response);
+						request.getRequestDispatcher("Home/html/Home.jsp").forward(request, response);
 						
 					} else {
 						if(u.getRuolo().getNome().equals("bannato"))

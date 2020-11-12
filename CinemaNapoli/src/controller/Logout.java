@@ -22,7 +22,7 @@ public class Logout extends HttpServlet {
 		ck.setMaxAge(0);
 		response.addCookie(ck);
 		
-		request.getRequestDispatcher("home.jsp").forward(request, response);
+		request.getRequestDispatcher("Home/html/Home.jsp").forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

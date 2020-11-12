@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Prenotazione;
+import model.User;
+
 import static util.GestisciDatabase.*;
 import static util.InvioEmail.*;
 
@@ -21,15 +23,17 @@ public class AnnullaPrenotazione extends HttpServlet {
 
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Prenotazione p = (Prenotazione) session.getAttribute("prenotazione");
-		annullaPrenotazione(p);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		//mandaMail(p.getUser(), "annulla");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		Prenotazione p = cercaPrenotazione(Long.parseLong(request.getParameter("prenotazione")));
+		annullaPrenotazione(p);
+		request.getSession().setAttribute("userLoggato", cercaUser(((User)request.getSession().getAttribute("userLoggato")).getId()));
+		response.sendRedirect("dashUser.jsp");
+		
+		//doGet(request, response);
 	}
 
 }

@@ -20,6 +20,7 @@ public class GestisciDatabase {
 			e.printStackTrace();
 		}
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("CinemaNapoli"); //connetto il database
+		emf.getCache().evictAll();
         EntityManager em  = emf.createEntityManager();
         return em;
 	}
@@ -164,6 +165,8 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
+		p=em.merge(p);
+		//em.detach(p);
 		em.remove(p);
 		et.commit();
 	}

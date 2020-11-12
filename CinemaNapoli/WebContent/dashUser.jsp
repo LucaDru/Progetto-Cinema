@@ -15,7 +15,7 @@
 </head>
 <body>
 	
-	<div class="container bk-dark text-primary">
+	<div class="container bg-dark text-primary">
 		<h1>DASHBOARD USER!</h1>
 		<a class="btn btn-danger" href="Logout" role="button">Log-out</a>
 		
@@ -26,6 +26,7 @@
 		</form>
 	</div>
 	
+	<jsp:include page="tabPrenotazioni.jsp"></jsp:include>
 	
 <!-- jQuery and JS bundle w/ Popper.js -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

@@ -1,4 +1,6 @@
-
+.titolohead{
+  font-family: 'Petrona', serif;
+}
 
 .header{
     background: #2c031e;
@@ -247,3 +249,164 @@ a:hover{
   color:whitesmoke;
   border-radius: 3px;
 } */
+
+
+.testomedea {
+  text-align: justify;
+  padding-left: 50px;
+  color: whitesmoke;
+  font-family: 'Trebuchet MS';
+  padding-top: 40px;
+}
+
+.paragM {
+  font-style: italic;
+  font-size: 14px;
+}
+
+.img-medea{
+  float: right;
+  width: 30%;
+  height: 70%;
+  margin-left: 210px;
+  
+}
+
+.titolomedea {
+  text-align: justify;
+}
+
+/* CSS pagina registrazione */
+h2 {
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  color: #fff;
+  font-family:'Gill Sans MT';
+  font-size: 36px;
+  margin-bottom: 10px; }
+
+.clear {
+  clear: both; 
+}
+
+.registrazione {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #fff;
+  font-weight: 600;
+  font-family: 'Gill Sans MT';
+  margin:0px;
+  background-image: url("../res/sfondoreg2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  background-position: center center;   
+  position: relative; 
+}
+
+.pagreg {
+  text-align: justify;
+  margin-top: 120px;
+  margin-bottom: 70px;
+  width: 1123px;
+  padding-top: 135px;
+  padding-bottom: 115px;
+  /*background-image: url("../res/sfondoreg2.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  background-position: center center; 
+  overflow: hidden; }
+
+.signup-content {
+  width: 562px;
+  margin-right: 0px;
+  background: rgba(58, 3, 40, 0.781);
+  float: right; }
+
+.signup-form {
+  padding: 54px 80px 36px 55px; }
+
+.form-group {
+  margin-bottom: 23px;
+  padding-right: 10px;
+ }
+
+input {
+  border:none;
+  box-sizing: border-box;
+  border-bottom:1px solid #ebebeb;
+  background: transparent;
+  width: 100%;
+  display: block;
+  color: #fff;
+  opacity: 0.7;
+  font-family:'Trebuchet MS';
+  font-size: 14px;
+  padding: 3px 0; }
+
+
+ .formpersonale {
+   padding-bottom: 10px;
+ } 
+
+
+.submit {
+  width: 130px;
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -o-border-radius: 25px;
+  -ms-border-radius: 25px;
+  text-transform: uppercase;
+  font-size: 13px;
+  cursor: pointer; 
+  margin-top: 30px;
+} 
+
+.submit-link {
+  border: 2px solid #fff;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 12px 0;
+  text-align: center;
+  color: #fff; }
+  .submit-link:hover {
+    background: #fff;
+    color: black; }
+
+@media screen and (max-width: 992px) {
+  .pagreg {
+    width: calc( 100% - 30px);
+    max-width: 100%;
+    margin: 0 auto; 
+  }
+
+
+  .signup-content {
+    width: 100%;
+  } 
+}
+@media screen and (max-width: 480px) {
+  .submit {
+    width: 100%; 
+  } 
+ 
+  .form-submit {
+    margin-bottom: 20px;
+    margin-right: 0px; 
+  }
+
+  .signup-form {
+    padding: 54px 30px 36px 30px; 
+  } 
+}
