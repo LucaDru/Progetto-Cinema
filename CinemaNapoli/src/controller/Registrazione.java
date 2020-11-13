@@ -4,6 +4,7 @@ import static util.GestisciDatabase.*;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Base64;
 
 import javax.persistence.RollbackException;
 import javax.servlet.ServletException;
@@ -40,7 +41,8 @@ public class Registrazione extends HttpServlet {
 		u.setPiva(null);
 		u.setEmail(request.getParameter("email"));
 		u.setUsername(request.getParameter("username"));
-		u.setPassword(request.getParameter("password"));
+		String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(request.getParameter("password").getBytes("UTF-8"));
+		u.setPassword(encodedPwd);
 
 		String presente = "no";
 

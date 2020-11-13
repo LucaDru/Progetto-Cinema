@@ -3,6 +3,7 @@ package controller;
 import static util.GestisciDatabase.*;
 
 import java.io.IOException;
+import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -59,7 +60,8 @@ public class Login extends HttpServlet {
 		if(u==null) {
 			
 		} else {
-			if(u.getPassword().equals(request.getParameter("password"))) {
+			String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(request.getParameter("password").getBytes("UTF-8"));
+			if(u.getPassword().equals(encodedPwd)) {
 				if(u.isAttivo()) {
 					if(u.getRuolo().getNome().equals("user") 
 							|| u.getRuolo().getNome().equals("admin") 
@@ -70,7 +72,7 @@ public class Login extends HttpServlet {
 							response.addCookie(new Cookie("userUsername", u.getUsername()));
 							response.addCookie(new Cookie("userPassword", u.getPassword()));
 						}
-						request.getRequestDispatcher("Home/html/Home.jsp").forward(request, response);
+						request.getRequestDispatcher("Inizializzazione").forward(request, response);
 						
 					} else {
 						if(u.getRuolo().getNome().equals("bannato"))

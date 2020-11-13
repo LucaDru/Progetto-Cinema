@@ -11,6 +11,7 @@ public class Sala implements Serializable {
 	private long id;
 	private String nome;
 	private int postiMax;
+	private boolean treD;
 	//---
 	public Sala() {
 		super();
@@ -30,6 +31,10 @@ public class Sala implements Serializable {
 	public int getPostiMax() {
 		return postiMax;
 	}
+	@Column(nullable=false)
+	public boolean isTreD() {
+		return treD;
+	}
 	//---
 	//---
 	public void setId(long id) {
@@ -40,5 +45,8 @@ public class Sala implements Serializable {
 	}
 	public void setPostiMax(int postiMax) {
 		this.postiMax = postiMax;
+	}
+	public void setTreD(boolean treD) {
+		this.treD = treD;
 	}
 }

@@ -1,3 +1,5 @@
+<%@page import="model.Film"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -18,6 +20,10 @@
 <link rel="stylesheet" href="/CinemaNapoli/Home/css/login.css">
 </head>
 <body>
+
+<%
+	List<Film> lista=(List<Film>)request.getAttribute("listaFilm");
+%>
 	
 	<jsp:include page="header.jsp"></jsp:include>
 	<jsp:include page="navbar.jsp"></jsp:include>
@@ -30,34 +36,30 @@
 
 		<div id="carosello" class="carousel slide d-inline-flex"
 			data-ride="carousel">
-
+			
 			<div class="carousel-inner">
+			<% 
+				for(int i=0;i<lista.size();i++){
+					if(i==0){
+			%>			
 				<div class="carousel-item active filmetto"
-					style="background-image: url(/CinemaNapoli/Home/res/locandina\ 6.jpg);">
+					style="background-image: url(<%=lista.get(i).getLocandina()%>);">
 					<a href="#">
 						<div class="sovrapposto">
 							DETTAGLI</br> <i class="fas fa-plus"></i>
 						</div>
 					</a>
 				</div>
-
+				<%}else{ %>
 				<div class="carousel-item filmetto"
-					style="background-image: url(/CinemaNapoli/Home/res/locandina\ 5.jpg);">
+					style="background-image: url(<%=lista.get(i).getLocandina()%>);">
 					<a href="#">
 						<div class="sovrapposto">
 							DETTAGLI</br> <i class="fas fa-plus"></i>
 						</div>
 					</a>
 				</div>
-
-				<div class="carousel-item filmetto"
-					style="background-image: url(/CinemaNapoli/Home/res/locandina\ 4.jpg);">
-					<a href="#">
-						<div class="sovrapposto">
-							DETTAGLI</br> <i class="fas fa-plus"></i>
-						</div>
-					</a>
-				</div>
+			<% }} %>
 			</div>
 
 			<a class="carousel-control-prev" href="#carosello" role="button"

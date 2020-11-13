@@ -34,7 +34,7 @@ public class Prenotazione implements Serializable {
 	public Proiezione getProiezione() {
 		return proiezione;
 	}
-	@Column(nullable=false)
+	@Column(nullable=false,unique=true)
 	public String getBiglietto() {
 		return biglietto;
 	}

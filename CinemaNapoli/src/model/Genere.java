@@ -28,6 +28,7 @@ public class Genere implements Serializable {
 	public String getNome() {
 		return nome;
 	}
+	@Column(nullable=false)
 	public String getImg() {
 		return img;
 	}
