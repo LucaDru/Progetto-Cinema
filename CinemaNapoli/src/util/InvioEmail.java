@@ -14,7 +14,7 @@ public class InvioEmail {
 	
 	private static String msgConferma="Il tuo account è stato confermato, adesso puoi effettuare il login.";
 	private static String msgDefault="Questo è un messaggio autogenerato.";
-	private static String msgReset="La tua password è stata resettata.";
+	private static String msgReset="La tua password è stata resettata. la nuova password è: ";
 	private static String msgPrenotazione="La tua prenotazione è andata a buon fine.";
 	private static String msgAnnullaPre="La tua prenotazione è stata annullata.";
 	private static String msgDisattivazione="Il tuo account è stato disattivato."
@@ -22,13 +22,14 @@ public class InvioEmail {
 	
 	
 	//---
-	private static String scegliMessaggio(String scelta) {
+	private static String scegliMessaggio(String scelta,String pwd) {
 		
 		switch(scelta) {
 			case "conferma":
 				return msgConferma;
 			case "reset":
-				return msgReset;
+				String msg=msgReset+pwd;
+				return msg;
 			case "prenotazione":
 				return msgPrenotazione;
 			case "annulla":
@@ -40,11 +41,11 @@ public class InvioEmail {
 		return msgDefault;
 	}
 	//---
-	public static void mandaMail(User u,String scelta) {
+	public static void mandaMail(User u,String scelta,String pwd) {
 		
 		String to = u.getEmail();
 	    String subject = scelta;
-	    String msg = scegliMessaggio(scelta);
+	    String msg = scegliMessaggio(scelta,pwd);
 	    String from ="multisalamedea@gmail.com";
 	    String password ="medeamedea";
 

@@ -22,8 +22,11 @@
 				<td><%=u.getNome()%></td>
 				<td><%=u.getCognome()%></td>
 				<td>
-					<a class="btn btn-outline-info btn-sm" href="AssegnaRuoli?user=<%=u.getId()%>" role="button">
-						Attiva</a>										
+					<form action="ConfermaRegistrazione" method="post">
+						<input type="hidden" name="user" value="<%=u.getId()%>">
+						<button class="btn btn-outline-info btn-sm" type="submit">
+						Attiva</button>
+					</form>								
 				</td>
 			</tr>
 			<%

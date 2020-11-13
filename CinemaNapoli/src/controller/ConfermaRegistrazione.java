@@ -21,14 +21,13 @@ public class ConfermaRegistrazione extends HttpServlet {
     }
     //---
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		if(request.getParameter("confermaUser")!=null) {
-			User u=cercaUser(Long.parseLong(request.getParameter("confermaUser")));
-			u.setAttivo(true);
-			modificaUser(u);
-			//--
-			mandaMail(u, "conferma");
-		}
+
+		User u = cercaUser(Long.parseLong(request.getParameter("user")));
+		u.setRuolo(cercaRuoloByNome("user"));
+		modificaUser(u);
+		// --
+		mandaMail(u, "conferma", "");
+		response.sendRedirect("RicercaUser");
 	} 
 	//---
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		

@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.util.Base64;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.User;
 import static util.GestisciDatabase.*;
 import static util.Controlli.*;
+import static util.InvioEmail.*;
 
 @WebServlet(name="resetpassword", urlPatterns = {"/ResetPassword"})
 public class ResetPassword extends HttpServlet {
@@ -30,21 +30,24 @@ public class ResetPassword extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("reset") != null) {	
 			User u=cercaUser(Long.parseLong(request.getParameter("reset")));
-			 
-			String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(resetPassword().getBytes("UTF-8"));
-			u.setPassword(encodedPwd);			 				 			 
-				request.getRequestDispatcher("Reindirizzamento").forward(request, response);
+			String pwd=resetPassword();
+			mandaMail(u,"reset",pwd);
+			String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(pwd.getBytes("UTF-8"));
+			u.setPassword(encodedPwd);
+			modificaUser(u);
+			request.getRequestDispatcher("Reindirizzamento").forward(request, response);
 		
 		} else {
-			for(User u : (List<User>) cercaUserByUsername(request.getParameter("username"))) {
-				if(u.getEmail().equals(request.getParameter("email"))){
-					String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(resetPassword().getBytes("UTF-8"));
-					u.setPassword(encodedPwd);
-					response.sendRedirect("home.jsp");
-				}
-			
-		//request.getSession().setAttribute("userLoggato", u);
+			User u=cercaUserByUsername(request.getParameter("username"));
+			if(u.getEmail().equals(request.getParameter("email"))){
+				String pwd=resetPassword();
+				mandaMail(u,"reset",pwd);
+				String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(pwd.getBytes("UTF-8"));
+				u.setPassword(encodedPwd);
+				modificaUser(u);
+				response.sendRedirect("Inizializzazione");
 			}
 		}
+		//request.getSession().setAttribute("userLoggato", u);
 	}
 }

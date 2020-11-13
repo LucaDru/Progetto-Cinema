@@ -35,7 +35,7 @@ public class AssegnaRuoli extends HttpServlet {
 			r = cercaRuoloByNome("user");
 			u.setRuolo(r);
 			modificaUser(u);
-			InvioEmail.mandaMail(u, "conferma");
+			//InvioEmail.mandaMail(u, "conferma","");
 		} else if(request.getParameter("bannato") != null) {
 			u = cercaUser(Long.parseLong(request.getParameter("bannato")));
 			r = cercaRuoloByNome("bannato");
