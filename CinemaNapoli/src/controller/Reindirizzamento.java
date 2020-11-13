@@ -50,7 +50,7 @@ public class Reindirizzamento extends HttpServlet {
 			else if(u.getRuolo().getNome().equals("staff"))
 				request.getRequestDispatcher("dashStaff.jsp").forward(request, response);
 			else
-				request.getRequestDispatcher("dashUser.jsp").forward(request, response);
+				request.getRequestDispatcher("PrenotazioniUtente").forward(request, response);
 		}
 		else {
 			//request.getRequestDispatcher("Login").forward(request, response);
