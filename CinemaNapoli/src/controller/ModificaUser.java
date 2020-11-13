@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,7 +53,9 @@ public class ModificaUser extends HttpServlet {
 				u.setPiva(request.getParameter("piva"));
 				u.setEmail(request.getParameter("email"));
 				u.setUsername(request.getParameter("username"));
-				u.setPassword(request.getParameter("password"));
+				String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(request.getParameter("password").getBytes("UTF-8"));
+				u.setPassword(encodedPwd);
+
 				
 			} 
 			modificaUser(u);
