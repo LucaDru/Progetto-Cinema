@@ -59,7 +59,7 @@ public class GestisciDatabase {
 		et.commit();
 	}
 	
-	public static void aggiungiPrenotazione(Prenotazione p) {
+	public static void aggiungiPrenotazione(Prenotazione p) throws RollbackException {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();

@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.persistence.RollbackException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +13,7 @@ import model.Prenotazione;
 import model.User;
 
 import static util.GestisciDatabase.*;
-import static util.InvioEmail.*;
+import static util.Controlli.*;
 
 
 @WebServlet(name="prenotazionefilm", urlPatterns = {"/PrenotazioneFilm"})
@@ -28,16 +30,24 @@ public class PrenotazioneFilm extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Prenotazione p = new Prenotazione();
-
-		//p.setId(Long.parseLong(request.getParameter("id")));
-		p.setProiezione(cercaProiezione(Long.parseLong(request.getParameter("proiezione"))));
-		p.setUser((User)request.getSession().getAttribute("userLoggato"));
-		p.setNumPosti(Integer.parseInt(request.getParameter("numPosti")));
-		p.setPosti(request.getParameter("posti"));
-		p.setBiglietto("Ciaone");
-
-		aggiungiPrenotazione(p);
-		// mandaMail (p.getUser(), "prenotazione");
+		boolean controllo = false;
+		
+		do {				
+			//p.setId(Long.parseLong(request.getParameter("id")));
+			p.setProiezione(cercaProiezione(Long.parseLong(request.getParameter("proiezione"))));
+			p.setUser((User)request.getSession().getAttribute("userLoggato"));
+			p.setNumPosti(Integer.parseInt(request.getParameter("numPosti")));
+			p.setPosti(request.getParameter("posti"));
+			p.setBiglietto(generaBiglietto());
+			
+			try {
+				aggiungiPrenotazione(p);
+			} catch (RollbackException e) {
+				e.printStackTrace();
+				controllo = true;
+			}
+			// mandaMail (p.getUser(), "prenotazione");
+		}while(controllo);
 
 		request.getRequestDispatcher("RicercaProiezione").forward(request, response);
 		//response.sendRedirect("RicercaProiezione");

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.User;
 import static util.GestisciDatabase.*;
+import static util.Controlli.*;
 
 @WebServlet(name="resetpassword", urlPatterns = {"/ResetPassword"})
 public class ResetPassword extends HttpServlet {
@@ -29,7 +30,7 @@ public class ResetPassword extends HttpServlet {
 		if(request.getParameter("reset") != null) {	
 			User u=cercaUser(Long.parseLong(request.getParameter("reset")));
 			 
-				u.setPassword(u.getUsername());			
+				u.setPassword(resetPassword());			
 				modificaUser(u);				 				 			 
 				request.getRequestDispatcher("Reindirizzamento").forward(request, response);
 		
@@ -37,17 +38,13 @@ public class ResetPassword extends HttpServlet {
 			List<User> user = leggiUser();
 			for(User u : user) {
 				if(u.getUsername().equals(request.getParameter("username")) && u.getEmail().equals(request.getParameter("email"))){
-					u.setPassword(u.getUsername());			
+					u.setPassword(resetPassword());			
 					modificaUser(u);
 					response.sendRedirect("home.jsp");
-			}
+				}
 			
 		//request.getSession().setAttribute("userLoggato", u);
+			}
 		}
 	}
-}
-
-		 
-
-
 }
