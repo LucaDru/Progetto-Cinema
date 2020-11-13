@@ -36,9 +36,8 @@ public class ResetPassword extends HttpServlet {
 				request.getRequestDispatcher("Reindirizzamento").forward(request, response);
 		
 		} else {
-			List<User> user = leggiUser();
-			for(User u : user) {
-				if(u.getUsername().equals(request.getParameter("username")) && u.getEmail().equals(request.getParameter("email"))){
+			for(User u : (List<User>) cercaUserByUsername(request.getParameter("username"))) {
+				if(u.getEmail().equals(request.getParameter("email"))){
 					String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(resetPassword().getBytes("UTF-8"));
 					u.setPassword(encodedPwd);
 					response.sendRedirect("home.jsp");
