@@ -39,7 +39,7 @@
 					class="btn btn-outline-dark">
 					<i class="fas fa-edit"></i>Dashboard
 				</button></a>
-			<a href="Logout"><button type="button"
+			<a href="/CinemaNapoli/Logout"><button type="button"
 					class="btn btn-outline-dark">
 					<i class="fas fa-sign-out-alt"></i> Log-out
 				</button></a>

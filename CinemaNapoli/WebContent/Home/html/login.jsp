@@ -13,10 +13,10 @@
 			</div>
 			<div class="modal-body">
 				<!--form di login-->
-				<form action="Login" method="post" class="form-signin" novalidate>
+				<form action="/CinemaNapoli/Login" method="post" class="form-signin" novalidate>
 					<div class="text-center mb-4">
-						<img class="mb-4" src="/CinemaNapoli/Home/res/Medea-Logo.png" alt="logo" width="100"
-							height="100">
+						<img class="mb-4" src="/CinemaNapoli/Home/res/Medea-Logo.png" alt="logo" width="160"
+							height="160">
 					</div>
 
 					<div class="form-label-group">
@@ -42,10 +42,10 @@
 					</div>
 					<button class="btn btn-lg btn-secondary btn-block" type="submit">Sign
 						in</button>
-					<p class="mt-5 mb-3 text-muted text-center">&copy; 2020</p>
+					
 				</form>
 			</div>
-			<div class="modal-footer">
+			<div class="text-center border-top py-4">
 				<h4>
 					Non hai un account? <a href="/CinemaNapoli/Home/html/Registrazione.jsp">Registrati!</a>
 				</h4>

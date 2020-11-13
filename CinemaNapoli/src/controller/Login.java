@@ -26,7 +26,7 @@ public class Login extends HttpServlet {
 	}
 	//---
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		/*
 		for(User u: leggiUser()) {
 			if(u.getUsername().equals(request.getParameter("username")) && u.getPassword().equals(request.getParameter("password"))) {
 				
@@ -52,6 +52,35 @@ public class Login extends HttpServlet {
 					request.getRequestDispatcher("alertDaAccettare.jsp").forward(request, response);
 				}
 			break;
+			}
+		}
+		*/
+		User u=cercaUserByUsername(request.getParameter("username"));
+		if(u==null) {
+			
+		} else {
+			if(u.getPassword().equals(request.getParameter("password"))) {
+				if(u.isAttivo()) {
+					if(u.getRuolo().getNome().equals("user") 
+							|| u.getRuolo().getNome().equals("admin") 
+							|| u.getRuolo().getNome().equals("staff")) {
+						
+						request.getSession().setAttribute("userLoggato", u);
+						if(request.getParameter("ricordami")!= null) {
+							response.addCookie(new Cookie("userUsername", u.getUsername()));
+							response.addCookie(new Cookie("userPassword", u.getPassword()));
+						}
+						request.getRequestDispatcher("Home/html/Home.jsp").forward(request, response);
+						
+					} else {
+						if(u.getRuolo().getNome().equals("bannato"))
+							request.setAttribute("bannato", "si");
+						request.getRequestDispatcher("alertDaAccettare.jsp").forward(request, response);
+					}
+				} else {
+					request.setAttribute("attivo", "no");
+					request.getRequestDispatcher("alertDaAccettare.jsp").forward(request, response);
+				}
 			}
 		}
 	}

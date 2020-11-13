@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -13,6 +14,7 @@ public class Film implements Serializable {
 	private String titolo,locandina,trama;
 	private Genere genere;
 	private int durata, annouscita;
+	private List<Proiezione> proiezioni;
 	//---
 	public Film() {
 		super();
@@ -49,6 +51,10 @@ public class Film implements Serializable {
 	public int getAnnouscita() {
 		return annouscita;
 	}
+	@OneToMany(mappedBy="film",cascade=CascadeType.ALL)
+	public List<Proiezione> getProiezioni() {
+		return proiezioni;
+	}
 	//---
 	//---
 	public void setId(long id) {
@@ -71,5 +77,8 @@ public class Film implements Serializable {
 	}
 	public void setAnnouscita(int annouscita) {
 		this.annouscita = annouscita;
+	}
+	public void setProiezioni(List<Proiezione> proiezioni) {
+		this.proiezioni = proiezioni;
 	}
 }
