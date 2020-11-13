@@ -44,7 +44,7 @@ public class InserisciFilm extends HttpServlet {
 			f.setGenere(g);
 
 			// -----------------------------------------------------------------------
-			final String path = "C:\\imgMultisalaMedea";
+			final String path = "D:\\Git-Repo\\Progetto-Cinema\\CinemaNapoli\\WebContent\\caroImg";
 			final Part filePart = request.getPart("file");
 			System.out.println(filePart);
 			final String fileName = getFileName(filePart);
@@ -62,7 +62,8 @@ public class InserisciFilm extends HttpServlet {
 				e.printStackTrace();
 			}
 			// -----------------------------------------------------------------------
-			f.setLocandina(path + "\\" + fileName);
+			//f.setLocandina(path + "\\" + fileName);
+			f.setLocandina("/CinemaNapoli/caroImg/"+fileName);
 			f.setTrama(request.getParameter("trama"));
 			f.setDurata(Integer.parseInt(request.getParameter("durata")));
 			f.setAnnouscita(Integer.parseInt(request.getParameter("annouscita")));

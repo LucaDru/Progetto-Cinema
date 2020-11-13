@@ -4,7 +4,7 @@
 
 
 <div class="container">
-	<form action="InserisciGenere" method="post">
+	<form action="InserisciGenere" enctype="multipart/form-data" method="post">
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="inputEmail4">Genere</label> <input name="nomeGenere"

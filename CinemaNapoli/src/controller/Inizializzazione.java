@@ -41,16 +41,32 @@ public class Inizializzazione extends HttpServlet {
 		*/
 		List<Film> listaFilm=new ArrayList<Film>();
 		for(Film f:lista) {
+			System.out.println("MERDA "+f.getProiezioni().size());
+			List<Proiezione> mortacci=f.getProiezioni();
+			//mortacci.forEach(peppe->System.out.println(peppe.getId()));
+			for(Proiezione p:mortacci) {
+				System.out.println(p.getId()+" ECCOLOOO");
+				if((p.getData().toLocalDate().isEqual(LocalDate.now()) || p.getData().toLocalDate().isAfter(LocalDate.now()))
+						&& p.getData().toLocalDate().isBefore(LocalDate.now().plusDays(30))) {
+					listaFilm.add(f);
+					break;
+				}
+			}
+			/*
 			List<Proiezione> filtrata=f.getProiezioni().stream().peek(se->System.out.println(se.getData())).filter(
 					p->(p.getData().toLocalDate().isEqual(LocalDate.now()) || p.getData().toLocalDate().isAfter(LocalDate.now()))
 						&& p.getData().toLocalDate().isBefore(LocalDate.now().plusDays(30))
 					).collect(Collectors.toList());
 			if(filtrata.size()>0)
 				listaFilm.add(f);
+				*/
 		}
 		
 		request.setAttribute("listaFilm", listaFilm);
-		listaFilm.forEach(f->System.out.println(f.getTitolo()));
+		//listaFilm.forEach(f->System.out.println(f.getTitolo()));
+		for(Film fi:listaFilm) {
+			System.out.println(fi.getTitolo()+" MORTACCI DE PIPPOOOOO");
+		}
 		request.getRequestDispatcher("Home/html/Home.jsp").forward(request, response);
 	}
 

@@ -10,7 +10,7 @@
 					class="d-inline-block align-top" alt="logo">
 				</a>
 
-				<li class="nav-item active"><a class="nav-link" href="/CinemaNapoli/Home/html/Home.jsp"><span
+				<li class="nav-item active"><a class="nav-link" href="/CinemaNapoli/Inizializzazione"><span
 						class="titolinav">HOME</span></a></li>
 				<li class="nav-item active"><a class="nav-link" href="#prezzi"><span
 						class="titolinav">PROMO</span></a></li>
