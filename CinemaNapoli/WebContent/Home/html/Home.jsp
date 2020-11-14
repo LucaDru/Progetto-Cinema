@@ -29,6 +29,7 @@
 	<jsp:include page="navbar.jsp"></jsp:include>
 	
 	<jsp:include page="login.jsp"></jsp:include>
+	<input type="hidden" id="controllo" value="<%=request.getAttribute("controllo")!=null? request.getAttribute("controllo"): 0%>">
 	<!--CAROSELLO-->
 	<div class="film-sala text-right">
 
@@ -156,6 +157,7 @@
 		integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
 		crossorigin="anonymous"></script>
 		
+	<script src="/CinemaNapoli/Home/js/scriptLogin.js"></script>
 	<script src="/CinemaNapoli/Home/js/Script.js"></script>
     <script src="/CinemaNapoli/Home/js/validateScript.js"></script>
 </body>

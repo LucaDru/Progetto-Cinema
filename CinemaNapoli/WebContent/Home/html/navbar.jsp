@@ -44,7 +44,7 @@
 					<i class="fas fa-sign-out-alt"></i> Log-out
 				</button></a>
 		<% }else{ %>
-			<button type="button" class="btn btn-outline-dark"
+			<button type="button" class="btn btn-outline-dark" id="bottoneLog"
 				data-toggle="modal" data-target="#exampleModalCenter">
 				<i class="fas fa-user"></i>Login</i>
 			</button>
