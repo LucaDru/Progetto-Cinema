@@ -59,8 +59,7 @@ public class Login extends HttpServlet {
 		User u=cercaUserByUsername(request.getParameter("username"));
 		if(u==null) {
 			request.setAttribute("sbagliato", "si");
-			System.out.println("sono entrato nel null");
-			request.getRequestDispatcher("Home/html/login.jsp").forward(request, response);
+			request.getRequestDispatcher("Inizializzazione").forward(request, response);
 
 		} else {
 			String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(request.getParameter("password").getBytes("UTF-8"));

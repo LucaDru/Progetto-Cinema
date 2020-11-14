@@ -13,50 +13,51 @@
 			</div>
 			<div class="modal-body">
 				<!--form di login-->
-				<form action="/CinemaNapoli/Login" method="post" class="form-signin" novalidate>
+				<form action="/CinemaNapoli/Login" method="post" class="form-signin"
+					novalidate>
 					<div class="text-center mb-4">
-						<img class="mb-4" src="/CinemaNapoli/Home/res/Medea-Logo.png" alt="logo" width="160"
-							height="160">
+						<img class="mb-4" src="/CinemaNapoli/Home/res/Medea-Logo.png"
+							alt="logo" width="160" height="160">
 					</div>
 
 					<div class="form-label-group">
-						<input type="text" name="username" id="inputEmail" class="form-control"
-							placeholder="Username" required autofocus> <label
-							for="inputEmail">Username</label>
+						<input type="text" name="username" id="inputEmail"
+							class="form-control" placeholder="Username" required autofocus>
+						<label for="inputEmail">Username</label>
 						<div class="invalid-feedback">Please provide a valid email.
 						</div>
 					</div>
 
 					<div class="form-label-group">
-						<input type="password" name="password" id="inputPassword" class="form-control"
-							placeholder="Password" required> <label
+						<input type="password" name="password" id="inputPassword"
+							class="form-control" placeholder="Password" required> <label
 							for="inputPassword">Password</label>
 						<div class="invalid-feedback">Please provide a valid
 							password.</div>
 					</div>
-						<%
-					if (request.getAttribute("sbagliato") != null) {
-				%>
-				<div class="alert alert-danger" role="alert">Nome
-					Utente/password errati.</div>
-				<%
-					}
-				%>
-					
+					<%
+						if (request.getAttribute("sbagliato") != null) {
+					%>
+					<div class="alert alert-danger" role="alert">Nome
+						Utente/password errati.</div>
+					<%
+						}
+					%>
 
+					
 					<div class="checkbox mb-3">
 						<label> <input type="checkbox" value="remember-me">
 							Ricordami
 						</label>
 					</div>
-					<button class="btn btn-lg btn-secondary btn-block" type="submit">Sign
-						in</button>
-					
+					<button class="btn btn-lg btn-secondary btn-block" type="submit">Login</button>
+
 				</form>
 			</div>
 			<div class="text-center border-top py-4">
 				<h4>
-					Non hai un account? <a href="/CinemaNapoli/Home/html/Registrazione.jsp">Registrati!</a>
+					Non hai un account? 
+					<a href="/CinemaNapoli/Home/html/Registrazione.jsp">Registrati!</a>
 				</h4>
 			</div>
 		</div>
