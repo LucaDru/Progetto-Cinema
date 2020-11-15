@@ -16,7 +16,7 @@
 				<form action="/CinemaNapoli/Login" method="post" class="form-signin"
 					novalidate>
 					<div class="text-center mb-4">
-						<img class="mb-4" src="/CinemaNapoli/Home/res/Medea-Logo.png"
+						<img class="mb-4" src="/CinemaNapoli/Home/res/Medea-Logo-prugna.png"
 							alt="logo" width="160" height="160">
 					</div>
 
@@ -46,12 +46,12 @@
 
 					
 					<div class="checkbox mb-3">
-						<label> <input type="checkbox" value="remember-me">
+						<label> <input type="checkbox" name="ricordami">
 							Ricordami
 						</label>
 					</div>
 					<button class="btn btn-lg btn-secondary btn-block" type="submit">Login</button>
-
+					<p class="mt-5 mb-1 text-muted text-center"><a href="/CinemaNapoli/recuperoPassword.jsp">Password dimenticata?</a></p>
 				</form>
 			</div>
 			<div class="text-center border-top py-4">

@@ -68,7 +68,7 @@
 			id="film" role="tabpanel" aria-labelledby="film-tab">
 			
 			<h3>Inserisci nuovo Film:</h3>
-			<jsp:include page="inserisciFilm.jsp"></jsp:include>
+			
 			<hr class="bg-warning">
 			<h3>Lista Film:</h3>
 			<jsp:include page="tabellaFilm.jsp"></jsp:include>
@@ -81,7 +81,7 @@
 			id="fgenere" role="tabpanel" aria-labelledby="fgenere-tab">
 			
 			<h3>Inserisci nuovo Genere:</h3>
-			<jsp:include page="inserisciGenere.jsp"></jsp:include>
+			
 			<hr class="bg-warning">
 			<h3>Lista Genere:</h3>
 			<jsp:include page="tabellaGenere.jsp"></jsp:include>

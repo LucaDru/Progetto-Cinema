@@ -31,7 +31,7 @@ public class AnnullaPrenotazione extends HttpServlet {
 		Prenotazione p = cercaPrenotazione(Long.parseLong(request.getParameter("prenotazione")));
 		annullaPrenotazione(p);
 		request.getSession().setAttribute("userLoggato", cercaUser(((User)request.getSession().getAttribute("userLoggato")).getId()));
-		response.sendRedirect("dashUser.jsp");
+		response.sendRedirect("PrenotazioniUtente");
 		
 		//doGet(request, response);
 	}

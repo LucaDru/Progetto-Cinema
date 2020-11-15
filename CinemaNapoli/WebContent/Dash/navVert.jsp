@@ -1,6 +1,6 @@
 <!-- navbar verticale -->
 
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse mt-4">
     <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">

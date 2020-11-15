@@ -1,5 +1,5 @@
 <div class="jumbotron collapse" id="inserisci-genere">
-	<form action="InserisciGenere" method="post">
+	<form action="InserisciGenere" method="post" enctype="multipart/form-data">
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="inputEmail4">Genere</label> <input name="nomeGenere"

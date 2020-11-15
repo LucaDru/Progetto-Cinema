@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home</title>
+<title>MM-Home</title>
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -16,8 +16,10 @@
 <link rel="stylesheet"
 	href="/CinemaNapoli/Home/css/fontawesome-free-5.15.1-web/css/all.min.css">
 	
-<link rel="stylesheet" href="/CinemaNapoli/Home/css/home.css">
+<link rel="stylesheet" href="/CinemaNapoli/Home/css/ciaobea.css">
 <link rel="stylesheet" href="/CinemaNapoli/Home/css/login.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cantarell&family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -82,65 +84,69 @@
 	</div>
 
 
+	<!-- card eventi e promo -->
+    <div class="container-fluid">
+        <div class="row m-0">
+            <div class="col-1 p-0 m-0"></div>
+            <div class="col-5">
+                <div class="card text-center shadow sfondogrigio miao">
+                    <div class="primacard">
+                        <h5 class="card-header">Eventi</h5>
+                        <div class="card-body barattolo-due">
+                            <h5 class="card-title">Cinema Vintage</h5>
+                            <p class="card-text">Sei un amante del genere Cult? Vieni a trovarci tutti i marted&iacute;,
+                                proiettiamo i migliori film della storia</p>
+                            <h5 class="card-title insert">Il primo mercoled&iacute; di ogni mese, tutti gli spettacoli
+                                costano 2&euro;
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
-	<div class="container">
-		<div class="row">
-			<div class="col-6">
-				<div class="card d-flex text-center shadow primacard">
-					<h5 class="card-header">Promozioni ed eventi</h5>
-					<div class="card-body">
-						<h5 class="card-title">Cinema vintage</h5>
-						<p class="card-text">Se sei un amante del genere cult, vieni a
-							trovarci nella nostra giornata dedicata, tutti i martedi'</p>
-						<h5 class="card-title insert">Il primo mercoledi' di ogni
-							mese, tutti gli spettacoli costano 2&euro;</h5>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="col-6">
-				<a name="prezzi"><div
-						class="card d-flex text-center shadow secondacard"></a>
-				<h5 class="card-header">Promozioni ed Eventi</h5>
-				<div class="card-body">
-					<div class="row">
-						<div class="col-6">
-							<h5 class="card-title">Listino prezzi</h5>
-							<p class="card-text">
-								proiezioni 2D: 7,50&euro; <br> proiezioni 3D: 10&euro;
-							</p>
-						</div>
-						<div class="col-6">
-							<h5 class="card-title">Promozioni</h5>
-							<p class="card-text">under 12 e over 65: 5&euro;</p>
-						</div>
-					</div>
-					<h5 class="card-title mt-3 insert">Il primo mercoledi' di ogni
-						mese, tutti gli spettacoli costano 2&euro;</h5>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
+            <div class="col-5">
+                <div class="card text-center shadow sfondogrigio miao">
+                    <div class="secondacard">
+                        <a name="prezzi">
+                        </a>
+                        <h5 class="card-header">Promozioni</h5>
+                        <div class="card-body barattolo">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5 class="card-title">Listino</h5>
+                                    <p class="card-text">proiezioni 2D: 7,50&euro; <br> proiezioni 3D: 10&euro;</p>
+                                </div>
+                                <div class="col-6">
+                                    <h5 class="card-title">Riduzioni</h5>
+                                    <p class="card-text">under 12 e over 65: 5&euro;</p>
+                                </div>
+                            </div>
+                            <h5 class="card-title mt-4 insert border-top border-dark pt-4">Il primo mercoledi' di ogni
+                                mese, tutti gli spettacoli
+                                costano
+                                2&euro;</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1 p-0 m-0"></div>
+        </div>
+    </div>
 
 	<!--MEDEA-->
 
-	<div class="container mt-3" style="background-color: #2c031e;">
-		<div class="row">
-			<div class="testomedea">
-				<h2 class="titolomedea">Perche' Medea?</h2>
-				<p class="paragM">
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. <br>
-					Molestias possimus voluptate ratione, <br> voluptas quas modi
-					corporis ipsa autem dolore, illo, <br> laudantium aperiam
-					consectetur eos minima officia cumque eligendi quo nostrum.
-				</p>
-			</div>
-			<img src="/CinemaNapoli/Home/res/medea.jpg" alt="img medea" class="img-medea">
-		</div>
-	</div>
+    <div class="container mt-3" style="background-color: #2c031e;">
+        <div class="row">
+            <div class="testomedea">
+                <h2 class="titolomedea">Perche' Medea?</h2>
+                <p class="paragM"> Medea e&aacute; una figura della mitologia greca <br> Molestias possimus
+                    voluptate ratione, <br> voluptas quas modi corporis ipsa autem dolore, illo, <br> laudantium aperiam
+                    consectetur eos <br> minima officia cumque eligendi quo nostrum.</p>
+            </div>
+            <img src="/CinemaNapoli/Home/res/medea.jpg" alt="img medea" class="img-medea">
+        </div>
+    </div>
 	
 	<jsp:include page="footer.jsp"></jsp:include>
 
