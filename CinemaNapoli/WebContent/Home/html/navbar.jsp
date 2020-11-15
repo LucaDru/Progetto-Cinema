@@ -4,12 +4,12 @@
 	<nav class="navbar navbar-expand-lg navbar-light py-0">
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<a class="navbar-brand py-0" href="/CinemaNapoli/Home/html/Home.jsp"> <img
+			<a class="navbar-brand py-0" href="/CinemaNapoli/Inizializzazione"> <img
 				src="/CinemaNapoli/Home/res/Medea-Logo-prugna.png" width="70" height="70"
 				class="d-inline-block align-top" alt="logo-prugna">
 			</a>
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="/CinemaNapoli/Home/html/Home.jsp"><span
+				<li class="nav-item active"><a class="nav-link" href="/CinemaNapoli/Inizializzazione"><span
 						class="titolinav">HOME</span></a></li>
 				<li class="nav-item active"><a class="nav-link" href="#prezzi"><span
 						class="titolinav">PROMO</span></a></li>

@@ -13,7 +13,7 @@
 
 <link rel="stylesheet"
 	href="/CinemaNapoli/Home/css/fontawesome-free-5.15.1-web/css/all.min.css">
-<link rel="stylesheet" href="/CinemaNapoli/Home/css/home.css">
+<link rel="stylesheet" href="/CinemaNapoli/Home/css/ciaobea.css">
 <link rel="stylesheet" href="/CinemaNapoli/Home/css/login.css">
 </head>
 <body>
