@@ -9,15 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Film;
 import model.Genere;
 
 import static util.GestisciDatabase.*;
 
 @WebServlet("/RicercaGenere")
 public class RicercaGenere extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+	private static final long serialVersionUID = 1L;   
  
     public RicercaGenere() {
         super();

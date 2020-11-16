@@ -1,3 +1,4 @@
+<%@page import="model.Film"%>
 <%@page import="model.Genere"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -31,31 +32,30 @@
 	
 	<div class="container sfondocat">
 
-		<h1 class="titolo-card">Genere</h1>
+		<h1 class="titolo-card" style="color: #54036d">Genere</h1>
 		<hr class="mt-2 mb-5">
 		<div class="row m-0">
 			
 			<%
-				for(Genere g: listaGeneri){
+					for(Genere g: listaGeneri){
 			
 			%>
 			
-				<div class="card categoria col-2" style="width: 12rem;">
-					<img class="card-img genereimg" src="<%=g.getImg()%>">
-					<a href="#" class="d-block mb-4 h-100">
-						<div class="testocard" ><%=g.getNome()%></div>
-					</a>
-				</div>
+					<div class="card categoria col-2" style="width: 12rem;">
+						<img class="card-img genereimg" src="<%=g.getImg()%>">
+						<a href="RicercaFilm?genere=<%=g.getId()%>" class="d-block mb-4 h-100">
+							<div class="testocard" ><%=g.getNome()%></div>
+						</a>
+					</div>
 		
 			<%
-				}
+					}
 			%>
+	
 		</div>
-		
 	</div>
-
+	
 	<jsp:include page="footer.jsp"></jsp:include>
-
 	<!-- BootStrap -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
