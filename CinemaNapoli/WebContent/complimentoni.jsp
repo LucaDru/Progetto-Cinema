@@ -36,8 +36,8 @@
 			<hr>
 			<h3><%=p.getData() + " " + p.getOra()%></h3>
 			<hr>
-			<a class="btn btn-success btn-sm" href="#" role="button">Scegli
-				Posti</a>
+			<button class="btn btn-success" type="button" id="prosegui">
+				Prosegui</button>
 		</div>
 	</div>
 
@@ -78,14 +78,45 @@
     		<% } %>
     	</div>
     	
-    	<form action="RiepilogoPosti" method="post" id="confermaPosti">
+    	<form action="PrenotazioneFilm" method="post" id="inviaPosti">
     		<input type="hidden" name="numPosti" id="inputNumPosti">
     		<input type="hidden" name="stringaPosti" id="inputPostiSpecifici">
     		<input type="hidden" name="idProiezione" value="<%=p.getId()%>">
-    		<button type="submit" class="btn btn-outline-secondary">Conferma</button>
     	</form>
 	</div>
 	
+	<!-- Riepilogo Modale -->
+	<div class="modal fade" id="riepilogone-posti" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<h5 class="modal-title" id="exampleModalLongTitle">Riepilogo</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h1><%=p.getFilm().getTitolo()%></h1>
+					<input type="hidden" id="prezzo" value="<%=p.getPrezzo()%>">
+					<hr>
+					<span>Hai selezionato</span>
+					<span id="riepilogo-posti"></span>
+					<span>posti:</span>
+					</br>
+					<span id="riepilogo-posti-codice"></span>
+					<span>Prezzo totale: </span>
+					<span id="riepilogo-prezzo"></span>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="conferma-posti">Conferma</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<jsp:include page="Home/html/footer.jsp"></jsp:include>
 	<!-- BootStrap -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

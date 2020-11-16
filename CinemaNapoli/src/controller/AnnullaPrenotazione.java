@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.Prenotazione;
 import model.User;
@@ -24,15 +23,15 @@ public class AnnullaPrenotazione extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		//mandaMail(p.getUser(), "annulla");
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Prenotazione p = cercaPrenotazione(Long.parseLong(request.getParameter("prenotazione")));
+		mandaMail(p.getUser(),"annulla",p.getBiglietto());
 		annullaPrenotazione(p);
 		request.getSession().setAttribute("userLoggato", cercaUser(((User)request.getSession().getAttribute("userLoggato")).getId()));
-		response.sendRedirect("PrenotazioniUtente");
-		
+		response.sendRedirect("PrenotazioniUtente");		
 		//doGet(request, response);
 	}
 

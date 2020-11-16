@@ -14,6 +14,7 @@ import model.User;
 
 import static util.GestisciDatabase.*;
 import static util.Controlli.*;
+import static util.InvioEmail.*;
 
 
 @WebServlet(name="prenotazionefilm", urlPatterns = {"/PrenotazioneFilm"})
@@ -31,13 +32,13 @@ public class PrenotazioneFilm extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Prenotazione p = new Prenotazione();
 		boolean controllo = false;
+
+		p.setProiezione(cercaProiezione(Long.parseLong(request.getParameter("idProiezione"))));
+		p.setUser((User) request.getSession().getAttribute("userLoggato"));
+		p.setNumPosti(Integer.parseInt(request.getParameter("numPosti")));
+		p.setPosti(request.getParameter("stringaPosti"));
 		
 		do {				
-			//p.setId(Long.parseLong(request.getParameter("id")));
-			p.setProiezione(cercaProiezione(Long.parseLong(request.getParameter("proiezione"))));
-			p.setUser((User)request.getSession().getAttribute("userLoggato"));
-			p.setNumPosti(Integer.parseInt(request.getParameter("numPosti")));
-			p.setPosti(request.getParameter("posti"));
 			p.setBiglietto(generaBiglietto());
 			
 			try {
@@ -46,11 +47,10 @@ public class PrenotazioneFilm extends HttpServlet {
 				e.printStackTrace();
 				controllo = true;
 			}
-			// mandaMail (p.getUser(), "prenotazione");
 		}while(controllo);
 
-		request.getRequestDispatcher("RicercaProiezione").forward(request, response);
-		//response.sendRedirect("RicercaProiezione");
+		mandaMail(p.getUser(),"prenotazione",p.getBiglietto());
+		request.getRequestDispatcher("Inizializzazione").forward(request, response);
 	}
 
 }
