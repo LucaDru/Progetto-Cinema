@@ -81,28 +81,25 @@ public class Proiezione implements Serializable{
 		this.prenotazioni = prenotazioni;
 	}
 	//---
-	//@Override
 	public int compareTo(Proiezione p) {
 		System.out.println("Stiamo comparando");
-		//int cosa=this.data.toLocalDate().compareTo(p.getData().toLocalDate());
-		//System.out.println(cosa+" Questa è la cosa");
-		//if(cosa==0) {
-			if(ora.toLocalTime().getHour()<p.getOra().toLocalTime().getHour())
+		if (ora.toLocalTime().getHour() < p.getOra().toLocalTime().getHour())
+			return -1;
+		else if (ora.toLocalTime().getHour() == p.getOra().toLocalTime().getHour()) {
+
+			if (ora.toLocalTime().getMinute() < p.getOra().toLocalTime().getMinute())
 				return -1;
-			else if(ora.toLocalTime().getHour()==p.getOra().toLocalTime().getHour()) {
-				
-				if(ora.toLocalTime().getMinute()<p.getOra().toLocalTime().getMinute())
-					return -1;
-				else if(ora.toLocalTime().getMinute()==p.getOra().toLocalTime().getMinute())
-					return 0;
-				else
-					return 1;
-			}
+			else if (ora.toLocalTime().getMinute() == p.getOra().toLocalTime().getMinute())
+				return 0;
 			else
 				return 1;
-		//}
-		//else
-			//return cosa;
+		} else
+			return 1;
+	}
+	public int compareDataOra(Proiezione p) {
+		int val=data.toLocalDate().compareTo(p.getData().toLocalDate());
+		if(val==0) return compareTo(p);
+		else return val;
 	}
 	//---
 	public String orarioSenzaSecondi() {
