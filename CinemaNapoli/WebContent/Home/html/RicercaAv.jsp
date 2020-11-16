@@ -27,7 +27,7 @@
 	
 	<jsp:include page="login.jsp"></jsp:include>
 	<input type="hidden" id="controllo" value="<%=request.getAttribute("controllo")!=null? request.getAttribute("controllo"): 0%>">
-	
+	<input type="hidden" value="<%=request.getSession().getAttribute("userLoggato")!=null? 1:0%>" id="userLog">
 	<jsp:include page="cardSpecFilm.jsp"></jsp:include>
 
 	<jsp:include page="footer.jsp"></jsp:include>
@@ -46,5 +46,6 @@
 
 		<script src="/CinemaNapoli/Home/js/scriptLogin.js"></script>
 		<script src="/CinemaNapoli/Home/js/validateScript.js"></script>
+		<script src="/CinemaNapoli/Home/js/controlloLog.js"></script>
 </body>
 </html>

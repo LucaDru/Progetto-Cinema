@@ -215,7 +215,7 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		List<Film> lista=em.createQuery("SELECT f FROM Film f WHERE titolo LIKE '%"+titolo+"%'").getResultList();
+		List<Film> lista=em.createQuery("SELECT f FROM Film f WHERE f.titolo LIKE '%"+titolo+"%'").getResultList();
 		et.commit();
 		return lista;
 	}
@@ -243,9 +243,17 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		List<Proiezione> lista=em.createQuery("SELECT p FROM Proiezione p WHERE titolo LIKE '%"+titolo+"%'").getResultList();
+		List<Proiezione> lista=em.createQuery("SELECT p FROM Proiezione p WHERE p.film.titolo LIKE '%"+titolo+"%'").getResultList();
 		et.commit();
 		return lista;
+	}
+	public static List<Proiezione> cercaProiezioneById(long id) {
+		EntityManager em=getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		List<Proiezione> lista=em.createQuery("SELECT p FROM Proiezione p WHERE p.film.id="+id).getResultList();
+		et.commit();
+		return lista;		
 	}
 	
 	public static Prenotazione cercaPrenotazione(long id) {

@@ -3,13 +3,14 @@ package model;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @NamedQuery(name="Proiezione.findAll",query="SELECT p FROM Proiezione p")
-public class Proiezione implements Serializable {
+public class Proiezione implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private long id;
@@ -80,21 +81,28 @@ public class Proiezione implements Serializable {
 		this.prenotazioni = prenotazioni;
 	}
 	//---
+	//@Override
 	public int compareTo(Proiezione p) {
-		
-		if(ora.toLocalTime().getHour()<p.getOra().toLocalTime().getHour())
-			return -1;
-		else if(ora.toLocalTime().getHour()==p.getOra().toLocalTime().getHour()) {
-			
-			if(ora.toLocalTime().getMinute()<p.getOra().toLocalTime().getMinute())
+		System.out.println("Stiamo comparando");
+		//int cosa=this.data.toLocalDate().compareTo(p.getData().toLocalDate());
+		//System.out.println(cosa+" Questa è la cosa");
+		//if(cosa==0) {
+			if(ora.toLocalTime().getHour()<p.getOra().toLocalTime().getHour())
 				return -1;
-			else if(ora.toLocalTime().getMinute()==p.getOra().toLocalTime().getMinute())
-				return 0;
+			else if(ora.toLocalTime().getHour()==p.getOra().toLocalTime().getHour()) {
+				
+				if(ora.toLocalTime().getMinute()<p.getOra().toLocalTime().getMinute())
+					return -1;
+				else if(ora.toLocalTime().getMinute()==p.getOra().toLocalTime().getMinute())
+					return 0;
+				else
+					return 1;
+			}
 			else
 				return 1;
-		}
-		else
-			return 1;
+		//}
+		//else
+			//return cosa;
 	}
 	//---
 	public String orarioSenzaSecondi() {
@@ -129,16 +137,12 @@ public class Proiezione implements Serializable {
 			int numero=Integer.parseInt(s);
 			posti[numero]=true;
 		}
-		/*
-		for(char c:cose.toCharArray()) {
-			String numeri="";			
-			if(c=='-') {
-				int numero=Integer.parseInt(numeri);
-			}
-			else {
-				numeri+=c;
-			}
-		}
-		*/
 	}
+	/*
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	*/
 }

@@ -6,16 +6,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<!-- Bootstrap CSS -->
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="/CinemaNapoli/Home/css/fontawesome-free-5.15.1-web/css/all.min.css">
 	
+<link rel="stylesheet" href="/CinemaNapoli/Home/css/ciaobea.css">
+<link rel="stylesheet" href="/CinemaNapoli/Home/css/login.css">
 <link href="style-posti.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cantarell&family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body class="bg-dark">
-
+	
+	<jsp:include page="Home/html/header.jsp"></jsp:include>
+	<jsp:include page="Home/html/navbar.jsp"></jsp:include>
+	
+	<jsp:include page="Home/html/login.jsp"></jsp:include>
 	<%
 		Proiezione p = (Proiezione) request.getAttribute("proiezione");
 	%>
@@ -76,13 +86,18 @@
     	</form>
 	</div>
 	
-	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+	<jsp:include page="Home/html/footer.jsp"></jsp:include>
+	<!-- BootStrap -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+		integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
 		crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		<%@ include file="script-posti.js" %>
