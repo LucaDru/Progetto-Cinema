@@ -48,8 +48,7 @@
 				</div>
 				<div class="form-group col-md-2">
 					<label for="inputZip">Codice Fiscale</label> <input name="cf"
-						type="text" class="form-control" id="inputZip"  
-						pattern="^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$">
+						type="text" class="form-control" id="inputZip">
 				</div>
 				<div class="form-group col-md-2">
 					<label for="inputZip">Partita Iva</label> <input name="piva"

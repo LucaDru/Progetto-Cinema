@@ -22,12 +22,30 @@ public class Controlli {
 	     return sb.toString();
      }
      
-     public static String controlloInserimento(String inserimento) {		
- 		//String inserimento = null;
- 		String converti = inserimento.substring(0,1).toUpperCase() + inserimento.substring(1).toLowerCase();
- 		return converti;
+     //String converti = inserimento.substring(0,1).toUpperCase() + inserimento.substring(1).toLowerCase().trim();
+     public static boolean controlloInserimento(String inserimento) {
+    	 System.out.println("nomi");
+ 		return inserimento.toLowerCase().trim().matches("[a-z]*");
  	}
      
+     public static boolean controlloNumeri (String num) {
+    	 System.out.println("numeri");
+    	 return num.trim().matches("[0-9]*");
+     }
+     
+     public static boolean controlloCf (String cf) {
+    	 System.out.println("cf");
+    	 return cf.toUpperCase().trim().matches("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$");
+     }
+     
+     public static boolean controlloEmail (String em) {
+    	 System.out.println("email");
+    	 return em.toLowerCase().trim().matches("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}");
+     }
+     
+     public static boolean controlloVuoto(String s) {
+    	 return !(s.trim().equals(""));
+     }
      public static String resetPassword( ) {
     	 String lower = "abcdefghijklmnopqrstuvwxyz";
          String upper = lower.toUpperCase();
@@ -44,6 +62,6 @@ public class Controlli {
 	     }
 	     return sb.toString();
      }
-
+     
 
 }

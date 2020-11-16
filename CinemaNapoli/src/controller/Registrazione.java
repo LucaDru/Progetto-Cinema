@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.*;
-
+import static util.Controlli.*;
 @WebServlet(name="registrazione", urlPatterns={"/Registrazione"})
 public class Registrazione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,31 +29,48 @@ public class Registrazione extends HttpServlet {
 		Ruolo r = cercaRuoloByNome("daAccettare");
 		u.setRuolo(r);
 		u.setAttivo(true);
-		u.setNome(request.getParameter("nome"));
-		u.setCognome(request.getParameter("cognome"));
-		u.setDatadinascita(Date.valueOf(request.getParameter("datadinascita")));
-		u.setCitta(request.getParameter("citta"));
-		u.setProvincia(request.getParameter("provincia"));
-		u.setIndirizzo(request.getParameter("indirizzo"));
-		u.setCap(request.getParameter("cap"));
-		u.setCf(request.getParameter("cf").equals("") ? null : request.getParameter("cf"));
-		//u.setPiva(request.getParameter("piva").equals("") ? null : request.getParameter("piva"));
-		u.setPiva(null);
-		u.setEmail(request.getParameter("email"));
-		u.setUsername(request.getParameter("username"));
-		String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(request.getParameter("password").getBytes("UTF-8"));
-		u.setPassword(encodedPwd);
-
-		String presente = "no";
-
-		try {
-			aggiungiUser(u);
-		} catch (RollbackException e) {
-			e.printStackTrace();
-			presente = "si";
+		
+		if(controlloInserimento(request.getParameter("nome"))&&
+		   controlloInserimento(request.getParameter("cognome")) &&
+		   controlloInserimento(request.getParameter("citta")) &&
+		   controlloNumeri(request.getParameter("cap")) &&
+		   controlloCf(request.getParameter("cf")) &&
+		   controlloEmail(request.getParameter("email")) &&
+		   controlloVuoto(request.getParameter("provincia")) &&
+		   controlloVuoto(request.getParameter("indirizzo")) &&
+		   controlloVuoto(request.getParameter("username")) &&
+		   controlloVuoto(request.getParameter("password")) &&
+		   controlloVuoto(request.getParameter("datadinascita"))) {
+			
+			u.setNome(request.getParameter("nome"));
+			u.setCognome(request.getParameter("cognome"));
+			u.setDatadinascita(Date.valueOf(request.getParameter("datadinascita")));
+			u.setCitta(request.getParameter("citta"));
+			u.setProvincia(request.getParameter("provincia"));
+			u.setIndirizzo(request.getParameter("indirizzo"));
+			u.setCap(request.getParameter("cap"));
+			u.setCf(request.getParameter("cf"));
+			u.setPiva(null);
+			u.setEmail(request.getParameter("email"));
+			u.setUsername(request.getParameter("username"));
+			String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(request.getParameter("password").getBytes("UTF-8"));
+			u.setPassword(encodedPwd);
+			
+			String presente = "no";
+			
+			try {
+				aggiungiUser(u);
+			} catch (RollbackException e) {
+				e.printStackTrace();
+				presente = "si";
+			}
+			
+			request.setAttribute("giaPresente", presente);
+			
+		} else {
+			request.setAttribute("erroreInserimento", "si");
 		}
-
-		request.setAttribute("giaPresente", presente);
+		
 		request.getRequestDispatcher("Home/html/Registrazione.jsp").forward(request, response);
 	}
 	//---

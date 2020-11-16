@@ -62,7 +62,7 @@
 					<div class="row">
 						<div class="form-group">
 							<label>Codice Fiscale</label> <input type="text" class="form-input"
-								name="cf" id="email" pattern="^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$">
+								name="cf" id="email">
 						</div>
 						<div class="form-group">
 							<label>Provincia</label>
