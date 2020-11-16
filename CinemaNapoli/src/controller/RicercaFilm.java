@@ -16,34 +16,41 @@ import model.Proiezione;
 
 import static util.GestisciDatabase.*;
 
-@WebServlet("/RicercaFilm")
+@WebServlet(name="ricercafilm",urlPatterns={"/RicercaFilm"})
 public class RicercaFilm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<Film> lista;
-	List<Film> filmFiltrati;
+	//private List<Film> filmFiltrati;
+	//---
     public RicercaFilm() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		lista= leggiFilm();
+		lista=leggiFilm();
 		
-		filmFiltrati = new ArrayList<Film>();
+		List<Film> filmFiltrati = new ArrayList<Film>();
 		for(Film f : lista) {
 			List<Proiezione> filtra = f.getProiezioni();
 			for(Proiezione p : filtra) {
-				if(p.getData().toLocalDate().isEqual(LocalDate.now()) && p.getData().toLocalDate().isAfter(LocalDate.now())) {
+				if(p.getData().toLocalDate().isEqual(LocalDate.now()) || p.getData().toLocalDate().isAfter(LocalDate.now())) {
 					filmFiltrati.add(f);
 					break;
 				}
 			}
 		}
+		//filmFiltrati.forEach(f->System.out.println(f.getTitolo()+"STO RICERCANDOOOOOO"));
+		for(Film f:filmFiltrati) {
+			System.out.println(f.getTitolo()+"STO RICERCANDOOOOOO");
+		}
 		request.setAttribute("filmFiltrati", filmFiltrati);
-		doGet(request, response);
+		request.getRequestDispatcher("Home/html/RicercaAv.jsp").forward(request, response);
+		//doGet(request, response);
 	}
 
 }

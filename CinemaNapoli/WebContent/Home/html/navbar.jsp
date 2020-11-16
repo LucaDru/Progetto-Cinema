@@ -1,6 +1,6 @@
 <%@page import="model.User"%>
 <!--NAVBAR-->
-<div class="sticky-top">
+<div class="sticky-top aiutoo">
 	<nav class="navbar navbar-expand-lg navbar-light py-0">
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,7 +22,7 @@
 						<a class="dropdown-item" href="#"><span class="titolinav">Ricerca
 								per genere</span></a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#"><span class="titolinav">Ricerca
+						<a class="dropdown-item" href="/CinemaNapoli/RicercaFilm"><span class="titolinav">Ricerca
 								avanzata</span></a>
 					</div></li>
 

@@ -307,3 +307,43 @@ a:hover{
   background-color:#2c031e;
   color: whitesmoke;
 }
+
+.sfondone{
+    background-image: url(../res/Medea-sfondoCard-1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    border: 1px black solid;
+    border-radius: 15px;
+}
+
+.locanda{
+    border: 1px black solid;
+    border-radius: 15px;
+}
+
+.titolofilme{
+    font-family: 'Cantarell', sans-serif;
+    font-weight: bold;
+    letter-spacing: .1em;
+}
+
+.coloriamo{
+    background-image: url(../res/Medea-sfondo-sporco.jpg);
+    -webkit-background-size: cover;     
+    -moz-background-size: cover;     
+    -o-background-size: cover;     
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.righette{
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+.aiutoo{
+    border-bottom: 1px rgba(128, 128, 128, 0.664) solid;
+}
