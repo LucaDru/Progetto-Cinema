@@ -24,12 +24,12 @@ public class Prenotazione implements Serializable {
 	public long getId() {
 		return id;
 	}
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_user",nullable=false)
 	public User getUser() {
 		return user;
 	}
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_proiezione",nullable=false)
 	public Proiezione getProiezione() {
 		return proiezione;

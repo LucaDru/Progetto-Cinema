@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,11 +35,10 @@ public class RicercaFilm extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		/*
 		lista=request.getParameter("genere")!=null?
 				cercaGenere(Long.parseLong(request.getParameter("genere"))).getFilms():leggiFilm();
 		
-		List<Film> filmFiltrati = new ArrayList<Film>();
 		for(Film f : lista) {
 			List<Proiezione> filtra = f.getProiezioni();
 			for(Proiezione p : filtra) {
@@ -47,9 +47,9 @@ public class RicercaFilm extends HttpServlet {
 					break;
 				}
 			}
-		}
-		
-		for(Film f:filmFiltrati) {
+		}*/
+		/*for(Film f:filmFiltrati) {
+			ciccio.addAll(f.getProiezioni());
 			System.out.println(f.getTitolo()+"STO RICERCANDOOOOOO");
 		}
 		
@@ -65,9 +65,19 @@ public class RicercaFilm extends HttpServlet {
 				.collect(Collectors.toList());
 		//ciccio.sort((a,b)->a.getData().toLocalDate().compareTo(b.getData().toLocalDate()));
 		
+		ciccio=ciccio.stream().filter(p->p.getData().toLocalDate().isAfter(LocalDate.now()) || 
+				(p.getData().toLocalDate().isEqual(LocalDate.now()) && p.getOra().toLocalTime().compareTo(LocalTime.now())==1))
+		.sorted((a,b)->a.compareDataOra(b)).peek(p->System.out.println(p)).collect(Collectors.toList());*/
+				
+		List<Proiezione> ciccio=new ArrayList<Proiezione>();
+		List<Film> filmFiltrati = new ArrayList<Film>();
+		
+		ciccio=cercaProiezioniFuture();
+		
 		for(Proiezione p:ciccio) {
 			System.out.println(p.getData()+"hello");
 		}
+		filmFiltrati=ciccio.parallelStream().map(p->p.getFilm()).distinct().collect(Collectors.toList());
 		
 		
 		request.setAttribute("proiezOrdinate", ciccio);

@@ -51,7 +51,7 @@ public class Film implements Serializable {
 	public int getAnnouscita() {
 		return annouscita;
 	}
-	@OneToMany(mappedBy="film",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="film",cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 	public List<Proiezione> getProiezioni() {
 		return proiezioni;
 	}
@@ -81,4 +81,23 @@ public class Film implements Serializable {
 	public void setProiezioni(List<Proiezione> proiezioni) {
 		this.proiezioni = proiezioni;
 	}
+	@Override
+	public String toString() {
+		return "Film [id=" + id + ", titolo=" + titolo + ", locandina=" + locandina + ", trama=" + trama + ", genere="
+				+ genere + ", durata=" + durata + ", annouscita=" + annouscita/* + ", proiezioni=" + proiezioni */+ "]";
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Film))
+			return false;
+		Film other = (Film) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+	
+	
 }

@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class Proiezione implements Serializable{
 	public double getPrezzo() {
 		return prezzo;
 	}
-	@OneToMany(mappedBy="proiezione",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="proiezione",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	public List<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}
@@ -135,11 +136,10 @@ public class Proiezione implements Serializable{
 			posti[numero]=true;
 		}
 	}
-	/*
 	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String toString() {
+		return "Proiezione [id=" + id + ", film=" + film + ", sala=" + sala + ", data=" + data + ", ora=" + ora
+				+ ", prezzo=" + prezzo + ", prenotazioni=" + prenotazioni + ", posti=" + Arrays.toString(posti) + "]";
 	}
-	*/
+	
 }
