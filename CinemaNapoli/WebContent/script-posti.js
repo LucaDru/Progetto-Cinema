@@ -21,6 +21,7 @@ $(document).ready(function () {
     })
 	$(document).on('click', '#prosegui',function(event){
 		if(listaPosti.length>0){
+			stringaPosti=""
 			$('#riepilogo-posti').text(listaPosti.length)
 			
 			listaPosti.forEach(element => {
