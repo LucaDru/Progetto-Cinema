@@ -44,13 +44,13 @@
 	<div class="container">
 		<ul class="showcase">
 			<li>
-				<div class="seat"></div> <small>N/A</small>
+				<div class="seat"></div> <small>Disponibile</small>
 			</li>
 			<li>
-				<div class="seat selected"></div> <small>Selected</small>
+				<div class="seat selected"></div> <small>Selezionato</small>
 			</li>
 			<li>
-				<div class="seat occupied"></div> <small>Occupied</small>
+				<div class="seat occupied"></div> <small>Occupato</small>
 			</li>
 		</ul>
 		

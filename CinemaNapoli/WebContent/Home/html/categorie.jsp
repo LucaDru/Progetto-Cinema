@@ -30,6 +30,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<jsp:include page="navbar.jsp"></jsp:include>
 	
+	<jsp:include page="login.jsp"></jsp:include>
 	<div class="container sfondocat">
 
 		<h1 class="titolo-card" style="color: #54036d">Genere</h1>
@@ -55,7 +56,6 @@
 		</div>
 	</div>
 	
-	<jsp:include page="footer.jsp"></jsp:include>
 	<!-- BootStrap -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -69,5 +69,8 @@
 		integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
 		crossorigin="anonymous"></script>
 
+	<script src="/CinemaNapoli/Home/js/scriptLogin.js"></script>
+	<script src="/CinemaNapoli/Home/js/Script.js"></script>
+    <script src="/CinemaNapoli/Home/js/validateScript.js"></script>
 	</body>
 </html>

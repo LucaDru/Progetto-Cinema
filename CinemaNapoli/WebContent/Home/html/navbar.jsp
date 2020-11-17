@@ -19,7 +19,7 @@
 					aria-expanded="false"><span class="titolinav">
 							PROIEZIONI</span> </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="RicercaGenere"><span class="titolinav">Ricerca
+						<a class="dropdown-item" href="/CinemaNapoli/RicercaGenere"><span class="titolinav">Ricerca
 								per genere</span></a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="/CinemaNapoli/RicercaFilm"><span class="titolinav">Ricerca
