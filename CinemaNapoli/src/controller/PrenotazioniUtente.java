@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,7 +48,7 @@ public class PrenotazioniUtente extends HttpServlet {
 		
 		request.setAttribute("listaPassate", listaPassate);
 		request.setAttribute("listaAttive", listaAttive);
-		request.getRequestDispatcher("dashUser.jsp").forward(request, response);
+		request.getRequestDispatcher("Dash/html/DashUser.jsp").forward(request, response);
 		
 	}
 

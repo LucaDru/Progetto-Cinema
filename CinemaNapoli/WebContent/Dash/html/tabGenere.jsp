@@ -1,9 +1,10 @@
 <%@page import="model.Genere"%>
 <%@page import="java.util.List"%>
-<%@page import="util.GestisciDatabase"%>
 <%
-	List<Genere> lista=GestisciDatabase.leggiGenere();
+	List<Genere> lista=(List<Genere>)request.getAttribute("listaGenere");
 %>
+<div class="card my-5 p-4">
+	<h4>Elenco Account da attivare:</h4>
 <div class="table-responsive">
 	<table class="table table-striped table-sm">
 		<thead>
@@ -67,4 +68,5 @@
 			%>
 		</tbody>
 	</table>
+</div>
 </div>

@@ -41,6 +41,7 @@ public class VisualizzaListe extends HttpServlet {
 		List<Genere> listaGenere = leggiGenere();
 		request.setAttribute("listaGenere", listaGenere);
 		//--
+		/*
 		if(request.getParameter("dash")==null)
 			request.getRequestDispatcher("Dash/dashHome.jsp").forward(request, response);
 		
@@ -52,6 +53,8 @@ public class VisualizzaListe extends HttpServlet {
 		
 		else
 			request.getRequestDispatcher("Dash/dashHome.jsp").forward(request, response);
+			*/
+		request.getRequestDispatcher("RicercaUser").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

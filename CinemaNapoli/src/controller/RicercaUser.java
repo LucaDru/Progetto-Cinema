@@ -48,7 +48,7 @@ public class RicercaUser extends HttpServlet {
 		List <User> listaCancellati = u.stream().filter(s -> !(s.isAttivo()) && !(s.getRuolo().getNome().equals("bannato"))).collect(Collectors.toList());
 		request.setAttribute("listaCancellati", listaCancellati);
 		//
-		request.getRequestDispatcher("Dash/dashUsers.jsp").forward(request, response);
+		request.getRequestDispatcher("Dash/html/DashAdmin.jsp").forward(request, response);
 	}
 
 

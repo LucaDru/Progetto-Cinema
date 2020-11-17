@@ -1,10 +1,11 @@
 <%@page import="model.*"%>
-<%@page import="util.*"%>
 <%@page import="java.util.List"%>
 <%
-	List<Film> listaFilm = GestisciDatabase.leggiFilm();
-	List<Genere> listaGenere = GestisciDatabase.leggiGenere();
+	List<Film> listaFilm=(List<Film>)request.getAttribute("listaFilm");
+	List<Genere> listaGenere=(List<Genere>)request.getAttribute("listaGenere");
 %>
+<div class="card my-5 p-4">
+	<h4>Elenco Account da attivare:</h4>
 <div class="table-responsive">
 	<table class="table table-striped table-sm">
 		<thead>
@@ -106,4 +107,5 @@
 			%>
 		</tbody>
 	</table>
+</div>
 </div>

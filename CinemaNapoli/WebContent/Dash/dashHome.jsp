@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<jsp:include page="html/navDashOri.jsp"></jsp:include>
+	<jsp:include page="navDashOri.jsp"></jsp:include>
 	
 	<div class="container-fluid">
 		<div class="row">
