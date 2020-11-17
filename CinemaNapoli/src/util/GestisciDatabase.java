@@ -1,13 +1,17 @@
 package util;
 
+import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.RollbackException;
+import javax.persistence.TemporalType;
 
 import model.*;
 
@@ -195,7 +199,7 @@ public class GestisciDatabase {
 		
 	       try{
 	    	   return em.createQuery("SELECT u FROM User u WHERE u.username='"+username+"'",User.class).getSingleResult();
-	        
+	    	   //TODO sistemare query con anche pwd
 	       } catch(NoResultException e) {
 	           return null;
 	       }
@@ -239,6 +243,20 @@ public class GestisciDatabase {
 		p.setPosti();
 		return p;
 	}
+	
+	public static List<Proiezione> cercaProiezioniFuture(){
+		EntityManager em=getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE p.data >:dataOdierna AND p.ora >:oraOdierna");
+		q.setParameter("dataOdierna", Calendar.getInstance().getTime(),TemporalType.DATE);
+		q.setParameter("oraOdierna", Calendar.getInstance().getTime(),TemporalType.TIME);
+		List<Proiezione> lista=q.getResultList();
+		lista=lista.parallelStream().sorted((a,b)->a.compareDataOra(b)).collect(Collectors.toList());
+		et.commit();
+		return lista;
+	}
+	
 	public static List<Proiezione> cercaProiezioneByTitolo(String titolo){
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
