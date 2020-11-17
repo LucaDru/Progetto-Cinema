@@ -38,8 +38,8 @@
 					multisalamedea@gmail.com</h6>
 				<br>
 				<h5 class="text-uppercase font-weight-bold">I nostri social:</h5>
-				<a href="#"><img src="/CinemaNapoli/Home/res/instagram icon.png" alt="instagram"
-					style="width: 50px; height: 50px;"></a> <a href="#"><img
+				<a href="https://www.instagram.com/multisalamedea/"><img src="/CinemaNapoli/Home/res/instagram icon.png" alt="instagram"
+					style="width: 50px; height: 50px;"></a> <a href="https://www.facebook.com/MultisalaMedea"><img
 					src="/CinemaNapoli/Home/res/facebook.png" alt="facebook"
 					style="width: 50px; height: 50px;"></a> <br>
 			</div>

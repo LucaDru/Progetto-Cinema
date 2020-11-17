@@ -94,8 +94,8 @@
                         <h5 class="card-header">Eventi</h5>
                         <div class="card-body barattolo-due">
                             <h5 class="card-title">Cinema Vintage</h5>
-                            <p class="card-text">Sei un amante del genere Cult? Vieni a trovarci tutti i marted&iacute;,
-                                proiettiamo i migliori film della storia</p>
+                            <p class="card-text">Sei un amante del genere Cult? Vieni a trovarci tutti i marted&iacute;
+                                per rivivere i Grandi Classici del cinema</p>
                             <h5 class="card-title insert">Il primo mercoled&iacute; di ogni mese, tutti gli spettacoli
                                 costano 2&euro;
                             </h5>
