@@ -50,6 +50,8 @@
 						</div>
 					</td>
 					<td>
+					</td>
+					<td>
 						<div class="form-group">
 							<input type="date" name="data" value="<%= p.getData() %>">
 						</div>

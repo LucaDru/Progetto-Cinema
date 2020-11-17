@@ -37,7 +37,7 @@ public class ModificaProiezione extends HttpServlet {
 			p.setId(Long.parseLong(request.getParameter("id")));
 			p.setFilm(cercaFilm(Long.parseLong(request.getParameter("film"))));
 			p.setData(Date.valueOf(request.getParameter("data")));
-			p.setOra(Time.valueOf(request.getParameter("ora")+":00"));
+			p.setOra(Time.valueOf(request.getParameter("ora")));
 			p.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
 			p.setSala(cercaSala(Long.parseLong(request.getParameter("sala"))));
 			
