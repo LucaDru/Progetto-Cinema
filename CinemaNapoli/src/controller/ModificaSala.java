@@ -32,7 +32,7 @@ public class ModificaSala extends HttpServlet {
 			s.setTreD(request.getParameter("treD").equals("on")?true:false);
 			
 			if(!modificaSala(s))
-				
+				request.setAttribute("modificaErrata", "si");
 			request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 		}
 		doGet(request, response);
