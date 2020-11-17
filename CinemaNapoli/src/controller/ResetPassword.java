@@ -38,8 +38,8 @@ public class ResetPassword extends HttpServlet {
 			request.getRequestDispatcher("Reindirizzamento").forward(request, response);
 		
 		} else {
-			User u=cercaUserByUsername(request.getParameter("username"));
-			if(u.getEmail().equals(request.getParameter("email"))){
+			User u=cercaUserByEmail(request.getParameter("email"));
+			if(u.getUsername().equals(request.getParameter("username"))){
 				String pwd=resetPassword();
 				mandaMail(u,"reset",pwd);
 				String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(pwd.getBytes("UTF-8"));

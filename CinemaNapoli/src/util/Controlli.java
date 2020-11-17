@@ -30,7 +30,7 @@ public class Controlli {
      
      public static boolean controlloNumeri (String num) {
     	 System.out.println("numeri");
-    	 return num.trim().matches("[0-9]*");
+    	 return num.trim().matches("[0-9]{5}");
      }
      
      public static boolean controlloCf (String cf) {

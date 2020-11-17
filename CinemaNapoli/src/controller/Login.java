@@ -56,7 +56,7 @@ public class Login extends HttpServlet {
 			}
 		}
 		*/
-		User u=cercaUserByUsername(request.getParameter("username"));
+		User u=cercaUserByUsername(request.getParameter("username"),request.getParameter("password"));
 		if(u==null) {
 			request.setAttribute("sbagliato", "si");
 			request.setAttribute("controllo", 1);

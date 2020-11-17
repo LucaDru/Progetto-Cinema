@@ -171,7 +171,6 @@ public class GestisciDatabase {
 		EntityTransaction et=em.getTransaction();
 		et.begin();
 		p=em.merge(p);
-		//em.detach(p);
 		em.remove(p);
 		et.commit();
 	}
@@ -194,17 +193,31 @@ public class GestisciDatabase {
 		return u;
 	}
 	
-	public static User cercaUserByUsername(String username) {
+	public static User cercaUserByUsername(String username, String pwd) {
 		EntityManager em=getManager();
-		
+		EntityTransaction et=em.getTransaction();
+		et.begin();
 	       try{
-	    	   return em.createQuery("SELECT u FROM User u WHERE u.username='"+username+"'",User.class).getSingleResult();
-	    	   //TODO sistemare query con anche pwd
+	    	   Query q = em.createQuery("SELECT u FROM User u WHERE u.username= :users AND u.password :pwd");
+	    	   q.setParameter("users", username);
+	    	   q.setParameter("pwd", pwd);
+	    	   et.commit();
+	    	   return (User) q.getSingleResult();
+	 
 	       } catch(NoResultException e) {
 	           return null;
 	       }
 	}
 
+	public static User cercaUserByEmail (String email) {
+		EntityManager em = getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		Query q = em.createQuery("SELECT u FROM User u WHERE u.email= :email");
+		q.setParameter("email", email);
+		et.commit();
+		return (User) q.getSingleResult();
+	}
 	
 	public static Film cercaFilm(long id) {
 		EntityManager em=getManager();
@@ -219,7 +232,9 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		List<Film> lista=em.createQuery("SELECT f FROM Film f WHERE f.titolo LIKE '%"+titolo+"%'").getResultList();
+		Query q = em.createQuery("SELECT f FROM Film f WHERE f.titolo LIKE :titolo");
+		q.setParameter("titolo", titolo);
+		List<Film> lista= q.getResultList();
 		et.commit();
 		return lista;
 	}
@@ -239,7 +254,6 @@ public class GestisciDatabase {
 		et.begin();
 		Proiezione p=em.find(Proiezione.class, id);
 		et.commit();
-		//em.refresh(p);
 		p.setPosti();
 		return p;
 	}
@@ -261,7 +275,9 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		List<Proiezione> lista=em.createQuery("SELECT p FROM Proiezione p WHERE p.film.titolo LIKE '%"+titolo+"%'").getResultList();
+		Query q = em.createQuery("SELECT p FROM Proiezione p WHERE p.film.titolo LIKE :titolo");
+		q.setParameter("titolo", titolo);
+		List<Proiezione> lista= q.getResultList();
 		et.commit();
 		return lista;
 	}
@@ -269,7 +285,9 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		List<Proiezione> lista=em.createQuery("SELECT p FROM Proiezione p WHERE p.film.id="+id).getResultList();
+		Query q = em.createQuery("SELECT p FROM Proiezione p WHERE p.film.id= :id");
+		q.setParameter("id", id);
+		List<Proiezione> lista= q.getResultList();
 		et.commit();
 		return lista;		
 	}
@@ -296,9 +314,10 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		Ruolo r=em.createQuery("SELECT r FROM Ruolo r WHERE r.nome='"+nome+"'",Ruolo.class).getSingleResult();
+		Query q = em.createQuery("SELECT r FROM Ruolo r WHERE r.nome= :nome");
+		q.setParameter("nome", nome);		
 		et.commit();
-		return r;
+		return (Ruolo) q.getResultList();
 	}
 	
 	public static Genere cercaGenere(long id) {
