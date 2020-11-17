@@ -47,7 +47,7 @@
 			%>			
 				<div class="carousel-item active filmetto"
 					style="background-image: url(<%=lista.get(i).getLocandina()%>);">
-					<a href="#">
+					<a href="RicercaFilm?idFilm=<%=lista.get(i).getId() %>">
 						<div class="sovrapposto">
 							DETTAGLI</br> <i class="fas fa-plus"></i>
 						</div>
@@ -56,7 +56,7 @@
 				<%}else{ %>
 				<div class="carousel-item filmetto"
 					style="background-image: url(<%=lista.get(i).getLocandina()%>);">
-					<a href="#">
+					<a href="RicercaFilm?idFilm=<%=lista.get(i).getId() %>">
 						<div class="sovrapposto">
 							DETTAGLI</br> <i class="fas fa-plus"></i>
 						</div>
