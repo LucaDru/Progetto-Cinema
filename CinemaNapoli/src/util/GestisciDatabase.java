@@ -32,20 +32,32 @@ public class GestisciDatabase {
 
     
     //------METODI AGGIUNGI
-	public static void aggiungiUser(User u) throws RollbackException {
-		EntityManager em=getManager();
-		EntityTransaction et=em.getTransaction();
-		et.begin();
-		em.persist(u);
-		et.commit();
+	public static boolean aggiungiUser(User u) {
+		try {
+			EntityManager em=getManager();
+			EntityTransaction et=em.getTransaction();
+			et.begin();
+			em.persist(u);
+			et.commit();			
+		}catch (RollbackException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	
-	public static void aggiungiSala(Sala s) throws RollbackException {
-		EntityManager em=getManager();
-		EntityTransaction et=em.getTransaction();
-		et.begin();
-		em.persist(s);
-		et.commit();
+	public static boolean aggiungiSala(Sala s) {
+		try {
+			EntityManager em=getManager();
+			EntityTransaction et=em.getTransaction();
+			et.begin();
+			em.persist(s);
+			et.commit();			
+		}catch(RollbackException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	
 	public static void aggiungiFilm(Film f) {
@@ -64,19 +76,31 @@ public class GestisciDatabase {
 		et.commit();
 	}
 	
-	public static void aggiungiPrenotazione(Prenotazione p) throws RollbackException {
-		EntityManager em=getManager();
-		EntityTransaction et=em.getTransaction();
-		et.begin();
-		em.persist(p);
-		et.commit();
+	public static boolean aggiungiPrenotazione(Prenotazione p) {
+		try {
+			EntityManager em=getManager();
+			EntityTransaction et=em.getTransaction();
+			et.begin();
+			em.persist(p);
+			et.commit();			
+		}catch(RollbackException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
-	public static void aggiungiGenere(Genere g) throws RollbackException {
-		EntityManager em=getManager();
-		EntityTransaction et=em.getTransaction();
-		et.begin();
-		em.persist(g);
-		et.commit();
+	public static boolean aggiungiGenere(Genere g) {
+		try {
+			EntityManager em=getManager();
+			EntityTransaction et=em.getTransaction();
+			et.begin();
+			em.persist(g);
+			et.commit();			
+		}catch (RollbackException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	  
 	//----- METODI LEGGI
@@ -115,12 +139,18 @@ public class GestisciDatabase {
 	
 	
 	//------METODI MODIFICA
-	public static void modificaUser(User u) {
-		EntityManager em=getManager();
-		EntityTransaction et=em.getTransaction();
-		et.begin();
-		em.merge(u);
-		et.commit(); 
+	public static boolean modificaUser(User u) {
+		try {
+			EntityManager em=getManager();
+			EntityTransaction et=em.getTransaction();
+			et.begin();
+			em.merge(u);
+			et.commit(); 			
+		}catch(RollbackException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	
 	public static boolean modificaSala(Sala s) {
@@ -145,12 +175,18 @@ public class GestisciDatabase {
 		et.commit();
 	}
 	
-	public static void modificaGenere(Genere g) {
-		EntityManager em=getManager();
-		EntityTransaction et=em.getTransaction();
-		et.begin();
-		em.merge(g);
-		et.commit();
+	public static boolean modificaGenere(Genere g) {
+		try {
+			EntityManager em=getManager();
+			EntityTransaction et=em.getTransaction();
+			et.begin();
+			em.merge(g);
+			et.commit();			
+		}catch(RollbackException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	
 	public static void modificaProiezione(Proiezione p) {
@@ -197,30 +233,36 @@ public class GestisciDatabase {
 		return u;
 	}
 	
-	public static User cercaUserByUsername(String username, String pwd) {
-		EntityManager em=getManager();
-		EntityTransaction et=em.getTransaction();
-		et.begin();
-	       try{
-	    	   Query q = em.createQuery("SELECT u FROM User u WHERE u.username= :users AND u.password= :pwd");
-	    	   q.setParameter("users", username);
-	    	   q.setParameter("pwd", pwd);
-	    	   et.commit();
-	    	   return (User) q.getSingleResult();
-	 
-	       } catch(NoResultException e) {
-	           return null;
-	       }
+	public static User cercaUserByUsername(String username, String pwd) {		
+		try {
+			EntityManager em = getManager();
+			EntityTransaction et = em.getTransaction();
+			et.begin();
+			Query q = em.createQuery("SELECT u FROM User u WHERE u.username= :users AND u.password= :pwd");
+			q.setParameter("users", username);
+			q.setParameter("pwd", pwd);
+			et.commit();
+			return (User) q.getSingleResult();
+
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 	public static User cercaUserByEmail (String email) {
-		EntityManager em = getManager();
-		EntityTransaction et=em.getTransaction();
-		et.begin();
-		Query q = em.createQuery("SELECT u FROM User u WHERE u.email= :email");
-		q.setParameter("email", email);
-		et.commit();
-		return (User) q.getSingleResult();
+		try {
+			EntityManager em = getManager();
+			EntityTransaction et=em.getTransaction();
+			et.begin();			
+			Query q = em.createQuery("SELECT u FROM User u WHERE u.email= :email");
+			q.setParameter("email", email);
+			et.commit();
+			return (User) q.getSingleResult();
+			
+		}catch (NoResultException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public static Film cercaFilm(long id) {
