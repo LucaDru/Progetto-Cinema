@@ -138,13 +138,20 @@
 
     <div class="container mt-3" style="background-color: #2c031e;">
         <div class="row">
-            <div class="testomedea">
+            <div class="col-8 testomedea">
                 <h2 class="titolomedea">Perche' Medea?</h2>
-                <p class="paragM"> Medea e&aacute; una figura della mitologia greca <br> Molestias possimus
-                    voluptate ratione, <br> voluptas quas modi corporis ipsa autem dolore, illo, <br> laudantium aperiam
-                    consectetur eos <br> minima officia cumque eligendi quo nostrum.</p>
+				<p class="paragM">Medea è uno dei personaggi più celebri e
+					controversi della mitologia greca; Eroina protofemminista della
+					classicità riportata sul grande schermo da registi del calibro di
+					Lars Von Trier e Pier Paolo Pasolini. Il Multisala Medea nasce dal
+					connubio tra modernità e classicismo, offriamo infatti la visione
+					di tutte le ultime uscite cinematografiche, oltre ad eventi
+					esclusivi con ricorrenza settimanale per rivivere i Grandi classici
+					del cinema.</p>
+			</div>
+			<div class="col-4 pr-4">
+           		<img src="/CinemaNapoli/Home/res/medea.jpg" alt="img medea" class="img-medea">
             </div>
-            <img src="/CinemaNapoli/Home/res/medea.jpg" alt="img medea" class="img-medea">
         </div>
     </div>
 	
