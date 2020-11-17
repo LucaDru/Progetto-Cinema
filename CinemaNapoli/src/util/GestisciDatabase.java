@@ -196,7 +196,7 @@ public class GestisciDatabase {
 		EntityTransaction et=em.getTransaction();
 		et.begin();
 	       try{
-	    	   Query q = em.createQuery("SELECT u FROM User u WHERE u.username= :users AND u.password :pwd");
+	    	   Query q = em.createQuery("SELECT u FROM User u WHERE u.username= :users AND u.password= :pwd");
 	    	   q.setParameter("users", username);
 	    	   q.setParameter("pwd", pwd);
 	    	   et.commit();
@@ -315,7 +315,7 @@ public class GestisciDatabase {
 		Query q = em.createQuery("SELECT r FROM Ruolo r WHERE r.nome= :nome");
 		q.setParameter("nome", nome);		
 		et.commit();
-		return (Ruolo) q.getResultList();
+		return (Ruolo) q.getSingleResult();
 	}
 	
 	public static Genere cercaGenere(long id) {
