@@ -44,7 +44,7 @@ public class InserisciFilm extends HttpServlet {
 			f.setGenere(g);
 
 			// -----------------------------------------------------------------------
-			final String path = "D:\\Git-Repo\\Progetto-Cinema\\CinemaNapoli\\WebContent\\caroImg";
+			final String path = "C:\\imgMultisalaMedea\\Progetto-Cinema\\CinemaNapoli\\WebContent\\caroImg";
 			final Part filePart = request.getPart("file");
 			System.out.println(filePart);
 			final String fileName = getFileName(filePart);

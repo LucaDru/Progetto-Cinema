@@ -6,6 +6,9 @@
 <%
 	List<Film> lista=(List<Film>)request.getAttribute("filmFiltrati");
 	List<Proiezione> proiezioni=(List<Proiezione>)request.getAttribute("proiezOrdinate");
+	if(request.getAttribute("filmetto")!= null){
+		Film fc=(Film)request.getAttribute("filmetto");
+	}
 	for(Film f:lista){
 %>
     <!--SINGOLA CARD DEL FILM-->

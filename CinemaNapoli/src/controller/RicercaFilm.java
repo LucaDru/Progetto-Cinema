@@ -72,7 +72,12 @@ public class RicercaFilm extends HttpServlet {
 		List<Proiezione> ciccio=new ArrayList<Proiezione>();
 		List<Film> filmFiltrati = new ArrayList<Film>();
 		
-		ciccio=cercaProiezioniFuture();
+		ciccio=request.getParameter("genere")!=null?
+				cercaProiezioneByIdGenere(Long.parseLong(request.getParameter("genere"))):
+				request.getParameter("titolo")!=null?cercaProiezioneByTitolo(request.getParameter("titolo")):
+				request.getParameter("idFilm")!=null?cercaProiezioneByIdFilm(Long.parseLong(request.getParameter("idFilm"))):
+				cercaProiezioniFuture();
+	
 		
 		for(Proiezione p:ciccio) {
 			System.out.println(p.getData()+"hello");

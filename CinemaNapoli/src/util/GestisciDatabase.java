@@ -273,20 +273,42 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		Query q = em.createQuery("SELECT p FROM Proiezione p WHERE p.film.titolo LIKE :titolo");
-		q.setParameter("titolo", titolo);
-		List<Proiezione> lista= q.getResultList();
+		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE p.data >:dataOdierna AND p.ora >:oraOdierna AND p.film.titolo LIKE :titolo ");
+		q.setParameter("dataOdierna", Calendar.getInstance().getTime(),TemporalType.DATE);
+		q.setParameter("oraOdierna", Calendar.getInstance().getTime(),TemporalType.TIME);
+		q.setParameter("titolo", "%"+titolo+"%");
+		List<Proiezione> lista=q.getResultList();
+		lista=lista.parallelStream().sorted((a,b)->a.compareDataOra(b)).collect(Collectors.toList());
 		et.commit();
+		lista.forEach((p)->p.setPosti());
 		return lista;
 	}
-	public static List<Proiezione> cercaProiezioneById(long id) {
+	public static List<Proiezione> cercaProiezioneByIdGenere(long id){
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		Query q = em.createQuery("SELECT p FROM Proiezione p WHERE p.film.id= :id");
+		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE p.data >:dataOdierna AND p.ora >:oraOdierna AND p.film.genere.id= :id ");
+		q.setParameter("dataOdierna", Calendar.getInstance().getTime(),TemporalType.DATE);
+		q.setParameter("oraOdierna", Calendar.getInstance().getTime(),TemporalType.TIME);
 		q.setParameter("id", id);
-		List<Proiezione> lista= q.getResultList();
+		List<Proiezione> lista=q.getResultList();
+		lista=lista.parallelStream().sorted((a,b)->a.compareDataOra(b)).collect(Collectors.toList());
 		et.commit();
+		lista.forEach((p)->p.setPosti());
+		return lista;
+	}
+	public static List<Proiezione> cercaProiezioneByIdFilm(long id) {
+		EntityManager em=getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE p.data >:dataOdierna AND p.ora >:oraOdierna AND p.film.id= :id ");
+		q.setParameter("dataOdierna", Calendar.getInstance().getTime(),TemporalType.DATE);
+		q.setParameter("oraOdierna", Calendar.getInstance().getTime(),TemporalType.TIME);
+		q.setParameter("id", id);
+		List<Proiezione> lista=q.getResultList();
+		lista=lista.parallelStream().sorted((a,b)->a.compareDataOra(b)).collect(Collectors.toList());
+		et.commit();
+		lista.forEach((p)->p.setPosti());
 		return lista;		
 	}
 	
