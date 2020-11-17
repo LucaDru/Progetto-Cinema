@@ -102,9 +102,7 @@ public class GestisciDatabase {
 	
 	public static List <Proiezione> leggiProiezione() {
 		EntityManager em=getManager();
-		//return em.createNamedQuery("Proiezione.findAll").getResultList();
 		List<Proiezione> lista=em.createNamedQuery("Proiezione.findAll").getResultList();
-		//lista.forEach(pr->em.refresh(pr));
 		lista.forEach(p->p.setPosti());
 		return lista;
 	}
