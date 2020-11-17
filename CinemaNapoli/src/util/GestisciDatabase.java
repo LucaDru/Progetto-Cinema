@@ -123,12 +123,18 @@ public class GestisciDatabase {
 		et.commit(); 
 	}
 	
-	public static void modificaSala(Sala s) {
-		EntityManager em=getManager();
-		EntityTransaction et=em.getTransaction();
-		et.begin();
-		em.merge(s);
-		et.commit();
+	public static boolean modificaSala(Sala s) {
+		try {
+			EntityManager em=getManager();
+			EntityTransaction et=em.getTransaction();
+			et.begin();
+			em.merge(s);
+			et.commit();
+		}catch(RollbackException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	 
 	public static void modificaFilm(Film f) {
@@ -260,12 +266,14 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE p.data >:dataOdierna AND p.ora >:oraOdierna");
+		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE p.data> :dataOdierna OR (p.data =:dataOd AND p.ora>= :oraOdierna)");
 		q.setParameter("dataOdierna", Calendar.getInstance().getTime(),TemporalType.DATE);
+		q.setParameter("dataOd", Calendar.getInstance().getTime(),TemporalType.DATE);
 		q.setParameter("oraOdierna", Calendar.getInstance().getTime(),TemporalType.TIME);
 		List<Proiezione> lista=q.getResultList();
 		lista=lista.parallelStream().sorted((a,b)->a.compareDataOra(b)).collect(Collectors.toList());
 		et.commit();
+		lista.forEach((p)->p.setPosti());
 		return lista;
 	}
 	
@@ -273,8 +281,9 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE p.data >:dataOdierna AND p.ora >:oraOdierna AND p.film.titolo LIKE :titolo ");
+		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE (p.data>= :dataOdierna OR (p.data =:dataOd AND p.ora>= :oraOdierna)) AND p.film.titolo LIKE ':titolo' ");
 		q.setParameter("dataOdierna", Calendar.getInstance().getTime(),TemporalType.DATE);
+		q.setParameter("dataOd", Calendar.getInstance().getTime(),TemporalType.DATE);
 		q.setParameter("oraOdierna", Calendar.getInstance().getTime(),TemporalType.TIME);
 		q.setParameter("titolo", "%"+titolo+"%");
 		List<Proiezione> lista=q.getResultList();
@@ -287,8 +296,9 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE p.data >:dataOdierna AND p.ora >:oraOdierna AND p.film.genere.id= :id ");
+		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE (p.data>= :dataOdierna OR (p.data =:dataOd AND p.ora>= :oraOdierna)) AND p.film.genere.id= :id ");
 		q.setParameter("dataOdierna", Calendar.getInstance().getTime(),TemporalType.DATE);
+		q.setParameter("dataOd", Calendar.getInstance().getTime(),TemporalType.DATE);
 		q.setParameter("oraOdierna", Calendar.getInstance().getTime(),TemporalType.TIME);
 		q.setParameter("id", id);
 		List<Proiezione> lista=q.getResultList();
@@ -301,8 +311,9 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE p.data >:dataOdierna AND p.ora >:oraOdierna AND p.film.id= :id ");
+		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE (p.data>= :dataOdierna OR (p.data =:dataOd AND p.ora>= :oraOdierna)) AND p.film.id= :id ");
 		q.setParameter("dataOdierna", Calendar.getInstance().getTime(),TemporalType.DATE);
+		q.setParameter("dataOd", Calendar.getInstance().getTime(),TemporalType.DATE);
 		q.setParameter("oraOdierna", Calendar.getInstance().getTime(),TemporalType.TIME);
 		q.setParameter("id", id);
 		List<Proiezione> lista=q.getResultList();

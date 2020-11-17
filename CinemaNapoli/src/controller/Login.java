@@ -26,7 +26,7 @@ public class Login extends HttpServlet {
 	// ---
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		response.sendRedirect("Inizializzazione");
 	}
 
 	// ---
@@ -74,7 +74,8 @@ public class Login extends HttpServlet {
 						response.addCookie(new Cookie("userUsername", u.getUsername()));
 						response.addCookie(new Cookie("userPassword", u.getPassword()));
 					}
-					request.getRequestDispatcher("Inizializzazione").forward(request, response);
+					//request.getRequestDispatcher("Inizializzazione").forward(request, response);
+					response.sendRedirect("Inizializzazione");
 
 				} else {
 					if (u.getRuolo().getNome().equals("bannato"))

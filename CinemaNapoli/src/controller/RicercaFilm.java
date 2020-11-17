@@ -74,8 +74,8 @@ public class RicercaFilm extends HttpServlet {
 		
 		ciccio=request.getParameter("genere")!=null?
 				cercaProiezioneByIdGenere(Long.parseLong(request.getParameter("genere"))):
-				request.getParameter("titolo")!=null?cercaProiezioneByTitolo(request.getParameter("titolo")):
-				request.getParameter("idFilm")!=null?cercaProiezioneByIdFilm(Long.parseLong(request.getParameter("idFilm"))):
+				request.getParameter("titolo")!=null? cercaProiezioneByTitolo(request.getParameter("titolo")):
+				request.getParameter("idFilm")!=null? cercaProiezioneByIdFilm(Long.parseLong(request.getParameter("idFilm"))):
 				cercaProiezioniFuture();
 	
 		

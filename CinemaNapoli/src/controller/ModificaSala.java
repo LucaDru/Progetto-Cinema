@@ -29,8 +29,10 @@ public class ModificaSala extends HttpServlet {
 			s.setId(Long.parseLong(request.getParameter("id")));
 			s.setNome(request.getParameter("nome"));
 			s.setPostiMax(Integer.parseInt(request.getParameter("postimax")));
+			s.setTreD(request.getParameter("treD").equals("on")?true:false);
 			
-			modificaSala(s);
+			if(!modificaSala(s))
+				
 			request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 		}
 		doGet(request, response);

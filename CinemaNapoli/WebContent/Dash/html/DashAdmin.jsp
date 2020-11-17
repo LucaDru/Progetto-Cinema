@@ -53,6 +53,12 @@
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">Proiezioni</h1>
 				</div>
+				<div class="pt-3 pb-2 mb-3 text-center">
+          			<button class="btn btn-warning" type="button" data-toggle="collapse"
+						data-target="#inserisci-proiezione" aria-expanded="false"
+						aria-controls="collapseExample">Inserisci Proiezione</button>
+				</div>
+				<jsp:include page="insertProiezione.jsp"></jsp:include>
 				<jsp:include page="tabProiezioni.jsp"></jsp:include>
 			</div>
 			
@@ -86,6 +92,12 @@
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">Sale</h1>
 				</div>
+				<div class="pt-3 pb-2 mb-3 text-center">
+					<button class="btn btn-warning" type="button" data-toggle="collapse"
+						data-target="#inserisci-sala" aria-expanded="false"
+						aria-controls="collapseExample">Inserisci Sala</button>
+				</div>
+				<jsp:include page="insertSala.jsp"></jsp:include>
 				<jsp:include page="tabSale.jsp"></jsp:include>
 			</div>
 			

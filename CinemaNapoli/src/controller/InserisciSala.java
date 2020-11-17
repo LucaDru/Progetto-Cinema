@@ -30,6 +30,8 @@ public class InserisciSala extends HttpServlet {
 		Sala s = new Sala();
 		s.setNome(request.getParameter("nome"));
 		s.setPostiMax(Integer.parseInt(request.getParameter("posti")));
+		System.out.println(request.getParameter("treD"));
+		s.setTreD(request.getParameter("treD").equals("on")?true:false);
 		
 		try {
 			aggiungiSala(s);
