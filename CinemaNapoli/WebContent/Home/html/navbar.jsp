@@ -48,7 +48,7 @@
 				data-toggle="modal" data-target="#exampleModalCenter">
 				<i class="fas fa-user"></i>Login
 			</button>
-			<a href="/CinemaNapoli/Home/html/Registrazione.jsp"><button
+			<a href="/CinemaNapoli/Home/html/registrazioneFinale.jsp"><button
 					type="button" class="btn btn-outline-dark">
 					<i class="fas fa-user-edit"></i> Registrati
 				</button></a>

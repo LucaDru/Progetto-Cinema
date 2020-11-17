@@ -25,6 +25,9 @@ public class Registrazione extends HttpServlet {
     //---
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+	}
+	//---
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User u = new User();
 		Ruolo r = cercaRuoloByNome("daAccettare");
 		u.setRuolo(r);
@@ -71,11 +74,7 @@ public class Registrazione extends HttpServlet {
 			request.setAttribute("erroreInserimento", "si");
 		}
 		
-		request.getRequestDispatcher("Home/html/Registrazione.jsp").forward(request, response);
-	}
-	//---
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		request.getRequestDispatcher("Home/html/registrazioneFinale.jsp").forward(request, response);
 	}
 	
 }
