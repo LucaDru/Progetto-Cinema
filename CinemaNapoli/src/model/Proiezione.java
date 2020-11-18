@@ -123,6 +123,16 @@ public class Proiezione implements Serializable{
 		return posti;
 	}
 	//---
+	
+	public int getPostiDisp() {
+		int cont=0;
+		for(Boolean b: posti) {
+			if(b==false) {
+				cont++;
+			}
+		}return cont;
+	}
+	//---
 	private void impostaOccupati() {
 		
 		String cose="";

@@ -35,7 +35,7 @@ public class RicercaProiezione extends HttpServlet {
 		if(request.getParameter("ilParametroneFinto")!=null) {
 			//List<Prenotazione> aCaso=leggiPrenotazione();
 			//
-			proiezioniFiltrate=new ArrayList<Proiezione>();
+			/*proiezioniFiltrate=new ArrayList<Proiezione>();
 			proiezioni=request.getParameter("titolo")!=null?cercaProiezioneByTitolo(request.getParameter("titolo")):leggiProiezione();
 			//
 			proiezioni=proiezioni.stream()
@@ -60,7 +60,7 @@ public class RicercaProiezione extends HttpServlet {
 				//proiezioniFiltrate=proiezioniFiltrate.stream().filter(p->p.getFilm().getTitolo().equalsIgnoreCase(request.getParameter("titolo"))).collect(Collectors.toList());
 			}else if(request.getParameter("genere")!= null) {
 				proiezioniFiltrate=proiezioni.stream().filter(p->p.getFilm().getGenere().equalsIgnoreCase(request.getParameter("genere"))).collect(Collectors.toList());
-			}else*/ if(request.getParameter("data")!= null) {
+			}else*/ /*if(request.getParameter("data")!= null) {
 				proiezioniFiltrate=proiezioni.stream().filter(p->p.getData().toLocalDate().isEqual(LocalDate.parse(request.getParameter("data")))).collect(Collectors.toList());
 			}else if(request.getParameter("orario")!= null) {
 				proiezioniFiltrate=proiezioni.stream().filter(p->p.getOra().toLocalTime().isAfter(LocalTime.parse(request.getParameter("orario")))).collect(Collectors.toList());
@@ -68,9 +68,9 @@ public class RicercaProiezione extends HttpServlet {
 				proiezioniFiltrate=proiezioni.stream().filter(p->p.getFilm().getAnnouscita()==(Integer.parseInt(request.getParameter("annouscita")))).collect(Collectors.toList());
 			}else if(request.getParameter("genere")!= null) {
 				proiezioniFiltrate=proiezioni.stream().filter(p->p.getFilm().getGenere()==(cercaGenere(Long.parseLong(request.getParameter("genere"))))).collect(Collectors.toList());
-			}
+			}*/
 			//request.setAttribute("proiezioniFiltrate", proiezioniFiltrate);
-			request.setAttribute("listaProiezioni", proiezioniFiltrate);
+			//request.setAttribute("listaProiezioni", proiezioniFiltrate);
 			//request.getRequestDispatcher("paginaRicerca.jsp").forward(request, response);
 		}
 		

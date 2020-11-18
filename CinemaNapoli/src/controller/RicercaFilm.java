@@ -26,9 +26,9 @@ public class RicercaFilm extends HttpServlet {
 	private List<Film> lista;
 	//private List<Film> filmFiltrati;
 	//---
-    public RicercaFilm() {
-        super();
-    }
+	public RicercaFilm() {
+		super();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -39,7 +39,7 @@ public class RicercaFilm extends HttpServlet {
 		/*
 		lista=request.getParameter("genere")!=null?
 				cercaGenere(Long.parseLong(request.getParameter("genere"))).getFilms():leggiFilm();
-		
+
 		for(Film f : lista) {
 			List<Proiezione> filtra = f.getProiezioni();
 			for(Proiezione p : filtra) {
@@ -53,43 +53,52 @@ public class RicercaFilm extends HttpServlet {
 			ciccio.addAll(f.getProiezioni());
 			System.out.println(f.getTitolo()+"STO RICERCANDOOOOOO");
 		}
-		
+
 		Film ciao=filmFiltrati.get(0);
 		System.out.println(ciao.getProiezioni());
-		
+
 		//List<Proiezione> ciccio=leggiProiezione();
-		
+
 		List<Proiezione> ciccio=leggiProiezione().stream()
 				.filter(p->p.getData().toLocalDate().isAfter(LocalDate.now()) || 
 						(p.getData().toLocalDate().isEqual(LocalDate.now()) && p.getOra().toLocalTime().compareTo(LocalTime.now())==1))
 				.sorted((a,b)->a.compareDataOra(b))
 				.collect(Collectors.toList());
 		//ciccio.sort((a,b)->a.getData().toLocalDate().compareTo(b.getData().toLocalDate()));
-		
+
 		ciccio=ciccio.stream().filter(p->p.getData().toLocalDate().isAfter(LocalDate.now()) || 
 				(p.getData().toLocalDate().isEqual(LocalDate.now()) && p.getOra().toLocalTime().compareTo(LocalTime.now())==1))
 		.sorted((a,b)->a.compareDataOra(b)).peek(p->System.out.println(p)).collect(Collectors.toList());*/
-				
-		List<Proiezione> ciccio=new ArrayList<Proiezione>();
-		List<Film> filmFiltrati = new ArrayList<Film>();
-		
-		ciccio=request.getParameter("genere")!=null?
-				cercaProiezioneByIdGenere(Long.parseLong(request.getParameter("genere"))):
-				request.getParameter("titolo")!=null && request.getParameter("titolo")!= "" ? cercaProiezioneByTitolo(request.getParameter("titolo")):
-				request.getParameter("data")!= null && request.getParameter("data")!= "" ?cercaProiezioniByData(Date.valueOf(request.getParameter("data"))):	
-				request.getParameter("idFilm")!=null? cercaProiezioneByIdFilm(Long.parseLong(request.getParameter("idFilm"))):
-				cercaProiezioniFuture();
-	
-		
-		for(Proiezione p:ciccio) {
-			System.out.println(p.getData()+"hello");
+		if(request.getParameter("proiezione")!= null && request.getParameter("proiezione")!= "" ) {
+			request.setAttribute("proiezione", cercaProiezione(Long.parseLong(request.getParameter("proiezione"))));
+			request.getRequestDispatcher("/complimentoni.jsp").forward(request, response);
+		}else {
+
+
+
+			List<Proiezione> ciccio=new ArrayList<Proiezione>();
+			List<Film> filmFiltrati = new ArrayList<Film>();
+
+			ciccio=request.getParameter("genere")!=null?
+					cercaProiezioneByIdGenere(Long.parseLong(request.getParameter("genere"))):
+						request.getParameter("titolo")!=null && request.getParameter("titolo")!= "" ? cercaProiezioneByTitolo(request.getParameter("titolo")):
+							request.getParameter("data")!= null && request.getParameter("data")!= "" ?cercaProiezioniByData(Date.valueOf(request.getParameter("data"))):	
+								request.getParameter("idFilm")!=null? cercaProiezioneByIdFilm(Long.parseLong(request.getParameter("idFilm"))):
+									cercaProiezioniFuture();
+
+
+								for(Proiezione p:ciccio) {
+									System.out.println(p.getData()+"hello");
+								}
+								filmFiltrati=ciccio.parallelStream().map(p->p.getFilm()).distinct().collect(Collectors.toList());
+
+
+
+
+								request.setAttribute("proiezOrdinate", ciccio);
+								request.setAttribute("filmFiltrati", filmFiltrati);
+								request.getRequestDispatcher("Home/html/RicercaAv.jsp").forward(request, response);
 		}
-		filmFiltrati=ciccio.parallelStream().map(p->p.getFilm()).distinct().collect(Collectors.toList());
-		
-		
-		request.setAttribute("proiezOrdinate", ciccio);
-		request.setAttribute("filmFiltrati", filmFiltrati);
-		request.getRequestDispatcher("Home/html/RicercaAv.jsp").forward(request, response);
 		//doGet(request, response);
 	}
 

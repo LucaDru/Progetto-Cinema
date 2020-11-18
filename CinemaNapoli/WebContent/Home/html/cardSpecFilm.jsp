@@ -25,7 +25,7 @@
                         <p>Genere: <%=f.getGenere().getNome()%></p>
                         <p>Durata: <%=f.getDurata()%>min.</p>
                         <p class="mb-5"><%=f.getTrama()%></p>
-                        <form action="/CinemaNapoli/RicercaProiezione" method="post" class="formPrenotazione">
+                        <form action="/CinemaNapoli/RicercaFilm" method="post" class="formPrenotazione">
                             <div class="input-group input-group-lg px-5">
                                 <select class="custom-select" name="proiezione">
                                     <option value="">Scegli la proiezione:</option>
@@ -45,7 +45,8 @@
                                     		<optgroup label="<%=p.getData()%>">
                                     		
                                     		<%} %>
-                                    		<option value="<%=p.getId()%>"><%=p.orarioSenzaSecondi()%></option>                                    
+                                    		<option value="<%=p.getId()%>"><%=p.orarioSenzaSecondi()+" Posti: "%><%= p.getPostiDisp()%>
+                                    		</option>                                    
                                     <%
                                     	cont++;}}
                                     %>
