@@ -31,6 +31,7 @@
 	<jsp:include page="navbar.jsp"></jsp:include>
 	
 	<jsp:include page="login.jsp"></jsp:include>
+	<jsp:include page="recuperoPassword.jsp"></jsp:include>
 	<input type="hidden" id="controllo" value="<%=request.getAttribute("controllo")!=null? request.getAttribute("controllo"): 0%>">
 	<!--CAROSELLO-->
 	<div class="film-sala text-right">

@@ -44,7 +44,7 @@ public class Controlli {
      		return false;
      	}
     	 System.out.println("numeri");
-    	 return num.trim().matches("[0-9]");
+    	 return num.trim().matches("[0-9]*");
      }
      
      public static boolean controlloCf (String cf) {

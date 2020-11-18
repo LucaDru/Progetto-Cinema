@@ -37,7 +37,7 @@
 					</td>
 					<td>
 						<div class="form-group">
-							<input type="text" name="img"
+							<input type="text" name="file"
 							 value="<%= g.getImg() %>">
 						</div>
 					</td>

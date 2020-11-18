@@ -44,17 +44,17 @@ public class ModificaFilm extends HttpServlet {
 			f.setTrama(request.getParameter("trama"));
 			f.setLocandina(request.getParameter("locandina"));
 
+			try {
+				modificaFilm(f);
+			} catch (RollbackException e) {
+				e.printStackTrace();
+			}
 		}
 
-		try {
-			modificaFilm(f);
-		} catch (RollbackException e) {
-			e.printStackTrace();
-		}
 		request.setAttribute("controllo", 3);
 		request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 
-		doGet(request, response);
+		//doGet(request, response);
 	}
 
 }

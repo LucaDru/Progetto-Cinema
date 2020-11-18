@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.Base64;
 
 import javax.servlet.ServletException;
@@ -39,7 +38,7 @@ public class ModificaUser extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		User u= null;
+		User u= cercaUser(Long.parseLong(request.getParameter("id")));
 				
 		if(controlloInserimento(request.getParameter("citta")) &&
 		   controlloCap(request.getParameter("cap")) &&
@@ -51,7 +50,7 @@ public class ModificaUser extends HttpServlet {
 		   controlloVuoto(request.getParameter("username")) &&
 		   controlloVuoto(request.getParameter("password"))){					
 
-				u= cercaUser(Long.parseLong(request.getParameter("id")));
+				//u.setId(Long.parseLong(request.getParameter("id")));
 				u.setCitta(request.getParameter("citta"));
 				u.setProvincia(request.getParameter("provincia"));
 				u.setIndirizzo(request.getParameter("indirizzo"));
@@ -60,8 +59,10 @@ public class ModificaUser extends HttpServlet {
 				u.setPiva(request.getParameter("piva").equals("N/D")?null: request.getParameter("piva"));
 				u.setEmail(request.getParameter("email"));
 				u.setUsername(request.getParameter("username"));
-				String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(request.getParameter("password").getBytes("UTF-8"));
-				u.setPassword(encodedPwd);				
+				if(!u.getPassword().equals(request.getParameter("password"))) {
+					String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(request.getParameter("password").getBytes("UTF-8"));
+					u.setPassword(encodedPwd);
+				}
 				
 				modificaUser(u);
 				request.getSession().setAttribute("userLoggato", u);			

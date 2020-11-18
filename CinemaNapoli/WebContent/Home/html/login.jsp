@@ -7,7 +7,7 @@
 				<h5 class="modal-title" style="text-align: center;"
 					id="exampleModalLongTitle">Login</h5>
 				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
+					aria-label="Close" id="chiudi-modale">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -24,7 +24,7 @@
 						<input type="text" name="username" id="inputEmail"
 							class="form-control" placeholder="Username" required autofocus>
 						<label for="inputEmail">Username</label>
-						<div class="invalid-feedback">Please provide a valid email.
+						<div class="invalid-feedback">Immettere una mail valida.
 						</div>
 					</div>
 
@@ -32,8 +32,7 @@
 						<input type="password" name="password" id="inputPassword"
 							class="form-control" placeholder="Password" required> <label
 							for="inputPassword">Password</label>
-						<div class="invalid-feedback">Please provide a valid
-							password.</div>
+						<div class="invalid-feedback">Immettere una	password valida.</div>
 					</div>
 					<%
 						if (request.getAttribute("sbagliato") != null) {
@@ -51,7 +50,7 @@
 						</label>
 					</div>
 					<button class="btn btn-lg btn-secondary btn-block" type="submit">Login</button>
-					<p class="mt-5 mb-1 text-muted text-center"><a href="/CinemaNapoli/recuperoPassword.jsp">Password dimenticata?</a></p>
+					<p class="mt-5 mb-1 text-muted text-center"><a href="#" id="pwd-dimenticata">Password dimenticata?</a></p>
 				</form>
 			</div>
 			<div class="text-center border-top py-4">

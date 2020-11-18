@@ -6,7 +6,7 @@
 <div class="jumbotron my-5">
 	<div class="container text-dark">
 
-		<form action="#" method="post">
+		<form action="/CinemaNapoli/ModificaUser" method="post">
 			<input type="hidden" name="id" value="<%=u.getId()%>">
 
 			<div class="form-group">
@@ -37,7 +37,7 @@
 				<div class="form-group col-md-2">
 					<label for="inputZip">Partita Iva</label> <input name="piva"
 						type="text" class="form-control" id="inputZip"
-						value="<%=u.getPiva() == null ? "" : u.getPiva()%>">
+						value="<%=u.getPiva() == null ? "N/D" : u.getPiva()%>">
 				</div>
 				<div class="form-group col-md-2">
 					<label for="inputZip">E-mail</label> <input name="email"

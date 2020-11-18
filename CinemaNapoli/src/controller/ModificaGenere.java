@@ -36,11 +36,11 @@ public class ModificaGenere extends HttpServlet {
 		if(request.getParameter("id") != null) {
 			g.setId(Long.parseLong(request.getParameter("id")));
 			g.setNome(request.getParameter("nome"));
-			g.setImg(request.getParameter("file"));			
-		}
-		
-		if(!modificaGenere(g))
-			request.setAttribute("genereSbagliato", "si");
+			g.setImg(request.getParameter("file"));
+			
+			if(!modificaGenere(g))
+				request.setAttribute("genereSbagliato", "si");
+		}		
 		
 		request.setAttribute("controllo", 3);
 		request.getRequestDispatcher("VisualizzaListe").forward(request, response);
