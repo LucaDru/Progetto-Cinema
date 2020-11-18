@@ -23,7 +23,7 @@
  <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class"sfondocat">
 	
 	<%
 		List<Genere>listaGeneri = (List<Genere>)request.getAttribute("listaGeneri");
@@ -33,7 +33,7 @@
 	<jsp:include page="navbar.jsp"></jsp:include>
 	
 	<jsp:include page="login.jsp"></jsp:include>
-	<div class="container-fluid sfondocat">
+	<div class="container-fluid">
 
 		<h1 class="titolo-card">Genere</h1>
 		<hr class="mt-2 mb-5">

@@ -62,6 +62,7 @@
   
   .fila {
     display: flex;
+    margin-left:40%;
   }
   
   .screen {
