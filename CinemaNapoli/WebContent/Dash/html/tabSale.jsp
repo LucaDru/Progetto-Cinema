@@ -5,7 +5,7 @@
 	List<Sala> lista = (List<Sala>) request.getAttribute("listaSale");
 %>
 <div class="card my-5 p-4">
-	<h4>Elenco Account da attivare:</h4>
+	<h4>Elenco Sale:</h4>
 	<div class="table-responsive">
 		<table class="table table-striped table-sm">
 			<thead>
@@ -35,7 +35,7 @@
 						</td>
 						<td>
 							<div class="form-group">
-								<input type="number" name="postimax"
+								<input type="number" min="10" max="200" step="10" name="postimax"
 									value=<%=s.getPostiMax()%>>
 							</div>
 						</td>

@@ -36,7 +36,7 @@ public class Registrazione extends HttpServlet {
 		if(controlloInserimento(request.getParameter("nome"))&&
 		   controlloInserimento(request.getParameter("cognome")) &&
 		   controlloInserimento(request.getParameter("citta")) &&
-		   controlloNumeri(request.getParameter("cap")) &&
+		   controlloCap(request.getParameter("cap")) &&
 		   controlloCf(request.getParameter("cf")) &&
 		   controlloEmail(request.getParameter("email")) &&
 		   controlloVuoto(request.getParameter("provincia")) &&

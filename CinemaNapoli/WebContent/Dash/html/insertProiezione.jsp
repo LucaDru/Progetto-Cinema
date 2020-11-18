@@ -43,15 +43,20 @@
 		<div class="form-row col-md-4">
 			<div class="form-group">
 				<label for="exampleInputData">Data</label> <input name="data"
-					type="date" class="form-control">
+					type="date" class="form-control" required>
 			</div>
 			<div class="form-group col-md-4">
 				<label for="exampleInputOra">Ora</label> <input name="ora"
-					type="time" class="form-control">
+					type="time" class="form-control" required>
 			</div>
 			<div class="form-group col-md-4">
-				<label for="exampleInputPrezzo">Prezzo</label> <input name="prezzo"
-					type="number" min="1" step="any" class="form-control">
+				<label for="exampleInputPrezzo">Prezzo</label> 
+				<select class="custom-select" id="listaPrezzi" name="prezzo">
+					<option selected>Scegli prezzo</option>
+					<option value="2.0">2.0</option>
+					<option value="7.5">7.5</option>
+					<option value="10.0">10.0</option>
+				</select>
 			</div>
 		</div>
 		<div class="align-items-center">

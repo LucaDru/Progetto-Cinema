@@ -3,12 +3,12 @@
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="inputEmail4">Genere</label> <input name="nomeGenere"
-					type="text" class="form-control" id="inputEmail4">
+					type="text" class="form-control" id="inputEmail4" required>
 					
 			</div>
 			<div class="form-group">
 				<label for="exampleInputLocandina">Immagine di copertina</label> <input
-					name="file" type="file" class="form-control">
+					name="file" type="file" class="form-control" required>
 			</div>
 
 		</div>

@@ -5,7 +5,7 @@
 	List<Genere> listaGenere=(List<Genere>)request.getAttribute("listaGenere");
 %>
 <div class="card my-5 p-4">
-	<h4>Elenco Account da attivare:</h4>
+	<h4>Elenco Film:</h4>
 <div class="table-responsive">
 	<table class="table table-striped table-sm">
 		<thead>

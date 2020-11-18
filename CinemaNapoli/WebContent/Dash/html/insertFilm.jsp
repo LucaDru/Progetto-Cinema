@@ -8,12 +8,11 @@
 		method="post">
 		<div class="form-group">
 			<label for="exampleInputTitolo">Titolo</label> <input name="titolo"
-				type="text" class="form-control">
+				type="text" class="form-control" required>
 		</div>
 		<select class="custom-select" id="genere" name="genere" required>
 					<option selected>Scegli Genere</option>
 					<%
-					
 						for (Genere g : lista) {
 					%>
 					<option value="<%=g.getId()%>"><%=g.getNome()%></option>
@@ -23,19 +22,19 @@
 		</select>			
 		<div class="form-group">
 			<label for="exampleInputLocandina">Locandina</label> <input
-				name="file" type="file" class="form-control">
+				name="file" type="file" class="form-control" required>
 		</div>
 		<div class="form-group">
 			<label for="exampleInputTrama">Trama</label> <input name="trama"
-				type="text" class="form-control">
+				type="text" class="form-control" required>
 		</div>
 		<div class="form-group">
 			<label for="exampleInputDurata">Durata</label> <input name="durata"
-				type="text" class="form-control">
+				type="text" class="form-control" required>
 		</div>
 		<div class="form-group">
 			<label for="exampleInputAnno">Anno di uscita</label> <input
-				name="annouscita" type="text" class="form-control">
+				name="annouscita" type="text" class="form-control" required>
 		</div>
 		<button type="submit" class="btn btn-primary">Aggiungi Film</button>
 	</form>

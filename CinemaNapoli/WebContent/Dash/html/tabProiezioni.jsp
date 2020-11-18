@@ -8,7 +8,7 @@
 	List<Film> listaFilm = (List<Film>)request.getAttribute("listaFilm");
 %>
 <div class="card my-5 p-4">
-	<h4>Elenco Account da attivare:</h4>
+	<h4>Elenco Proiezioni:</h4>
 <div class="table-responsive">
 	<table class="table table-striped table-sm">
 		<thead>
@@ -77,7 +77,7 @@
 					</td>
 					<td>
 						<div class="form-group">
-							<input type="number" name="prezzo"  min="1" step="any" value="<%= p.getPrezzo() %>">
+							<input type="number" name="prezzo"  min="1" step="any" value="<%= p.getPrezzo() %>">							
 						</div>
 					</td>
 					<td>

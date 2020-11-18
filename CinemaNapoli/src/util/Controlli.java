@@ -31,12 +31,20 @@ public class Controlli {
  		return inserimento.toLowerCase().trim().matches("[a-z]*");
  	}
      
+     public static boolean controlloCap (String cap) {
+    	 if(cap == null) {
+     		return false;
+     	}
+    	 System.out.println("cap");
+    	 return cap.trim().matches("[0-9]{5}");
+     }
+     
      public static boolean controlloNumeri (String num) {
     	 if(num == null) {
      		return false;
      	}
     	 System.out.println("numeri");
-    	 return num.trim().matches("[0-9]{5}");
+    	 return num.trim().matches("[0-9]");
      }
      
      public static boolean controlloCf (String cf) {
