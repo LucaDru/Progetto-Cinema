@@ -95,3 +95,10 @@ input.invalid {
   padding-bottom: 20px;
   padding-top: 10px;
 }
+
+.imgsfondo {
+	background-image:url(../res/Medea-sfondo-sporco.jpg);
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+}

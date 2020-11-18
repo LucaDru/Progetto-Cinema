@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="/CinemaNapoli/Home/css/ciaobea.css">
 <link rel="stylesheet" href="/CinemaNapoli/Home/css/login.css">
 <link rel="stylesheet" href="/CinemaNapoli/Home/css/Cat.css">
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
 	
@@ -31,9 +33,9 @@
 	<jsp:include page="navbar.jsp"></jsp:include>
 	
 	<jsp:include page="login.jsp"></jsp:include>
-	<div class="container sfondocat">
+	<div class="container-fluid sfondocat">
 
-		<h1 class="titolo-card" style="color: #54036d">Genere</h1>
+		<h1 class="titolo-card">Genere</h1>
 		<hr class="mt-2 mb-5">
 		<div class="row m-0">
 			
@@ -42,10 +44,9 @@
 			
 			%>
 			
-					<div class="card categoria col-2" style="width: 12rem;">
-						<img class="card-img genereimg" src="<%=g.getImg()%>">
+					<div class="card categoria" style="background-image: url(<%=g.getImg()%>)">
 						<a href="RicercaFilm?genere=<%=g.getId()%>" class="d-block mb-4 h-100">
-							<div class="testocard" ><%=g.getNome()%></div>
+							<div class="testocard"><%=g.getNome()%></div>
 						</a>
 					</div>
 		

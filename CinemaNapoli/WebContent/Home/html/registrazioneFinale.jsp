@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="/CinemaNapoli/Home/css/login.css">
 	<link rel="stylesheet" href="/CinemaNapoli/Home/css/reg.css">
 </head>
-<body>
+<body class="imgsfondo">
 	<jsp:include page="header.jsp"></jsp:include>
 	<jsp:include page="navbar.jsp"></jsp:include>
 
