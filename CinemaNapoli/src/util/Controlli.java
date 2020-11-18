@@ -28,7 +28,7 @@ public class Controlli {
     	 if(inserimento == null) {
      		return false;
      	}
- 		return inserimento.toLowerCase().trim().matches("[a-z]*");
+ 		return inserimento.toLowerCase().trim().matches("^[a-z ,.'-]+$");
  	}
      
      public static boolean controlloCap (String cap) {
