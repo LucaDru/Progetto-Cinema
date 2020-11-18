@@ -44,7 +44,7 @@
 					<td class="col-titolo"><%=p.getProiezione().getFilm().getTitolo()%></td>
 					<td class="col-durata"><%=p.getProiezione().getFilm().getDurata()%></td>
 					<td class="col-giorno"><%=p.getProiezione().getData()%></td>
-					<td class="col-ora"><%=p.getProiezione().getOra()%></td>
+					<td class="col-ora"><%=p.getProiezione().orarioSenzaSecondi()%></td>
 					<td class="col-posti"><%=p.getNumPosti()%></td>
 					<td class="col-button">
 						<form action="/CinemaNapoli/AnnullaPrenotazione" method="post">
@@ -92,7 +92,7 @@
 					<td class="col-titolo-past"><%=p.getProiezione().getFilm().getTitolo()%></td>
 					<td class="col-durata-past"><%=p.getProiezione().getFilm().getDurata()%></td>
 					<td class="col-giorno-past"><%=p.getProiezione().getData()%></td>
-					<td class="col-ora-past"><%=p.getProiezione().getOra()%></td>
+					<td class="col-ora-past"><%=p.getProiezione().orarioSenzaSecondi()%></td>
 					<td class="col-posti-past"><%=p.getNumPosti()%></td>
 				</tr>
 				<%

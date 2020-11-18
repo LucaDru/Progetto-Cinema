@@ -34,7 +34,7 @@
 		<div class="jumbotron text-center">
 			<h1><%=p.getFilm().getTitolo()%></h1>
 			<hr>
-			<h3><%=p.getData() + " " + p.getOra()%></h3>
+			<h3><%=p.getData() + " " + p.orarioSenzaSecondi()%></h3>
 			<hr>
 			<button class="btn btn-success" type="button" id="prosegui">
 				Prosegui</button>
