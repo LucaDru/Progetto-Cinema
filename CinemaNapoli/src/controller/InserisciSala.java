@@ -31,13 +31,12 @@ public class InserisciSala extends HttpServlet {
 		s.setNome(request.getParameter("nome"));
 		s.setPostiMax(Integer.parseInt(request.getParameter("posti")));
 		System.out.println(request.getParameter("treD"));
-		s.setTreD(request.getParameter("treD").equals("on")?true:false);
+		s.setTreD(request.getParameter("treD")==null?false:true);
 		
-		try {
-			aggiungiSala(s);
-		} catch(RollbackException e) {
-			e.printStackTrace();
-		}
+		if(!aggiungiSala(s))
+			request.setAttribute("salaSbagliata", "si");
+		
+		request.setAttribute("controllo", 4);
 		request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 	}
 }

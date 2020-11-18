@@ -95,11 +95,12 @@
 				<td><%=f.getAnnouscita()%></td>
 				<td><%=f.getTrama()%></td>
 				<td><%=f.getLocandina()%></td>
-				<td> 
-					<a class="btn btn-info btn-sm" href="VisualizzaListe?dash=film&modificaFilm=<%=f.getId()%>"
-					 	role="button">Modifica</a>
-					<a class="btn btn-outline-danger btn-sm" href="#"
-						role="button">X</a>
+				<td>
+					<form action="VisualizzaListe" method="post">
+						<input type="hidden" name="modificaFilm" value="<%=f.getId()%>">
+						<button class="btn btn-info btn-sm"
+						 	type="submit">Modifica</button>
+					</form>
 				</td>
 			</tr>
 			<%

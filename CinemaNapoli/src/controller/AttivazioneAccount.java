@@ -25,21 +25,24 @@ public class AttivazioneAccount extends HttpServlet {
 			u = cercaUser(Long.parseLong(request.getParameter("attiva")));
 			u.setAttivo(true);
 			modificaUser(u);
-			request.getRequestDispatcher("RicercaUser").forward(request, response);
+			request.setAttribute("controllo", 1);
+			request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 		
 		}else if (request.getParameter("disattiva") != null){
 			u = cercaUser(Long.parseLong(request.getParameter("disattiva")));
 			u.setAttivo(false);
 			modificaUser(u);
 			//mandaMail(u, "disattivazione");
-			request.getRequestDispatcher("RicercaUser").forward(request, response);
+			request.setAttribute("controllo", 1);
+			request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 		
 		}else if(request.getParameter("elimina") != null) {
 			u = (User) request.getSession().getAttribute("userLoggato");
 			u.setAttivo(false);
 			modificaUser(u);
 			
-			request.getRequestDispatcher("Logout").forward(request, response);
+			//request.getRequestDispatcher("Logout").forward(request, response);
+			response.sendRedirect("Logout");
 		}
 	}
 

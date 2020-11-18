@@ -30,31 +30,29 @@
 					<td class="p-2"><%=u.getNome()%></td>
 					<td class="p-2"><%=u.getCognome()%></td>
 					<td class="p-2"><%=u.getEmail()%></td>
-					<td>
+					<td class="d-flex align-items-center">
 						<div class="custom-control custom-switch d-inline p-2">
 							<input type="checkbox" class="custom-control-input"
-								id="customSwitch2" checked disabled> <label
+								id="customSwitch2" disabled> <label
 								class="custom-control-label" for="customSwitch2"></label>
 						</div>
-						<button type="button" class="btn btn-warning btn-sm"
-							data-toggle="tooltip" data-placement="top"
-							title="Promuovi/Demota">
-							<i class="fas fa-exchange-alt"></i>
-						</button>
+						<form action="AssegnaRuoli" method="post">
+							<input type="hidden" name="staff" value="<%=u.getId()%>">
+							<button type="submit" class="btn btn-warning btn-sm"
+								data-toggle="tooltip" data-placement="top"
+								title="Promuovi/Demota">
+								<i class="fas fa-exchange-alt"></i>
+							</button>							
+						</form>
 					</td>
 					<td>
-						<button type="button" class="btn btn-primary btn-sm"
-							data-toggle="tooltip" data-placement="top" title="Accetta">
-							<i class="fas fa-thumbs-up"></i>
-						</button>
-						<button type="button" class="btn btn-danger btn-sm"
-							data-toggle="tooltip" data-placement="top" title="Banna">
-							<i class="fas fa-ban"></i>
-						</button>
-						<button type="button" class="btn btn-info btn-sm"
-							data-toggle="tooltip" data-placement="top" title="Elimina">
-							<i class="far fa-trash-alt"></i>
-						</button>
+						<form action="ConfermaRegistrazione" method="post">
+							<input type="hidden" name="user" value="<%=u.getId()%>">
+							<button type="submit" class="btn btn-primary btn-sm"
+								data-toggle="tooltip" data-placement="top" title="Accetta">
+								<i class="fas fa-thumbs-up"></i>
+							</button>
+						</form>
 					</td>
 				</tr>
 				<%

@@ -80,7 +80,8 @@ public class InserisciFilm extends HttpServlet {
 				aggiungiFilm(f);
 			}
 		}
-		request.getRequestDispatcher("VisualizzaListe?dash=film").forward(request, response);
+		request.setAttribute("controllo", 3);
+		request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 		//doGet(request, response);
 	}
 	//---

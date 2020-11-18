@@ -22,7 +22,7 @@
 	<jsp:include page="navbarOri.jsp"></jsp:include>
 	
 	<!-- controllo delle TAB -->
-  	<input type="hidden" value="0" id="controllo">
+  	<input type="hidden" value="<%=request.getAttribute("controllo")!=null?request.getAttribute("controllo"):0%>" id="controllo">
 	
 	<div class="container-fluid">
 	<div class="row">

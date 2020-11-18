@@ -100,8 +100,11 @@
 				<td><%="sala "+p.getSala().getNome()%></td>
 				<td><%=p.getPrezzo()+" "%>&euro;</td>
 				<td>
-					<a class="btn btn-info btn-sm" href="VisualizzaListe?dash=proiezioni&modificaProiezione=<%=p.getId() %>"
-					 	role="button">Modifica</a>
+					<form action="VisualizzaListe" method="post" class="d-inline-block">
+						<input type="hidden" name="modificaProiezione" value="<%=p.getId()%>">
+						<button class="btn btn-info btn-sm"
+						 	type="submit">Modifica</button>
+					 </form>
 					<a class="btn btn-outline-danger btn-sm" href="#"
 					role="button">X</a>
 				</td>

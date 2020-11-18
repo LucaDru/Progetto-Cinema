@@ -68,7 +68,8 @@ public class InserisciGenere extends HttpServlet {
 		} catch (RollbackException e) {
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("VisualizzaListe?dash=film").forward(request, response);
+		request.setAttribute("controllo", 3);
+		request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 	}
 
 	// ---

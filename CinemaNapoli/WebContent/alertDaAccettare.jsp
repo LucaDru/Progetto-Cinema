@@ -43,7 +43,7 @@
 			%>
 		
 		<div class="my-4 text-center">
-			<a href="/CinemaNapoli/Home/html/Home.jsp">Torna alla Home</a>
+			<a href="Inizializzazione">Torna alla Home</a>
 		</div>
 	</div>
 	

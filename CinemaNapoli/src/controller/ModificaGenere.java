@@ -1,11 +1,9 @@
 package controller;
 
-import static util.GestisciDatabase.aggiungiGenere;
 import static util.GestisciDatabase.modificaGenere;
 
 import java.io.IOException;
 
-import javax.persistence.RollbackException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,21 +36,15 @@ public class ModificaGenere extends HttpServlet {
 		if(request.getParameter("id") != null) {
 			g.setId(Long.parseLong(request.getParameter("id")));
 			g.setNome(request.getParameter("nome"));
-			g.setImg(request.getParameter("file"));
-			
-
-			
+			g.setImg(request.getParameter("file"));			
 		}
 		
-		try {
-			modificaGenere(g);
-		} catch(RollbackException e) {
-			e.printStackTrace();
-		}
-		request.getRequestDispatcher("VisualizzaListe?dash=film").forward(request, response);
+		if(!modificaGenere(g))
+			request.setAttribute("genereSbagliato", "si");
+		
+		request.setAttribute("controllo", 3);
+		request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 	}
-
-	
-	}
+}
 
 

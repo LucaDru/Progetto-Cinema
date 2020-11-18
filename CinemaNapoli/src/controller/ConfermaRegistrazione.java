@@ -27,7 +27,8 @@ public class ConfermaRegistrazione extends HttpServlet {
 		modificaUser(u);
 		// --
 		mandaMail(u, "conferma", "");
-		response.sendRedirect("RicercaUser");
+		request.setAttribute("controllo", 1);
+		request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 	} 
 	//---
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		

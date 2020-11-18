@@ -14,7 +14,6 @@
 					<th>Nome <i class="fas fa-sort"></i></th>
 					<th>Cognome <i class="fas fa-sort"></i></th>
 					<th>Email <i class="fas fa-sort"></i></th>
-					<th>Staff</th>
 					<th>...</th>
 				</tr>
 			</thead>
@@ -30,23 +29,15 @@
 					<td class="p-2"><%=u.getNome()%></td>
 					<td class="p-2"><%=u.getCognome()%></td>
 					<td class="p-2"><%=u.getEmail()%></td>
+					
 					<td>
-						<div class="custom-control custom-switch d-inline p-2">
-							<input type="checkbox" class="custom-control-input"
-								id="customSwitch2" disabled> <label
-								class="custom-control-label" for="customSwitch2"></label>
-						</div>
-						<button type="button" class="btn btn-warning btn-sm"
-							data-toggle="tooltip" data-placement="top"
-							title="Promuovi/Demota">
-							<i class="fas fa-exchange-alt"></i>
-						</button>
-					</td>
-					<td>
-						<button type="button" class="btn btn-primary btn-sm"
-							data-toggle="tooltip" data-placement="top" title="Accetta">
-							<i class="fas fa-thumbs-up"></i>
-						</button>
+						<form action="AssegnaRuoli" method="post">
+							<input type="hidden" name="user" value="<%=u.getId()%>">
+							<button type="submit" class="btn btn-primary btn-sm"
+								data-toggle="tooltip" data-placement="top" title="Sbanna">
+								<i class="fas fa-thumbs-up"></i>
+							</button>
+						</form>
 					</td>
 				</tr>
 				<%

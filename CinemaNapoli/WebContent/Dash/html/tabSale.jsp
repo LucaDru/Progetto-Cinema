@@ -20,7 +20,7 @@
 			<tbody>
 				<%
 					for (Sala s : lista) {
-					if (request.getParameter("modifica") != null && Long.parseLong(request.getParameter("modifica")) == s.getId()) {
+					if (request.getParameter("modificaSala")!= null && Long.parseLong(request.getParameter("modificaSala")) == s.getId()) {
 				%>
 				<!-- Modifica sala -->
 				<form action="ModificaSala" method="post">
@@ -80,9 +80,12 @@
  	}
  %>
 					</td>
-					<td><a class="btn btn-info"
-						href="VisualizzaListe?modifica=<%=s.getId()%>" role="button">Modifica</a>
-						<a class="btn btn-outline-danger btn-sm" href="#" role="button">X</a>
+					<td>
+						<form action="VisualizzaListe" method="post">
+							<input type="hidden" name="modificaSala" value="<%=s.getId()%>">
+							<button class="btn btn-info btn-sm"
+								type="submit">Modifica</button>
+						</form>
 					</td>
 				</tr>
 				<%

@@ -74,21 +74,21 @@ public class ModificaProiezione extends HttpServlet {
 				}
 				if(uguale!=null) {
 					inserimento=false;
-					request.setAttribute("orarioSbagliato", stessoOrario);
+					request.setAttribute("orarioSbagliatoMod", stessoOrario);
 				}
 				//
 				else if(antecedente!=null && 
 						antecedente.getOra().toLocalTime().plusMinutes(antecedente.getFilm().getDurata()+15)
 						.compareTo(p.getOra().toLocalTime())==1) {
 					inserimento=false;
-					request.setAttribute("orarioSbagliato", orarioPre);
+					request.setAttribute("orarioSbagliatoMod", orarioPre);
 				}
 				//
 				else if(successiva!=null && 
 						p.getOra().toLocalTime().plusMinutes(p.getFilm().getDurata()+15)
 						.compareTo(successiva.getOra().toLocalTime())==1) {
 					inserimento=false;
-					request.setAttribute("orarioSbagliato", orarioPost);
+					request.setAttribute("orarioSbagliatoMod", orarioPost);
 				}
 			}
 			//---		
@@ -96,7 +96,8 @@ public class ModificaProiezione extends HttpServlet {
 			if (inserimento) {
 				modificaProiezione(p);
 			}
-			request.getRequestDispatcher("VisualizzaListe?dash=proiezioni").forward(request, response);
+			request.setAttribute("controllo", 2);
+			request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 		}
 	}
 

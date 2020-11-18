@@ -42,7 +42,8 @@ public class AssegnaRuoli extends HttpServlet {
 			u.setRuolo(r);
 			modificaUser(u);
 		}
-		request.getRequestDispatcher("RicercaUser").forward(request, response);
+		request.setAttribute("controllo", 1);
+		request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

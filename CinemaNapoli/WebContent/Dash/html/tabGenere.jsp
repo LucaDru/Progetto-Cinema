@@ -57,10 +57,11 @@
 				<td><%=g.getNome()%></td>
 				<td><%=g.getImg()%></td>
 				<td> 
-					<a class="btn btn-info btn-sm" href="VisualizzaListe?dash=film&modificaGenere=<%=g.getId() %>"
-					 	role="button">Modifica</a>
-					<a class="btn btn-outline-danger btn-sm" href="#"
-						role="button">X</a>
+					<form action="VisualizzaListe" method="post">
+						<input type="hidden" name="modificaGenere" value="<%=g.getId()%>">
+						<button class="btn btn-info btn-sm"
+						 	type="submit">Modifica</button>
+					</form>
 				</td>
 			</tr>
 			<%

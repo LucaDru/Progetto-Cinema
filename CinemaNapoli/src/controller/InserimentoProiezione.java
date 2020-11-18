@@ -93,6 +93,7 @@ public class InserimentoProiezione extends HttpServlet {
 		if (inserimento) {
 			aggiungiProiezione(p);
 		}
-		request.getRequestDispatcher("VisualizzaListe?dash=proiezioni").forward(request, response);
+		request.setAttribute("controllo", 2);
+		request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 	}
 }

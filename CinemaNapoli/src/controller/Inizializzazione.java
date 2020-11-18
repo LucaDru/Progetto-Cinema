@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +25,20 @@ public class Inizializzazione extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String username=null,pwd=null;
+		
+		if(request.getCookies()!=null) {
+			for(Cookie c:request.getCookies()) {
+				System.out.println(c.getName()+" "+c.getValue());
+				if(c.getName().equals("userUsername")) username=c.getValue();
+				else if(c.getName().equals("userPassword")) pwd=c.getValue();
+			}
+		}
+		if(username!=null && pwd!=null) {
+			request.getSession().setAttribute("userLoggato",cercaUserByUsername(username, pwd));
+		}
+		
 		List<Film> lista=leggiFilm();
 		lista.forEach(f->System.out.println(f.getTitolo()+"----aaaaaa----"));
 		/*
@@ -51,14 +66,6 @@ public class Inizializzazione extends HttpServlet {
 					break;
 				}
 			}
-			/*
-			List<Proiezione> filtrata=f.getProiezioni().stream().peek(se->System.out.println(se.getData())).filter(
-					p->(p.getData().toLocalDate().isEqual(LocalDate.now()) || p.getData().toLocalDate().isAfter(LocalDate.now()))
-						&& p.getData().toLocalDate().isBefore(LocalDate.now().plusDays(30))
-					).collect(Collectors.toList());
-			if(filtrata.size()>0)
-				listaFilm.add(f);
-				*/
 		}
 		
 		request.setAttribute("listaFilm", listaFilm);
