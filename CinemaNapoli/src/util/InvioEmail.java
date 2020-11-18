@@ -31,11 +31,9 @@ public class InvioEmail {
 			+ "<span>La tua password è stata resettata.</span></br><span>La nuova password è :</span></br></br><span>";
 	private static String msgReset2="</span></div></div></div></body></html>";
 	private static String msgPrenotazione="<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n"
-			+ "<title>Conferma</title><style>* {box-sizing: border-box;}.bar{font-family: 'Libre Barcode 39 Text', cursive;font-size: 30pt;}\r\n"
-			+ "</style><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap\"\r\n"
-			+ " rel=\"stylesheet\"></head><body><div class=\"container\"><div style=\"background-color: #2c031e; height: 500px; width: 500px; padding: 6%;\">\r\n"
+			+ "<title>Conferma</title></head><body><div class=\"container\"><div style=\"background-color: #2c031e; height: 500px; width: 500px; padding: 6%;\">\r\n"
 			+ "<div style=\"background-color: white; width: 100%; height:100%; padding: 15%; padding-top: 35%;\">\r\n"
-			+ "<span>La tua prenotazione è andata a buon fine.</span></br><span>Il tuo biglietto è:</span></br></br><span class=\"bar\"><img url='cid:qrCode'/>";
+			+ "<span>La tua prenotazione è andata a buon fine.</span></br><span>Il tuo biglietto &egrave; stato inviato in allegato</span></br></br><span class=\"bar\"><img url='cid:qrCode'/>";
 	private static String msgPrenotazione2="</span></div></div></div></body></html>";
 	private static String msgAnnullaPre1="<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n"
 			+ "<title>Conferma</title><style>* {box-sizing: border-box;}\r\n"
