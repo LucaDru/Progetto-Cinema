@@ -23,7 +23,7 @@
  <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
-<body class"sfondocat">
+<body class="sfondocat">
 	
 	<%
 		List<Genere>listaGeneri = (List<Genere>)request.getAttribute("listaGeneri");
