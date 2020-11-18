@@ -123,8 +123,8 @@ $(document).ready(function () {
             });
         }
         tables.sort(function (a, b) {
-            let x = a.giorno.split('/');
-            let y = b.giorno.split('/');
+            let x = a.giorno.split('-');
+            let y = b.giorno.split('-');
             if (parseInt(x[0]) > parseInt(y[0])) return 1;
             else if (parseInt(x[0]) < parseInt(y[0])) return -1;
             else if (parseInt(x[0]) == parseInt(y[0])) {
@@ -335,8 +335,8 @@ $(document).ready(function () {
             });
         }
         tables.sort(function (a, b) {
-            let x = a.giorno.split('/');
-            let y = b.giorno.split('/');
+            let x = a.giorno.split('-');
+            let y = b.giorno.split('-');
             if (parseInt(x[0]) > parseInt(y[0])) return 1;
             else if (parseInt(x[0]) < parseInt(y[0])) return -1;
             else if (parseInt(x[0]) == parseInt(y[0])) {
