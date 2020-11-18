@@ -56,7 +56,7 @@
 			<div class="text-center border-top py-4">
 				<h4>
 					Non hai un account? 
-					<a href="/CinemaNapoli/Home/html/Registrazione.jsp">Registrati!</a>
+					<a href="/CinemaNapoli/Home/html/registrazioneFinale.jsp">Registrati!</a>
 				</h4>
 			</div>
 		</div>
