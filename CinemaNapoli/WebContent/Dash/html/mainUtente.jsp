@@ -3,13 +3,17 @@
 <%	
 	List <Prenotazione> attive= (List<Prenotazione>) request.getAttribute("listaAttive");
 	List <Prenotazione> passate= (List<Prenotazione>) request.getAttribute("listaPassate");
+	User u=(User)request.getSession().getAttribute("userLoggato");
 %>
 
 <!-- prenotazioni in corso-->
-<div class="col-9" style="background-color: #993333;">
-	<br> <br>
-	<h1 style="color: whitesmoke;">Bentornato NomeUtente</h1>
-	<div class="card pt-0 pb-0" style="width: 95%; border: none;">
+<div
+	class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+	<h1 class="h2" style="color: whitesmoke;">Ciao <%=u.getNome()%></h1>
+	<!-- <br> <br>
+	<h1 style="color: whitesmoke;">Bentornato NomeUtente</h1> -->
+</div>
+	<div class="card my-5 p-4">
 		<br>
 		<h2 class="ml-2">Le tue prenotazioni in corso:</h2>
 
@@ -57,7 +61,7 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="card pt-0 pb-0" style="width: 95%; border: none;">
+	<div class="card my-5 p-4">
 		<br>
 		<h2 class="ml-2">Le tue prenotazioni scadute:</h2>
 		<table class="table table-striped">
@@ -97,4 +101,3 @@
 			</tbody>
 		</table>
 	</div>
-</div>

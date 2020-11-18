@@ -21,13 +21,20 @@
 	@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
 </style>
 </head>
-<body>
+<body style="background-color: #993333;">
 	<jsp:include page="navbarOri.jsp"></jsp:include>
 	
 	<div class="container-fluid px-0">
-        <div class="row mx-0 px-0">
+        <div class="row mx-0">
         	<jsp:include page="navVertUtente.jsp"></jsp:include>
-        	<jsp:include page="mainUtente.jsp"></jsp:include>
+        	<div class="tab-content col-md-9 ml-sm-auto col-lg-10 px-md-4" id="superTabContent">
+        		<div class="tab-pane fade show active" id="prenotazioniUtente" role="tabpanel" aria-labelledby="prenotazioniUtente-tab">
+        			<jsp:include page="mainUtente.jsp"></jsp:include>
+        		</div>
+        		<div class="tab-pane fade" id="modificaProfilo" role="tabpanel" aria-labelledby="modificaProfilo-tab">
+        			<jsp:include page="modificaProfilo.jsp"></jsp:include>
+        		</div>
+        	</div>
         </div>
     </div>
     

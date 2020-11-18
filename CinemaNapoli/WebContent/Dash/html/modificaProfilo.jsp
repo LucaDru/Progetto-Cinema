@@ -2,19 +2,11 @@
 <%
 	User u = (User) request.getSession().getAttribute("userLoggato");
 %>
-<div class="container">
-	<h1 class="display-4"><%=u.getNome() + " " + u.getCognome()%></h1>
-	<p><%=u.getIndirizzo()%>, <%=u.getCap()%> <%=u.getCitta()%> (<%=u.getProvincia()%>)</p>
 
-	<button class="btn btn-warning" type="button" data-toggle="collapse"
-		data-target="#modifica" aria-expanded="false"
-		aria-controls="collapseExample">Modifica Profilo</button>
-</div>
-
-<div class="jumbotron collapse" id="modifica">
+<div class="jumbotron my-5">
 	<div class="container text-dark">
 
-		<form action="ModificaUser" method="post">
+		<form action="#" method="post">
 			<input type="hidden" name="id" value="<%=u.getId()%>">
 
 			<div class="form-group">
@@ -66,5 +58,7 @@
 				<button type="submit" class="btn btn-info">Modifica</button>
 			</div>
 		</form>
+		<a class="btn btn-secondary" id="prenotazioniUtente-tab"
+					href="/CinemaNapoli/Reindirizzamento">Annulla</a>
 	</div>
 </div>
