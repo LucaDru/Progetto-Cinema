@@ -1,5 +1,6 @@
 package util;
 
+import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -323,7 +324,7 @@ public class GestisciDatabase {
 		EntityManager em=getManager();
 		EntityTransaction et=em.getTransaction();
 		et.begin();
-		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE (p.data>= :dataOdierna OR (p.data =:dataOd AND p.ora>= :oraOdierna)) AND p.film.titolo LIKE ':titolo' ");
+		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE (p.data>= :dataOdierna OR (p.data =:dataOd AND p.ora>= :oraOdierna)) AND p.film.titolo LIKE :titolo ");
 		q.setParameter("dataOdierna", Calendar.getInstance().getTime(),TemporalType.DATE);
 		q.setParameter("dataOd", Calendar.getInstance().getTime(),TemporalType.DATE);
 		q.setParameter("oraOdierna", Calendar.getInstance().getTime(),TemporalType.TIME);
@@ -364,6 +365,19 @@ public class GestisciDatabase {
 		lista.forEach((p)->p.setPosti());
 		return lista;		
 	}
+	public static List<Proiezione> cercaProiezioniByData(Date data){
+		EntityManager em=getManager();
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		Query q=em.createQuery("SELECT p FROM Proiezione p WHERE p.data= :data ");
+		q.setParameter("data", data);
+		List<Proiezione> lista=q.getResultList();
+		lista=lista.parallelStream().sorted((a,b)->a.compareDataOra(b)).collect(Collectors.toList());
+		et.commit();
+		lista.forEach((p)->p.setPosti());
+		return lista;
+	}
+	
 	
 	public static Prenotazione cercaPrenotazione(long id) {
 		EntityManager em=getManager();

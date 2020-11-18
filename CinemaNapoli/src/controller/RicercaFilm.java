@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -74,7 +75,8 @@ public class RicercaFilm extends HttpServlet {
 		
 		ciccio=request.getParameter("genere")!=null?
 				cercaProiezioneByIdGenere(Long.parseLong(request.getParameter("genere"))):
-				request.getParameter("titolo")!=null? cercaProiezioneByTitolo(request.getParameter("titolo")):
+				request.getParameter("titolo")!=null && request.getParameter("titolo")!= "" ? cercaProiezioneByTitolo(request.getParameter("titolo")):
+				request.getParameter("data")!= null && request.getParameter("data")!= "" ?cercaProiezioniByData(Date.valueOf(request.getParameter("data"))):	
 				request.getParameter("idFilm")!=null? cercaProiezioneByIdFilm(Long.parseLong(request.getParameter("idFilm"))):
 				cercaProiezioniFuture();
 	
