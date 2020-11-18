@@ -26,8 +26,7 @@ public class ModificaSala extends HttpServlet {
 		Sala s = new Sala();
 		
 		if(controlloInserimento(request.getParameter("nome")) &&
-		   controlloNumeri(request.getParameter("postimax")) &&
-		   controlloVuoto(request.getParameter("treD"))) {
+		   controlloNumeri(request.getParameter("postimax"))) {
 			
 			s.setId(Long.parseLong(request.getParameter("id")));
 			s.setNome(request.getParameter("nome"));
@@ -37,10 +36,10 @@ public class ModificaSala extends HttpServlet {
 			if(!modificaSala(s))
 				request.setAttribute("modificaErrata", "si");
 			
-			request.setAttribute("controllo", 4);
-			request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 		}
-		doGet(request, response);
+		request.setAttribute("controllo", 4);
+		request.getRequestDispatcher("VisualizzaListe").forward(request, response);
+		//doGet(request, response);
 	}
 
 }

@@ -34,8 +34,7 @@ public class InserisciSala extends HttpServlet {
 
 		Sala s = new Sala();
 
-		if (controlloInserimento(request.getParameter("nome")) && controlloNumeri(request.getParameter("postimax"))
-				&& controlloVuoto(request.getParameter("treD"))) {
+		if (controlloInserimento(request.getParameter("nome")) && controlloNumeri(request.getParameter("postimax"))) {
 
 			s.setNome(request.getParameter("nome"));
 			s.setPostiMax(Integer.parseInt(request.getParameter("posti")));
