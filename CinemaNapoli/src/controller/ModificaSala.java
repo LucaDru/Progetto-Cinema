@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Sala;
 import static util.GestisciDatabase.*;
-
+import static util.Controlli.*;
 @WebServlet(name="modificasala", urlPatterns = {"/ModificaSala"})
 public class ModificaSala extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,12 +25,15 @@ public class ModificaSala extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Sala s = new Sala();
 		
-		if(request.getParameter("id") != null) {
+		if(controlloInserimento(request.getParameter("nome")) &&
+		   controlloNumeri(request.getParameter("postimax")) &&
+		   controlloVuoto(request.getParameter("treD"))) {
+			
 			s.setId(Long.parseLong(request.getParameter("id")));
 			s.setNome(request.getParameter("nome"));
 			s.setPostiMax(Integer.parseInt(request.getParameter("postimax")));
 			s.setTreD(request.getParameter("treD")==null?false:true);
-			
+		
 			if(!modificaSala(s))
 				request.setAttribute("modificaErrata", "si");
 			

@@ -5,7 +5,7 @@
 
 <!-- profilo personale-->
 <nav id="sidebarMenu"
-	class="col-md-3 col-lg-2 d-md-block bg-light sidebar sidebar-fixed collapse"
+	class="col-md-3 col-lg-2 d-md-block bg-light <!--  sidebar sidebar-fixed--> collaps"
 	style="background-color: lightgray !important;">
 	<div class="p-3">
 		<br> <br>

@@ -10,32 +10,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Sala;
+
+import static util.Controlli.controlloInserimento;
+import static util.Controlli.controlloNumeri;
+import static util.Controlli.controlloVuoto;
 import static util.GestisciDatabase.*;
 
-
-@WebServlet(name="inseriscisala",urlPatterns={"/InserisciSala"})
+@WebServlet(name = "inseriscisala", urlPatterns = { "/InserisciSala" })
 public class InserisciSala extends HttpServlet {
-	private static final long serialVersionUID = 1L;  
+	private static final long serialVersionUID = 1L;
 
 	public InserisciSala() {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		Sala s = new Sala();
-		s.setNome(request.getParameter("nome"));
-		s.setPostiMax(Integer.parseInt(request.getParameter("posti")));
-		System.out.println(request.getParameter("treD"));
-		s.setTreD(request.getParameter("treD")==null?false:true);
-		
-		if(!aggiungiSala(s))
-			request.setAttribute("salaSbagliata", "si");
-		
+
+		if (controlloInserimento(request.getParameter("nome")) && controlloNumeri(request.getParameter("postimax"))
+				&& controlloVuoto(request.getParameter("treD"))) {
+
+			s.setNome(request.getParameter("nome"));
+			s.setPostiMax(Integer.parseInt(request.getParameter("posti")));
+			System.out.println(request.getParameter("treD"));
+			s.setTreD(request.getParameter("treD") == null ? false : true);
+
+			if (!aggiungiSala(s))
+				request.setAttribute("salaSbagliata", "si");
+		}
 		request.setAttribute("controllo", 4);
 		request.getRequestDispatcher("VisualizzaListe").forward(request, response);
 	}

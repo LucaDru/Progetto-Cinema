@@ -11,6 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
+
+import static util.Controlli.controlloCap;
+import static util.Controlli.controlloCf;
+import static util.Controlli.controlloEmail;
+import static util.Controlli.controlloInserimento;
+import static util.Controlli.controlloVuoto;
 import static util.GestisciDatabase.*;
 
 @WebServlet(name="modificauser", urlPatterns = {"/ModificaUser"})
@@ -22,12 +28,12 @@ public class ModificaUser extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("proiezione")!=null) {			
+		/*if(request.getParameter("proiezione")!=null) {			
 			request.setAttribute("proiezione", cercaProiezione(Long.parseLong(request.getParameter("proiezione"))));
 			request.getRequestDispatcher("complimentoni.jsp").forward(request, response);
 		}
 		else
-			request.getRequestDispatcher("Reindirizzamento").forward(request, response);
+			request.getRequestDispatcher("Reindirizzamento").forward(request, response);*/
 	}
 
 
@@ -35,32 +41,35 @@ public class ModificaUser extends HttpServlet {
 		
 		User u= null;
 				
-			if(request.getParameter("fatturazione") != null) {
-				u = (User) request.getSession().getAttribute("userLoggato");
-				//u.setId(Long.parseLong(request.getParameter("id")));
-				u.setCf(request.getParameter("cf").equals("")? null : request.getParameter("cf"));
-				u.setPiva(request.getParameter("piva").equals("")? null : request.getParameter("piva"));				
-			} else {
+		if(controlloInserimento(request.getParameter("citta")) &&
+		   controlloCap(request.getParameter("cap")) &&
+		   controlloCf(request.getParameter("cf")) &&
+		   controlloEmail(request.getParameter("email")) &&
+		   controlloVuoto(request.getParameter("provincia")) &&
+		   controlloVuoto(request.getParameter("piva")) &&
+		   controlloVuoto(request.getParameter("indirizzo")) &&
+		   controlloVuoto(request.getParameter("username")) &&
+		   controlloVuoto(request.getParameter("password"))){					
+
 				u= cercaUser(Long.parseLong(request.getParameter("id")));
-				u.setNome(request.getParameter("nome"));
-				u.setCognome("cognome");
-				u.setDatadinascita(Date.valueOf(request.getParameter("datadinascita")));
 				u.setCitta(request.getParameter("citta"));
 				u.setProvincia(request.getParameter("provincia"));
 				u.setIndirizzo(request.getParameter("indirizzo"));
 				u.setCap(request.getParameter("cap"));
 				u.setCf(request.getParameter("cf"));
-				u.setPiva(request.getParameter("piva"));
+				u.setPiva(request.getParameter("piva").equals("N/D")?null: request.getParameter("piva"));
 				u.setEmail(request.getParameter("email"));
 				u.setUsername(request.getParameter("username"));
 				String encodedPwd=Base64.getEncoder().withoutPadding().encodeToString(request.getParameter("password").getBytes("UTF-8"));
-				u.setPassword(encodedPwd);
-
+				u.setPassword(encodedPwd);				
 				
-			} 
-			modificaUser(u);
-		request.getSession().setAttribute("userLoggato", u);
-		doGet(request, response);
+				modificaUser(u);
+				request.getSession().setAttribute("userLoggato", u);			
+		}
+		
+		response.sendRedirect("Reindirizzamento");
+		
 	}
-
+	
+	
 }
