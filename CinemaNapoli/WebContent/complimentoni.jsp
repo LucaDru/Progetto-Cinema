@@ -31,13 +31,17 @@
 	%>
 
 	<div class="container">
-		<div class="jumbotron text-center">
-			<h1><%=p.getFilm().getTitolo()%></h1>
+		<div class="jumbotron text-center mt-5">
+			<h1><%=p.getFilm().getTitolo()+" ("+p.getFilm().getAnnouscita()+")"%></h1>
+			<h5>Durata: <%=p.getFilm().getDurata()+"min."%></h5>
 			<hr>
-			<h3><%=p.getData() + " " + p.orarioSenzaSecondi()%></h3>
+			<h2>Sala: <%=p.getSala().getNome()%></h2>
+			<h3>Data: <%=p.getData()%></h3>
+			<h3>Ora: <%=p.orarioSenzaSecondi()%></h3>
 			<hr>
-			<button class="btn btn-success" type="button" id="prosegui">
-				Prosegui</button>
+			<p>Seleziona i posti che vuoi prenotare dal form sottostante.</p>
+			<button class="btn btn-info" type="button" id="prosegui">
+				Prosegui <i class="fas fa-arrow-right"></i></button>
 		</div>
 	</div>
 
@@ -100,18 +104,19 @@
 				</div>
 				<div class="modal-body">
 					<h1><%=p.getFilm().getTitolo()%></h1>
+					<h4>Sala <%=p.getSala().getNome()%></h4>
 					<input type="hidden" id="prezzo" value="<%=p.getPrezzo()%>">
 					<hr>
 					<span>Hai selezionato</span>
-					<span id="riepilogo-posti"></span>
-					<span>posti:</span>
+					<span id="riepilogo-posti" class="text-danger"></span>
+					<span>posti: </span>
+					<span id="riepilogo-posti-codice" class="text-info"></span>
 					</br>
-					<span id="riepilogo-posti-codice"></span>
 					<span>Prezzo totale: </span>
-					<span id="riepilogo-prezzo"></span>
+					<span id="riepilogo-prezzo"></span><span>&euro;</span>
 				</div>
 				<div class="modal-footer">
-					<button type="button" id="conferma-posti">Conferma</button>
+					<button type="button" id="conferma-posti" class="btn btn-sm btn-success">Conferma <i class="fas fa-arrow-right"></i></button>
 				</div>
 			</div>
 		</div>

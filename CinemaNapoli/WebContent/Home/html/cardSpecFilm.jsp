@@ -45,7 +45,7 @@
                                     		<optgroup label="<%=p.getData()%>">
                                     		
                                     		<%} %>
-                                    		<option value="<%=p.getId()%>"><%=p.orarioSenzaSecondi()+" Posti: "%><%= p.getPostiDisp()%>
+                                    		<option value="<%=p.getId()%>"><%=p.orarioSenzaSecondi()+" (Posti liberi: "%><%= p.getPostiDisp()+")"%>
                                     		</option>                                    
                                     <%
                                     	cont++;}}
