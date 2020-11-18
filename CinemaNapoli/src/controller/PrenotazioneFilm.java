@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Prenotazione;
 import model.User;
+import util.UtilitiesQrCode;
 
 import static util.GestisciDatabase.*;
 import static util.Controlli.*;
@@ -43,13 +44,14 @@ public class PrenotazioneFilm extends HttpServlet {
 			
 			try {
 				aggiungiPrenotazione(p);
+				UtilitiesQrCode.generateQRCodeImage(p.getBiglietto(), 300, 300, "D:\\Git-Repo\\Progetto-Cinema\\CinemaNapoli\\WebContent\\caroImg\\biglietti");
 			} catch (RollbackException e) {
 				e.printStackTrace();
 				controllo = true;
 			}
 		}while(controllo);
 
-		mandaMail(p.getUser(),"prenotazione",p.getBiglietto());
+		mandaMailBiglietto(p.getUser(),"prenotazione", p);
 		request.getRequestDispatcher("Inizializzazione").forward(request, response);
 	}
 

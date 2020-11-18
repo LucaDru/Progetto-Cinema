@@ -71,8 +71,12 @@ public class Login extends HttpServlet {
 
 					request.getSession().setAttribute("userLoggato", u);
 					if (request.getParameter("ricordami") != null) {
-						response.addCookie(new Cookie("userUsername", u.getUsername()));
-						response.addCookie(new Cookie("userPassword", u.getPassword()));
+						Cookie c1=new Cookie("userUsername", u.getUsername());
+						c1.setMaxAge(60*60*24*30);
+						response.addCookie(c1);
+						c1=new Cookie("userPassword", u.getPassword());
+						c1.setMaxAge(60*60*24*30);
+						response.addCookie(c1);
 					}
 					//request.getRequestDispatcher("Inizializzazione").forward(request, response);
 					response.sendRedirect("Inizializzazione");

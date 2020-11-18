@@ -26,9 +26,9 @@ public class Inizializzazione extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String username=null,pwd=null;
+ 		String username=null,pwd=null;
 		
-		if(request.getCookies()!=null) {
+		if(request.getSession().getAttribute("userLoggato")==null && request.getCookies()!=null) {
 			for(Cookie c:request.getCookies()) {
 				System.out.println(c.getName()+" "+c.getValue());
 				if(c.getName().equals("userUsername")) username=c.getValue();
@@ -36,7 +36,9 @@ public class Inizializzazione extends HttpServlet {
 			}
 		}
 		if(username!=null && pwd!=null) {
-			request.getSession().setAttribute("userLoggato",cercaUserByUsername(username, pwd));
+			User u=cercaUserByUsername(username, pwd);
+			if(u!=null)
+				request.getSession().setAttribute("userLoggato",u);
 		}
 		
 		List<Film> lista=leggiFilm();

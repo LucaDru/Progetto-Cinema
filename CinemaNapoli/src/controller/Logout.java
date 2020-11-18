@@ -18,8 +18,8 @@ public class Logout extends HttpServlet {
     //---
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().invalidate();
-		Cookie ck = new Cookie ("userPassword", "");
-		ck.setMaxAge(0);
+		Cookie ck = new Cookie ("userPassword", null);
+		ck.setMaxAge(-1);
 		response.addCookie(ck);
 		
 		request.getRequestDispatcher("Inizializzazione").forward(request, response);
