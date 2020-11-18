@@ -64,11 +64,17 @@
 				<span>Profilo</span>
 			</h6>
 
-			<li class="nav-item"><a class="nav-link punti" id="profilo-tab"
+			<li class="nav-item">
+			<!-- <a class="nav-link punti" id="profilo-tab"
 				href="#profilo" data-toggle="tab" role="tab" aria-controls="profilo"
 				aria-selected="false"> <i class="fas fa-address-book icona mr-2"></i>
 					<span>Riepilogo</span>
-			</a></li>
+			</a> -->
+			<a class="nav-link punti"
+				href="/CinemaNapoli/PrenotazioniUtente"> <i class="fas fa-address-book icona mr-2"></i>
+					<span>Riepilogo</span>
+			</a>
+			</li>
 		</ul>
 	</div>
 	<div class="sidebar-bottom d-none d-lg-block connesso">

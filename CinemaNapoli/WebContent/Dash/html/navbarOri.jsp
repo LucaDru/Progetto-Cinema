@@ -1,3 +1,8 @@
+<%@page import="model.User"%>
+<%
+	User us=(User)request.getSession().getAttribute("userLoggato");
+%>
+
 <nav
 	class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow prova">
 	<a class="navbar-brand col-md-3 col-lg-2 mr-0 p-0" href="/CinemaNapoli/Inizializzazione"> <img
@@ -10,8 +15,21 @@
 		aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<ul class="navbar-nav px-3">
-		<li class="nav-item text-nowrap"><a
+		<ul class="navbar-nav px-3 list-group-horizontal">
+		<%
+			if(!us.getRuolo().getNome().equals("user")){
+		%>
+		<li class="nav-item text-nowrap mx-3">
+			<a href="Reindirizzamento"><button type="button"
+					class="btn btn-outline-secondary">
+					<i class="fas fa-edit"></i>Dashboard
+				</button></a>
+			</li>
+		<%
+			}
+		%>
+
+		<li class="nav-item text-nowrap mx-3"><a
 			class="btn btn-outline-secondary" href="/CinemaNapoli/Logout" role="button" id="miao"><i
 				class="fas fa-sign-out-alt"></i> Log-out</a></li>
 	</ul>
