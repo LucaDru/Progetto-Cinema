@@ -1,3 +1,4 @@
+<%@page import="model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -23,6 +24,9 @@
 	
 	<!-- controllo delle TAB -->
   	<input type="hidden" value="<%=request.getAttribute("controllo")!=null?request.getAttribute("controllo"):0%>" id="controllo">
+  	<%
+  		User u=(User)request.getSession().getAttribute("userLoggato");
+  	%>
 	
 	<div class="container-fluid">
 	<div class="row">
@@ -37,14 +41,36 @@
 				id="users" role="tabpanel" aria-labelledby="users-tab">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Utenti & Staff</h1>
+					<%
+					if(u.getRuolo().getNome().equals("admin")){
+					%>
+						
+						<h1 class="h2"> Utenti & Staff</h1>  
+						<% 
+					}else
+						%>
+						
+						<h1 class="h2"> Utenti </h1>
 				</div>
-				<jsp:include page="tabAttivare.jsp"></jsp:include>
+				<%
+					if(u.getRuolo().getNome().equals("staff")){
+				%>
+				
+				<jsp:include page="tabUsers.jsp"></jsp:include>
+				<jsp:include page="tabCancellati.jsp"></jsp:include>
+			</div>
+			<%
+			}else{
+			%>
+			<jsp:include page="tabAttivare.jsp"></jsp:include>
 				<jsp:include page="tabStaff.jsp"></jsp:include>
 				<jsp:include page="tabUsers.jsp"></jsp:include>
 				<jsp:include page="tabCancellati.jsp"></jsp:include>
 				<jsp:include page="tabBannati.jsp"></jsp:include>
 			</div>
+			<%} %>
+			
+			
 			
 			<!-- Proiezioni -->
 			<div class="tab-pane fade"
@@ -84,7 +110,11 @@
 				<jsp:include page="tabGenere.jsp"></jsp:include>
 				<jsp:include page="tabFilm.jsp"></jsp:include>
 			</div>
-			
+				<%
+				if(u.getRuolo().getNome().equals("admin")){ 
+					
+				
+				%>
 			<!-- Sale -->
 			<div class="tab-pane fade"
 				id="sale" role="tabpanel" aria-labelledby="sale-tab">
@@ -92,6 +122,7 @@
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">Sale</h1>
 				</div>
+		
 				<div class="pt-3 pb-2 mb-3 text-center">
 					<button class="btn btn-warning" type="button" data-toggle="collapse"
 						data-target="#inserisci-sala" aria-expanded="false"
@@ -100,6 +131,7 @@
 				<jsp:include page="insertSala.jsp"></jsp:include>
 				<jsp:include page="tabSale.jsp"></jsp:include>
 			</div>
+			<% } %>
 			
 			<!-- Profilo -->
 			<div class="px-md-4 tab-pane fade"
@@ -111,7 +143,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
+
 	
 	<!-- BootStrap -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

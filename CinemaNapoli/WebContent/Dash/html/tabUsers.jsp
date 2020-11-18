@@ -3,6 +3,9 @@
 
 <%
 	List<User> listaUtenti = (List<User>)request.getAttribute("listaUser");
+	User us = (User) request.getSession().getAttribute("userLoggato");
+
+	
 %>
 <div class="card my-5 p-4">
 	<h4>Elenco Utenti:</h4>
@@ -31,11 +34,17 @@
 					<td class="p-2"><%=u.getCognome()%></td>
 					<td class="p-2"><%=u.getEmail()%></td>
 					<td class="d-flex align-items-center">
+					<% %>
 						<div class="custom-control custom-switch d-inline p-2">
 							<input type="checkbox" class="custom-control-input"
 								id="customSwitch2" disabled> <label
 								class="custom-control-label" for="customSwitch2"></label>
 						</div>
+						<% 
+						if(us.getRuolo().getNome().equals("admin")){
+							
+						%>
+						
 						<form action="AssegnaRuoli" method="post">
 							<input type="hidden" name="staff" value="<%=u.getId()%>">
 							<button type="submit" class="btn btn-warning btn-sm"
@@ -44,8 +53,13 @@
 								<i class="fas fa-exchange-alt"></i>
 							</button>							
 						</form>
+						<%} %>
 					</td>
 					<td>
+					<% 
+						if(us.getRuolo().getNome().equals("admin")){
+							
+						%>
 						<form action="AssegnaRuoli" method="post" class="d-inline-block">
 							<input type="hidden" name="bannato" value="<%=u.getId()%>">		
 							<button type="submit" class="btn btn-danger btn-sm"
@@ -53,6 +67,7 @@
 								<i class="fas fa-ban"></i>
 							</button>
 						</form>
+						<%} %>
 						<form action="AttivazioneAccount" method="post" class="d-inline-block">
 							<input type="hidden" name="disattiva" value="<%=u.getId()%>">
 							<button type="submit" class="btn btn-info btn-sm"

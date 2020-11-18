@@ -1,3 +1,4 @@
+<%@page import="model.User"%>
 <%@page import="model.Sala"%>
 <%@page import="model.Film"%>
 <%@page import="model.Proiezione"%>
@@ -6,6 +7,7 @@
 	List<Proiezione> listaPro = (List<Proiezione>)request.getAttribute("listaProiezioni");
 	List<Sala> listaSale = (List<Sala>)request.getAttribute("listaSale");
 	List<Film> listaFilm = (List<Film>)request.getAttribute("listaFilm");
+	User us = (User) request.getSession().getAttribute("userLoggato");
 %>
 <div class="card my-5 p-4">
 	<h4>Elenco Proiezioni:</h4>
@@ -100,13 +102,14 @@
 				<td><%="sala "+p.getSala().getNome()%></td>
 				<td><%=p.getPrezzo()+" "%>&euro;</td>
 				<td>
+				<%if(us.getRuolo().getNome().equals("admin")){ %>
 					<form action="VisualizzaListe" method="post" class="d-inline-block">
 						<input type="hidden" name="modificaProiezione" value="<%=p.getId()%>">
 						<button class="btn btn-info btn-sm"
 						 	type="submit">Modifica</button>
 					 </form>
-					<a class="btn btn-outline-danger btn-sm" href="#"
-					role="button">X</a>
+					 <%} %>
+					
 				</td>
 			</tr>
 			<%

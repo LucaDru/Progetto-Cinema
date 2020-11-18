@@ -1,7 +1,9 @@
+<%@page import="model.User"%>
 <%@page import="model.Genere"%>
 <%@page import="java.util.List"%>
 <%
 	List<Genere> lista=(List<Genere>)request.getAttribute("listaGenere");
+	User us = (User) request.getSession().getAttribute("userLoggato");
 %>
 <div class="card my-5 p-4">
 	<h4>Elenco Generi:</h4>
@@ -57,11 +59,13 @@
 				<td><%=g.getNome()%></td>
 				<td><%=g.getImg()%></td>
 				<td> 
+				<%if(us.getRuolo().getNome().equals("admin")){ %>
 					<form action="VisualizzaListe" method="post">
 						<input type="hidden" name="modificaGenere" value="<%=g.getId()%>">
 						<button class="btn btn-info btn-sm"
 						 	type="submit">Modifica</button>
 					</form>
+					<%} %>
 				</td>
 			</tr>
 			<%

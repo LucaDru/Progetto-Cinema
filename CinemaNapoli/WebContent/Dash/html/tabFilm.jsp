@@ -3,6 +3,7 @@
 <%
 	List<Film> listaFilm=(List<Film>)request.getAttribute("listaFilm");
 	List<Genere> listaGenere=(List<Genere>)request.getAttribute("listaGenere");
+	User us = (User) request.getSession().getAttribute("userLoggato");
 %>
 <div class="card my-5 p-4">
 	<h4>Elenco Film:</h4>
@@ -96,11 +97,16 @@
 				<td><%=f.getTrama()%></td>
 				<td><%=f.getLocandina()%></td>
 				<td>
+				<%
+				if(us.getRuolo().getNome().equals("admin")){
+				%>
+				
 					<form action="VisualizzaListe" method="post">
 						<input type="hidden" name="modificaFilm" value="<%=f.getId()%>">
 						<button class="btn btn-info btn-sm"
 						 	type="submit">Modifica</button>
 					</form>
+					<%} %>
 				</td>
 			</tr>
 			<%

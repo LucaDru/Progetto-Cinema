@@ -3,6 +3,7 @@
 <%
 	List<Film> listaFilm = (List<Film>) request.getAttribute("listaFilm");
 	List<Genere> listaGenere = (List<Genere>) request.getAttribute("listaGenere");
+	User us = (User) request.getSession().getAttribute("userLoggato");
 %>
 <div class="container">
 	<table class="table table-sm table-hover table-dark">
